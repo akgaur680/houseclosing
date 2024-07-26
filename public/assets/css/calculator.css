@@ -1,0 +1,59 @@
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .tax_container {
+        max-width: 600px;
+        margin: 150px auto 50px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    .form-group input[type="checkbox"] {
+        appearance: auto !important;
+        margin-bottom: 10px;
+    }
+
+    .result {
+        margin-top: 20px;
+    }
+
+    .result table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .result th,
+    .result td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .result th {
+        background-color: #eaa636;
+        color: #ffffff;
+    }
