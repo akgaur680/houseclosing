@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('register-section'); ?>
+<?php $__env->startSection('content'); ?>
 
 
 <div class="page-banner-area bg-gray2">
@@ -88,4 +88,4 @@ View All Program Loans
 
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\houseclosing\resources\views\web\register.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.web', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\houseclosing\resources\views\web\register.blade.php ENDPATH**/ ?>

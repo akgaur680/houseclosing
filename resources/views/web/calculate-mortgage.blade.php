@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('calculate-mortage-section')
+@section('content')
 
 
 <div class="page-banner-area bg-gray2">

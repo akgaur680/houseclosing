@@ -11,6 +11,7 @@ use App\Models\About;
 use App\Models\Experience;
 use App\Models\Setting;
 use App\Models\QueryForm;
+
 class AdminController extends Controller
 {
     public function __construct()
@@ -59,7 +60,7 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:pages,slug,'.$page->id,
+            'slug' => 'required|string|max:255|unique:pages,slug,' . $page->id,
             'sequence' => 'required|integer',
         ]);
 
@@ -82,7 +83,7 @@ class AdminController extends Controller
     // Function for editing the homepage
     public function editHomepage()
     {
-        $homepage = Homepage::first(); 
+        $homepage = Homepage::first();
         if (!$homepage) {
             $homepage = new Homepage();
         }
@@ -116,14 +117,18 @@ class AdminController extends Controller
             'section2_casesdone' => 'required|string|max:255',
             'section2_years_in_business' => 'required|string|max:255',
             'section2_button_label' => 'required|string|max:255',
-            'section2_button_link' => 'required|string|max:255', 
+            'section2_button_link' => 'required|string|max:255',
+            'meta_title' => 'required|string|max:255',
+            'meta_description' => 'required|string|max:255',
+            'meta_tag' => 'required|string|max:255',
+            'meta_img' => 'nullable|image|max:2048',
         ]);
 
         $homepage = new Homepage;
-        $newData = $request->except(['header_img', 'header_img2', 'section1_img', 'section2_img1', 'section2_img2']);
+        $newData = $request->except(['header_img', 'header_img2', 'section1_img', 'section2_img1', 'section2_img2', 'meta_img']);
         $homepage = Homepage::first();
-       
-       
+
+
         // $factsData = $request->input('facts', []);
 
 
@@ -148,59 +153,41 @@ class AdminController extends Controller
         }
 
         if ($request->hasFile('section2_img1')) {
-            $metaImage = $request->file('section2_img1');
-            $customFileNameMetaImage = time() . '-' . $metaImage->getClientOriginalName();
-            $path1 = $metaImage->storeAs('public/images', $customFileNameMetaImage);
+            $section2_img = $request->file('section2_img1');
+            $customFileNameMetaImage = time() . '-' . $section2_img->getClientOriginalName();
+            $path1 = $section2_img->storeAs('public/images', $customFileNameMetaImage);
             $newData['section2_img1'] = 'storage/images/' . $customFileNameMetaImage;
         }
         if ($request->hasFile('section2_img2')) {
-            $metaImage = $request->file('section2_img2');
+            $section2_img2 = $request->file('section2_img2');
+            $customFileNameMetaImage = time() . '-' . $section2_img2->getClientOriginalName();
+            $path1 = $section2_img2->storeAs('public/images', $customFileNameMetaImage);
+            $newData['section2_img2'] = 'storage/images/' . $customFileNameMetaImage;
+        }
+        if ($request->hasFile('meta_img')) {
+            $metaImage = $request->file('meta_img');
             $customFileNameMetaImage = time() . '-' . $metaImage->getClientOriginalName();
             $path1 = $metaImage->storeAs('public/images', $customFileNameMetaImage);
-            $newData['section2_img2'] = 'storage/images/' . $customFileNameMetaImage;
+            $newData['meta_img'] = 'storage/images/' . $customFileNameMetaImage;
         }
         if ($homepage) {
             $homepage->update($newData);
         } else {
             Homepage::create($newData);
         }
-        
+
         // $this->syncFacts($homepage, $factsData);
 
         return redirect()->route('admin.homepage.edit')->with('success', 'Homepage updated successfully.');
     }
 
-    // Function for syncing the homepage facts.
-    private function syncFacts(Homepage $homepage, array $factsData)
-    {
-        $existingFacts = $homepage->sectionTwoFacts()->pluck('id')->toArray();
 
-        foreach ($factsData as $key => $fact) {
-            if (isset($fact['id'])) {
-                $homepage->sectionTwoFacts()->where('id', $fact['id'])->update([
-                    'label' => $fact['label'],
-                    'count' => $fact['count'],
-                ]);
-                $keyToDelete = array_search($fact['id'], $existingFacts);
-                unset($existingFacts[$keyToDelete]);
-            } else {
-                $homepage->sectionTwoFacts()->create([
-                    'label' => $fact['label'],
-                    'count' => $fact['count'],
-                ]);
-            }
-        }
 
-        if (!empty($existingFacts)) {
-            $homepage->sectionTwoFacts()->whereIn('id', $existingFacts)->delete();
-        }
-    }
 
-    
     // Function for editing the setting.
     public function Setting()
     {
-        $setting = Setting::first(); 
+        $setting = Setting::first();
         if (!$setting) {
             $setting = new Setting();
         }
@@ -222,10 +209,14 @@ class AdminController extends Controller
             'facebook_link' => 'nullable',
             'twitter_link' => 'nullable',
             'instagram_link' => 'nullable',
-            'header_logo' => 'nullable|image|max:2048', 
-            'footer_logo' => 'nullable|image|max:2048', 
+            'header_logo' => 'nullable|image|max:2048',
+            'footer_logo' => 'nullable|image|max:2048',
+            'meta_title' => 'required|string|max:255',
+            'meta_description' => 'required|string|max:255',
+            'meta_tag' => 'required|string|max:255',
+            'meta_img' => 'nullable|image|max:2048',
         ]);
-        $newData = $request->except(['header_logo','footer_logo']);
+        $newData = $request->except(['header_logo', 'footer_logo', 'meta_img']);
 
         if ($request->hasFile('header_logo')) {
             $headerLogo = $request->file('header_logo');
@@ -240,6 +231,13 @@ class AdminController extends Controller
             $path1 = $footerLogo->storeAs('public/images', $customFileNameFooterLogo);
             $newData['footer_logo'] = 'storage/images/' . $customFileNameFooterLogo;
         }
+        
+        if ($request->hasFile('meta_img')) {
+            $metaImage = $request->file('meta_img');
+            $customFileNameMetaImage = time() . '-' . $metaImage->getClientOriginalName();
+            $path1 = $metaImage->storeAs('public/images', $customFileNameMetaImage);
+            $newData['meta_img'] = 'storage/images/' . $customFileNameMetaImage;
+        }
 
 
         $setting = Setting::first();
@@ -252,8 +250,4 @@ class AdminController extends Controller
         }
         return redirect()->route('admin.setting.edit')->with('success', 'Setting updated successfully.');
     }
-
-
-
-
 }

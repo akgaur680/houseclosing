@@ -1,7 +1,7 @@
 
 
 
-<?php $__env->startSection('quote-section'); ?>
+<?php $__env->startSection('content'); ?>
 
 <section>
 <div class="container">
@@ -604,4 +604,4 @@ if you have any further questions
 
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\houseclosing\resources\views\web\quote.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.web', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\houseclosing\resources\views\web\quote.blade.php ENDPATH**/ ?>

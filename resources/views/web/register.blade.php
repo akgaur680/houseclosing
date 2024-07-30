@@ -1,6 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.web')
 
-@section('register-section')
+@section('content')
 
 
 <div class="page-banner-area bg-gray2">

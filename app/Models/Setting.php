@@ -24,6 +24,10 @@ class Setting extends Model
         'consultation_bar_button_label',
         'consultation_bar_title',
         'consultation_bar_description',
+        'meta_title',
+        'meta_description',
+        'meta_tag',
+        'meta_img',
         
     ];
 }

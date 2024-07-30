@@ -1,11 +1,19 @@
 <?php
-
+use App\Models\ServiceCategory;
 use App\Http\Controllers\FrontEndController;
-
 $homepage = FrontEndController::Homepage();
+$services = ServiceCategory::all()->take(4);
 ?>
 
-<?php $__env->startSection('index-section'); ?>
+<?php $__env->startSection('meta'); ?>
+<title><?php echo e(@$homepage['meta_title'] ?? 'HouseClosing'); ?></title>
+<meta name="description" content="<?php echo e(@$homepage['meta_description'] ?? 'HouseClosing'); ?>">
+<meta property="og:title" content="<?php echo e(@$homepage['meta_title'] ?? 'HouseClosing'); ?>">
+<meta property="og:description" content="<?php echo e(@$homepage['meta_description'] ?? 'HouseClosing'); ?>">
+<meta property="og:image" content="<?php echo e(asset(@$homepage['meta_image'])); ?>">
+<meta name="keywords" content="<?php echo e(@$homepage['meta_tags'] ?? 'HouseClosing'); ?>">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 <div class="banner-area banner-bg-3">
     <div class="container mw-1570 position-relative z-1">
         <div class="banner-content style-three">
@@ -87,67 +95,31 @@ $homepage = FrontEndController::Homepage();
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="services-img">
-                    <img src="assets/images/services.png" alt="services">
+                    <img src="<?php echo e(asset('assets/images/services.png')); ?>" alt="services">
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="row justify-content-center">
+                    <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-xl-6 col-sm-6">
                         <div class="service-single-item transition-y style-two">
-                            <i class="flaticon-house icon"></i>
+                            <!-- <i class="flaticon-house icon"></i> -->
+                            <img src="<?php echo e(asset($service['header_img'])); ?>" style="border-radius: 50%;" width="100px">
                             <h3>
-                                <a href="#">Buying Real Estate</a>
+                                <a href="<?php echo e(url('service-areas', $service['slug'])); ?>"><?php echo e($service['header_title']); ?></a>
                             </h3>
-                            <p>Navigate the complexities of purchasing property with expert legal guidance to ensure a smooth and secure transaction.</p>
-                            <a href="#" class="read-more">
-                                Buyer’s Guide
+                            <p style="height:120px; overflow:hidden"> <?php echo e($service['header_description']); ?> </p>
+                            <a href="<?php echo e(url('service-areas', $service['slug'])); ?>" class="read-more">
+                                Learn More
                                 <i class="flaticon-right-arrow"></i>
                             </a>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-sm-6">
-                        <div class="service-single-item transition-y style-two">
-                            <i class="flaticon-calculator icon"></i>
-                            <h3>
-                                <a href="#">Mortgage Transactions</a>
-                            </h3>
-                            <p>Expertly handle all legal aspects of mortgage transactions to ensure a smooth and secure financing process.</p>
-                            <a href="#" class="read-more">
-                                Mortgage Transactions
-                                <i class="flaticon-right-arrow"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-sm-6">
-                        <div class="service-single-item transition-y style-two">
-                            <i class="flaticon-refinance icon"></i>
-                            <h3>
-                                <a href="#">Transfer of Ownership/Title</a>
-                            </h3>
-                            <p>Efficiently manage the legal aspects of transferring ownership and title to ensure a smooth and secure property transaction.</p>
-                            <a href="#" class="read-more">
-                                Owner’s Guide
-                                <i class="flaticon-right-arrow"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-sm-6">
-                        <div class="service-single-item transition-y style-two">
-                            <i class="flaticon-taxes icon"></i>
-                            <h3>
-                                <a href="#">Corporate & Commercial Matters</a>
-                            </h3>
-                            <p>Navigate corporate and commercial real estate transactions with expert legal guidance tailored to your business needs.</p>
-                            <a href="#" class="read-more">
-                                Connect With Us
-                                <i class="flaticon-right-arrow"></i>
-                            </a>
-                        </div>
-                    </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-xl-12 col-sm-12 text-center">
                         <div class="service-single-item transition-y style-two">
                             <h3>
-                                <a href="#" class="read-more fs-3">
+                                <a href="services" class="read-more fs-3">
                                     View All Services
                                     <i class="flaticon-right-arrow"></i>
                                 </a>
@@ -259,7 +231,7 @@ $homepage = FrontEndController::Homepage();
                         </div>
                     </div>
                     <a href="<?php echo e($homepage['section2_button_link']); ?>" class="read-more text-primarydiv mt-lg-5 d-inline-block">
-                    <?php echo e($homepage['section2_button_label']); ?>
+                        <?php echo e($homepage['section2_button_label']); ?>
 
                         <i class="flaticon-right-arrow"></i>
                     </a>
@@ -268,12 +240,12 @@ $homepage = FrontEndController::Homepage();
             <div class="col-lg-6">
                 <div class="about-us-wrap text-center text-lg-end">
                     <div class="about-img-3">
-                        <img src="assets/images/about-3.jpg" class="img" alt="about">
-                        <img src="assets/images/shape-6.png" class="ms-4 shapes" alt="shape">
+                        <img src="<?php echo e(asset('assets/images/about-3.jpg')); ?>" class="img" alt="about">
+                        <img src="<?php echo e(asset('assets/images/shape-6.png')); ?>" class="ms-4 shapes" alt="shape">
                     </div>
                     <div class="about-img-3 mt-4 pt-1">
-                        <img src="assets/images/shape-7.png" class="me-4 shapes" alt="shape">
-                        <img src="assets/images/about-4.jpg" class="img" alt="about">
+                        <img src="<?php echo e(asset('assets/images/shape-7.png')); ?>" class="me-4 shapes" alt="shape">
+                        <img src="<?php echo e(asset('assets/images/about-4.jpg')); ?>" class="img" alt="about">
                     </div>
                 </div>
             </div>
@@ -288,7 +260,7 @@ $homepage = FrontEndController::Homepage();
                     <div class="col-xl-6 col-sm-6">
                         <div class="team-member-single-item border transition-y">
                             <a href="management-details.html" class="d-block mb-4">
-                                <img src="assets/images/team-1.jpg" class="mw-100" alt="team">
+                                <img src="<?php echo e(asset('assets/images/team-1.jpg')); ?>" class="mw-100" alt="team">
                             </a>
                             <div>
                                 <span class="title">Office Manager</span>
@@ -307,7 +279,7 @@ $homepage = FrontEndController::Homepage();
                     <div class="col-xl-6 col-sm-6">
                         <div class="team-member-single-item border transition-y">
                             <a href="management-details.html" class="d-block mb-4">
-                                <img src="assets/images/team-3.jpg" class="mw-100" alt="team">
+                                <img src="<?php echo e(asset('assets/images/team-3.jpg')); ?>" class="mw-100" alt="team">
                             </a>
                             <div>
                                 <span class="title">Loan Officer</span>
@@ -320,7 +292,7 @@ $homepage = FrontEndController::Homepage();
                     <div class="col-xl-6 col-sm-6">
                         <div class="team-member-single-item border transition-y">
                             <a href="management-details.html" class="d-block mb-4">
-                                <img src="assets/images/team-2.jpg" class="mw-100" alt="team">
+                                <img src="<?php echo e(asset('assets/images/team-2.jpg')); ?>" class="mw-100" alt="team">
                             </a>
                             <div>
                                 <span class="title">Business Manager</span>
@@ -333,7 +305,7 @@ $homepage = FrontEndController::Homepage();
                     <div class="col-xl-6 col-sm-6">
                         <div class="team-member-single-item border transition-y">
                             <a href="management-details.html" class="d-block mb-4">
-                                <img src="assets/images/team-4.jpg" class="mw-100" alt="team">
+                                <img src="<?php echo e(asset('assets/images/team-4.jpg')); ?>" class="mw-100" alt="team">
                             </a>
                             <div>
                                 <span class="title">CEO at Laks</span>
@@ -354,7 +326,7 @@ $homepage = FrontEndController::Homepage();
                         <i class="flaticon-right-arrow"></i>
                     </a>
                     <div class="team-img mt-1 mb-1">
-                        <img src="assets/images/team-img.png" alt="team-img">
+                        <img src="<?php echo e(asset('assets/images/team-img.png')); ?>" alt="team-img">
                     </div>
                 </div>
             </div>
@@ -362,7 +334,7 @@ $homepage = FrontEndController::Homepage();
     </div>
 </div>
 <div class="container-fluid p-0">
-    <img src="assets/images/testimonial-bg.jpg" alt="testimonial-bg">
+    <img src="<?php echo e(asset('assets/images/testimonial-bg.jpg')); ?>" alt="testimonial-bg">
 </div>
 <div class="testimonials-area">
     <div class="container mw-1380">
@@ -391,7 +363,7 @@ $homepage = FrontEndController::Homepage();
                         <div class="d-flex justify-content-center">
                             <div class="d-flex align-items-center justify-content-center">
                                 <div class="flex-shrink-0">
-                                    <img src="assets/images/testimonial-1.jpg" class="rounded-circle img" alt="testimonial">
+                                    <img src="<?php echo e(asset('assets/images/testimonial-1.jpg')); ?>" class="rounded-circle img" alt="testimonial">
                                 </div>
                                 <div class="flex-grow-1 ms-3 text-start">
                                     <h3>William John</h3>
@@ -399,7 +371,7 @@ $homepage = FrontEndController::Homepage();
                                 </div>
                             </div>
                         </div>
-                        <img src="assets/images/shape-1.png" class="shape shape-1" alt="shape">
+                        <img src="<?php echo e(asset('assets/images/shape-1.png')); ?>" class="shape shape-1" alt="shape">
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -425,7 +397,7 @@ $homepage = FrontEndController::Homepage();
                         <div class="d-flex justify-content-center">
                             <div class="d-flex align-items-center justify-content-center">
                                 <div class="flex-shrink-0">
-                                    <img src="assets/images/testimonial-2.jpg" class="rounded-circle img" alt="testimonial">
+                                    <img src="<?php echo e(asset('assets/images/testimonial-2.jpg')); ?>" class="rounded-circle img" alt="testimonial">
                                 </div>
                                 <div class="flex-grow-1 ms-3 text-start">
                                     <h3>John Dew</h3>
@@ -433,7 +405,7 @@ $homepage = FrontEndController::Homepage();
                                 </div>
                             </div>
                         </div>
-                        <img src="assets/images/shape-1.png" class="shape shape-1" alt="shape">
+                        <img src="<?php echo e(asset('assets/images/shape-1.png')); ?>" class="shape shape-1" alt="shape">
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -459,7 +431,7 @@ $homepage = FrontEndController::Homepage();
                         <div class="d-flex justify-content-center">
                             <div class="d-flex align-items-center justify-content-center">
                                 <div class="flex-shrink-0">
-                                    <img src="assets/images/testimonial-3.jpg" class="rounded-circle img" alt="testimonial">
+                                    <img src="<?php echo e(asset('assets/images/testimonial-3.jpg')); ?>" class="rounded-circle img" alt="testimonial">
                                 </div>
                                 <div class="flex-grow-1 ms-3 text-start">
                                     <h3>Alex Smith</h3>
@@ -467,7 +439,7 @@ $homepage = FrontEndController::Homepage();
                                 </div>
                             </div>
                         </div>
-                        <img src="assets/images/shape-1.png" class="shape shape-1" alt="shape">
+                        <img src="<?php echo e(asset('assets/images/shape-1.png')); ?>" class="shape shape-1" alt="shape">
                     </div>
                 </div>
             </div>
@@ -552,117 +524,9 @@ $homepage = FrontEndController::Homepage();
         <img src="assets/images/shape-3.png" class="shape shape-6" alt="shape">
     </div>
     <div class="container-fluid p-0">
-        <div class="swiper blog-slide">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="blog-single-item style-three">
-                        <div class="blog-content">
-                            <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
-                                <li>
-                                    <a href="tags.html">London</a>
-                                </li>
-                                <li>
-                                    <a href="tags.html">Europe</a>
-                                </li>
-                            </ul>
-                            <h3>
-                                <a href="blog-details.html">Why Slovenia its dining should Be on your this is European bucket List in the dribbble</a>
-                            </h3>
-                            <p>If you are looking for a lender who offers competitive prices and products, stands behind its commitments, is honest and will not walk away from you after your loan closes, call us to speak to one of our knowledgeable loan originators.</p>
-                            <ul class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info">
-                                <li>
-                                    <a href="author.html">
-                                        <i class="ri-user-3-line"></i>
-                                        <span>Admin</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="blog-details.html">
-                                        <i class="ri-message-2-line"></i>
-                                        <span>02 Comments</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <i class="ri-calendar-2-line"></i>
-                                    <span>08 June, 2024</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="blog-single-item style-three">
-                        <div class="blog-content">
-                            <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
-                                <li>
-                                    <a href="tags.html">Driving</a>
-                                </li>
-                                <li>
-                                    <a href="tags.html">Striking</a>
-                                </li>
-                            </ul>
-                            <h3>
-                                <a href="blog-details.html">Super Bowl ad features a literally striking visual full self-driving for your project</a>
-                            </h3>
-                            <p>If you are looking for a lender who offers competitive prices and products, stands behind its commitments, is honest and will not walk away from you after your loan closes, call us to speak to one of our knowledgeable loan originators.</p>
-                            <ul class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info">
-                                <li>
-                                    <a href="author.html">
-                                        <i class="ri-user-3-line"></i>
-                                        <span>Admin</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="blog-details.html">
-                                        <i class="ri-message-2-line"></i>
-                                        <span>45 Comments</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <i class="ri-calendar-2-line"></i>
-                                    <span>07 June, 2024</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="blog-single-item style-three">
-                        <div class="blog-content">
-                            <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
-                                <li>
-                                    <a href="tags.html">Work</a>
-                                </li>
-                                <li>
-                                    <a href="tags.html">Artists</a>
-                                </li>
-                            </ul>
-                            <h3>
-                                <a href="blog-details.html">These three young artists are redefining jewelry with deeply personal work</a>
-                            </h3>
-                            <p>If you are looking for a lender who offers competitive prices and products, stands behind its commitments, is honest and will not walk away from you after your loan closes, call us to speak to one of our knowledgeable loan originators.</p>
-                            <ul class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info">
-                                <li>
-                                    <a href="author.html">
-                                        <i class="ri-user-3-line"></i>
-                                        <span>Admin</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="blog-details.html">
-                                        <i class="ri-message-2-line"></i>
-                                        <span>22 Comments</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <i class="ri-calendar-2-line"></i>
-                                    <span>28 June, 2024</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
+        <div class="swiper blog-slide swiper-initialized swiper-horizontal swiper-backface-hidden">
+            <div class="swiper-wrapper" id="swiper-wrapper-f80a2abbbc53bd10" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-220.571px, 0px, 0px); transition-delay: 0ms;">
+                <div class="swiper-slide swiper-slide-prev" role="group" aria-label="4 / 4" data-swiper-slide-index="3" style="width: 416.143px; margin-right: 25px;">
                     <div class="blog-single-item style-three">
                         <div class="blog-content">
                             <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
@@ -676,7 +540,7 @@ $homepage = FrontEndController::Homepage();
                             <h3>
                                 <a href="blog-details.html">ChatGPT frenzy sweeps China as firms as that scramble home-grown</a>
                             </h3>
-                            <p>If you are looking for a lender who offers competitive prices and products, stands behind its commitments, is honest and will not walk away from you after your loan closes, call us to speak to one of our knowledgeable loan originators.</p>
+                            <p>If you are looking for a lender who offers&nbsp;competitive prices and products, stands behind its commitments, is honest and will not walk away from you after your loan closes,&nbsp;call us&nbsp;to speak to one of our knowledgeable loan originators.</p>
                             <ul class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info">
                                 <li>
                                     <a href="author.html">
@@ -698,10 +562,119 @@ $homepage = FrontEndController::Homepage();
                         </div>
                     </div>
                 </div>
+                <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4" data-swiper-slide-index="0" style="width: 416.143px; margin-right: 25px;">
+                    <div class="blog-single-item style-three">
+                        <div class="blog-content">
+                            <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
+                                <li>
+                                    <a href="tags.html">London</a>
+                                </li>
+                                <li>
+                                    <a href="tags.html">Europe</a>
+                                </li>
+                            </ul>
+                            <h3>
+                                <a href="blog-details.html">Why Slovenia its dining should Be on your this is European bucket List in the dribbble</a>
+                            </h3>
+                            <p>If you are looking for a lender who offers&nbsp;competitive prices and products, stands behind its commitments, is honest and will not walk away from you after your loan closes,&nbsp;call us&nbsp;to speak to one of our knowledgeable loan originators.</p>
+                            <ul class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info">
+                                <li>
+                                    <a href="author.html">
+                                        <i class="ri-user-3-line"></i>
+                                        <span>Admin</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="blog-details.html">
+                                        <i class="ri-message-2-line"></i>
+                                        <span>02 Comments</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="ri-calendar-2-line"></i>
+                                    <span>08 June, 2024</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4" data-swiper-slide-index="1" style="width: 416.143px; margin-right: 25px;">
+                    <div class="blog-single-item style-three">
+                        <div class="blog-content">
+                            <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
+                                <li>
+                                    <a href="tags.html">Driving</a>
+                                </li>
+                                <li>
+                                    <a href="tags.html">Striking</a>
+                                </li>
+                            </ul>
+                            <h3>
+                                <a href="blog-details.html">Super Bowl ad features a literally striking visual full self-driving for your project</a>
+                            </h3>
+                            <p>If you are looking for a lender who offers&nbsp;competitive prices and products, stands behind its commitments, is honest and will not walk away from you after your loan closes,&nbsp;call us&nbsp;to speak to one of our knowledgeable loan originators.</p>
+                            <ul class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info">
+                                <li>
+                                    <a href="author.html">
+                                        <i class="ri-user-3-line"></i>
+                                        <span>Admin</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="blog-details.html">
+                                        <i class="ri-message-2-line"></i>
+                                        <span>45 Comments</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="ri-calendar-2-line"></i>
+                                    <span>07 June, 2024</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" role="group" aria-label="3 / 4" data-swiper-slide-index="2" style="width: 416.143px; margin-right: 25px;">
+                    <div class="blog-single-item style-three">
+                        <div class="blog-content">
+                            <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
+                                <li>
+                                    <a href="tags.html">Work</a>
+                                </li>
+                                <li>
+                                    <a href="tags.html">Artists</a>
+                                </li>
+                            </ul>
+                            <h3>
+                                <a href="blog-details.html">These three young artists are redefining jewelry with deeply personal work</a>
+                            </h3>
+                            <p>If you are looking for a lender who offers&nbsp;competitive prices and products, stands behind its commitments, is honest and will not walk away from you after your loan closes,&nbsp;call us&nbsp;to speak to one of our knowledgeable loan originators.</p>
+                            <ul class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info">
+                                <li>
+                                    <a href="author.html">
+                                        <i class="ri-user-3-line"></i>
+                                        <span>Admin</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="blog-details.html">
+                                        <i class="ri-message-2-line"></i>
+                                        <span>22 Comments</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="ri-calendar-2-line"></i>
+                                    <span>28 June, 2024</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
         </div>
-        <div class="swiper-pagination1 text-center"></div>
+        <div class="swiper-pagination1 text-center swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span></div>
     </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\houseclosing\resources\views\web\index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.web', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\houseclosing\resources\views\web\index.blade.php ENDPATH**/ ?>

@@ -13,23 +13,23 @@ $settings = FrontEndController::settings();
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>CMS - Panel</title>
-  <link rel="stylesheet" href="{{ asset('adminassets/vendors/mdi/css/materialdesignicons.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('adminassets/vendors/css/vendor.bundle.base.css') }}">
-  <link rel="stylesheet" href="{{ asset('adminassets/css/style.css') }}">
-  <link rel="shortcut icon" href="{{ asset('adminassets/images/favicon.ico') }}">
+  <link rel="stylesheet" href="<?php echo e(asset('adminassets/vendors/mdi/css/materialdesignicons.min.css')); ?>">
+  <link rel="stylesheet" href="<?php echo e(asset('adminassets/vendors/css/vendor.bundle.base.css')); ?>">
+  <link rel="stylesheet" href="<?php echo e(asset('adminassets/css/style.css')); ?>">
+  <link rel="shortcut icon" href="<?php echo e(asset('adminassets/images/favicon.ico')); ?>">
   <script src="https://cdn.tiny.cloud/1/rhmjhy4d4ie52kbm64vwjpq0g48tk3s5dvqvnej2vi0y9cnc/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
  
 </head>
 
 <body>
-@stack('scripts')
+<?php echo $__env->yieldPushContent('scripts'); ?>
 
   <div class="container-scroller">
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="{{url('/admin/dashboard')}}"><img src="{{ asset(@$settings['header_logo']) }}" alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href="{{url('/admin/dashboard')}}"><img src="{{ asset(@$settings['header_logo']) }}" alt="logo" /></a>
+        <a class="navbar-brand brand-logo" href="<?php echo e(url('/admin/dashboard')); ?>"><img src="<?php echo e(asset(@$settings['header_logo'])); ?>" alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="<?php echo e(url('/admin/dashboard')); ?>"><img src="<?php echo e(asset(@$settings['header_logo'])); ?>" alt="logo" /></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -39,15 +39,15 @@ $settings = FrontEndController::settings();
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
               <div class="nav-profile-img">
-                <img src="{{asset("adminassets/images/faces/dummy.jpeg")}}" alt="image">
+                <img src="<?php echo e(asset("adminassets/images/faces/dummy.jpeg")); ?>" alt="image">
                 <span class="availability-status online"></span>
               </div>
               <div class="nav-profile-text">
-                <p class="mb-1 text-black"> {{Auth::user()->name}}</p>
+                <p class="mb-1 text-black"> <?php echo e(Auth::user()->name); ?></p>
               </div>
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item" href="{{url('logout')}}">
+              <a class="dropdown-item" href="<?php echo e(url('logout')); ?>">
                 <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
             </div>
           </li>
@@ -61,7 +61,7 @@ $settings = FrontEndController::settings();
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{url('admin/dashboard')}}">
+            <a class="nav-link" href="<?php echo e(url('admin/dashboard')); ?>">
               <span class="menu-title">Dashboard</span>
               <i class="mdi mdi-home menu-icon"></i>
             </a>
@@ -74,22 +74,22 @@ $settings = FrontEndController::settings();
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="{{url('admin/services-areas')}}">Service Areas Page</a>
+                  <a class="nav-link" href="<?php echo e(url('admin/services-areas')); ?>">Service Areas Page</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{url('admin/service-area-categories')}}">Service Areas Categories</a>
+                  <a class="nav-link" href="<?php echo e(url('admin/service-area-categories')); ?>">Service Areas Categories</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('admin/homepage')}}">
+            <a class="nav-link" href="<?php echo e(url('admin/homepage')); ?>">
               <span class="menu-title">Homepage</span>
               <i class="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('admin/setting')}}">
+            <a class="nav-link" href="<?php echo e(url('admin/setting')); ?>">
               <span class="menu-title">Setting</span>
               <i class="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>
@@ -97,10 +97,10 @@ $settings = FrontEndController::settings();
         </ul>
       </nav>
       <div class="main-panel">
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
         <footer class="footer">
               <div class="copy-right-area">
-        <p> {!!$settings['copyright_content']!!} </p>
+        <p> <?php echo $settings['copyright_content']; ?> </p>
 
     </div>
 
@@ -108,11 +108,11 @@ $settings = FrontEndController::settings();
       </div>
     </div>
   </div>
-  <script src="{{ asset('adminassets/vendors/js/vendor.bundle.base.js') }}"></script>
-  <script src="{{ asset('adminassets/js/off-canvas.js') }}"></script>
-  <script src="{{ asset('adminassets/js/hoverable-collapse.js') }}"></script>
-  <script src="{{ asset('adminassets/js/misc.js') }}"></script>
-  @yield('scripts')
+  <script src="<?php echo e(asset('adminassets/vendors/js/vendor.bundle.base.js')); ?>"></script>
+  <script src="<?php echo e(asset('adminassets/js/off-canvas.js')); ?>"></script>
+  <script src="<?php echo e(asset('adminassets/js/hoverable-collapse.js')); ?>"></script>
+  <script src="<?php echo e(asset('adminassets/js/misc.js')); ?>"></script>
+  <?php echo $__env->yieldContent('scripts'); ?>
 </body>
 
-</html>
+</html><?php /**PATH C:\wamp64\www\houseclosing\resources\views/layouts/admin.blade.php ENDPATH**/ ?>

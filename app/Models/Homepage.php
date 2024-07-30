@@ -36,7 +36,16 @@ class Homepage extends Model
         'section2_casesdone',
         'section2_years_in_business',
         'section2_button_label',
-        'section2_button_link',            
+        'section2_button_link', 
+        'meta_title',
+        'meta_description',
+        'meta_tag',
+        'meta_img',           
     ];
+
+    public function categories()
+    {
+        return $this->hasMany(ServiceCategory::class);
+    }
 
 }

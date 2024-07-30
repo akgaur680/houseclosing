@@ -1,7 +1,7 @@
-@extends('layouts.master')
+@extends('layouts.web')
 
 
-@section('quote-section')
+@section('content')
 
 <section>
 <div class="container">

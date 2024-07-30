@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('calculate-mortage-section'); ?>
+<?php $__env->startSection('content'); ?>
 
 
 <div class="page-banner-area bg-gray2">

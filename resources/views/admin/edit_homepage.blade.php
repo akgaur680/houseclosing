@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-
 @section('content')
 <div class="content-wrapper">
     <div class="row">
@@ -10,7 +9,6 @@
         </div>
         @endif
         <div class="col-12 grid-margin stretch-card">
-
             <div class="card">
                 <div class="card-body">
                     <h2 class="text-center mb-4">Homepage</h2>
@@ -18,9 +16,7 @@
                     <form class="form-sample" action="{{ route('admin.homepage.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-
                         <h3 class="text-center mb-4">1. Section (Header)</h3>
-
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
@@ -33,7 +29,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label" for="header_description">
@@ -46,7 +41,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label" for="header_button_label1">Button
@@ -59,7 +53,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label" for="header_button_link1">Button
@@ -72,7 +65,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label" for="header_button_label2">Button
@@ -85,7 +77,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label" for="header_button_link2">Button
@@ -98,7 +89,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label" for="header_img">Background
@@ -129,28 +119,11 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
                         <div class="row">
                             <hr>
-                            <h3 class="text-center mb-4">2. Section (Common Settings)</h3>
-                            <div class="col-md-12 text-center mb-4">
-                                <h4>
-                                    <a href="{{ url('admin/setting') }}" style="text-decoration:none">
-                                        Counsultation Bar Settings <i class="mdi mdi-logout-variant"></i>
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <hr>
-                            <h3 class="text-center mb-4">3. Section</h3>
-
+                            <h3 class="text-center mb-4">2. Section</h3>
                             <!--Section Card Area -->
-
-
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label" for="section1_card1_title">First Card Title</label>
@@ -231,12 +204,10 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="row">
                             <hr>
-                            <h3 class="text-center mb-4">4. Section</h3>
-
+                            <h3 class="text-center mb-4">3. Section</h3>
                             <!--Section Short Title -->
                             <div class="col-md-6">
                                 <div class="form-group row">
@@ -304,7 +275,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label" for="section2_button_link">Button Link</label>
@@ -317,291 +287,97 @@
                                 </div>
                             </div>
 
-
-                            <!-- <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label" for="section2_image1">Section Image 1</label>
-                                    <div class="col-sm-9">
-                                        <input type="file" name="section2_image1" id="section2_image1" class="form-control">
-                                        @if (!empty($homepage->section2_image1))
-                                        <img src="{{ asset($homepage->section2_image1) }}" alt="Section Image" height="100px">
-                                        @endif
-                                        @error('section2_image1')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                            <div class="row">
+                                <hr>
+                                <h3 class="text-center mb-4">4. Meta Section</h3>
+                                <!--Section Short Title -->
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="meta_title">Meta Title</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value="{{ old('meta_title', $homepage->meta_title) }}">
+                                            @error('meta_title')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="meta_description">Meta Description</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value="{{ old('meta_description', $homepage->meta_description) }}">
+                                            @error('meta_description')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="meta_tag">Meta Tag</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="meta_tag" name="meta_tag" placeholder="Meta Tag" value="{{ old('meta_tag', $homepage->meta_tag) }}">
+                                            @error('meta_tag')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="meta_img">Meta Image</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="meta_img" id="meta_img" class="form-control" value="{{$homepage->meta_img}}">
+                                            @if (!empty($homepage->meta_img))
+                                            <img src="{{ asset($homepage->meta_img) }}" alt="Meta Image" height="100px">
+                                            @endif
+                                            @error('meta_img')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label" for="section2_image2">Section Image 2</label>
-                                    <div class="col-sm-9">
-                                        <input type="file" name="section2_image2" id="section2_image2" class="form-control">
-                                        @if (!empty($homepage->section2_image2))
-                                        <img src="{{ asset($homepage->section2_image2) }}" alt="Section Image" height="100px">
-                                        @endif
-                                        @error('section2_image2')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+
+                            <div class="row text-center">
+                                <div class="col-md-3">
+                                    <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
                                 </div>
                             </div>
-
-
-                        <div class="col-md-12 text-center mb-4">
-                            <h4>
-                                +
-                            </h4>
-                        </div>
-
-                        <div class="col-md-12 text-center mb-4">
-                            <h4>
-                                <a href="{{ url('admin/practice-area-categories') }}" style="text-decoration:none">
-                                    Practice Area Categories <i class="mdi mdi-logout-variant"></i>
-                                </a>
-                            </h4>
-                        </div>
-
-                </div>
-
-
-                <div class="row">
-                    <hr>
-                    <h3 class="text-center mb-4">4. Section - Experiences (Common)</h3>
-                    <div class="col-md-12 text-center mb-4">
-                        <h4>
-                            <a href="{{ url('admin/experiences') }}" style="text-decoration:none">
-                                Experiences <i class="mdi mdi-logout-variant"></i>
-                            </a>
-                        </h4>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <hr>
-                    <h3 class="text-center mb-4">5. Practice Areas </h3>
-                    <div class="col-md-12 text-center mb-4">
-                        <h4>
-                            <a href="{{ url('admin/practice-areas') }}" style="text-decoration:none">
-                                Practice Area <i class="mdi mdi-logout-variant"></i>
-                            </a>
-                        </h4>
-                    </div>
-
-                    <div class="col-md-12 text-center mb-4">
-                        <h4>
-                            +
-                        </h4>
-                    </div>
-
-                    <div class="col-md-12 text-center mb-4">
-                        <h4>
-                            <a href="{{ url('admin/practice-area-categories') }}" style="text-decoration:none">
-                                Practice Area Categories <i class="mdi mdi-logout-variant"></i>
-                            </a>
-                        </h4>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <hr>
-                    <h3 class="text-center mb-4">6. Section</h3>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label" for="bottom_section_image"> Section
-                                Image</label>
-                            <div class="col-sm-9">
-                                <input type="file" name="bottom_section_image" id="bottom_section_image" class="form-control">
-                                @if (@$homepage->bottom_section_image)
-                                <img src="{{ url(@$homepage->bottom_section_image) }}" alt="" height="100px">
-                                @endif
-                                @error('bottom_section_image')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label" for="bottom_section_short_title">
-                                Section Short Title</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="bottom_section_short_title" name="bottom_section_short_title" placeholder="Bottom Section Short Title" value="{{ old('bottom_section_short_title', $homepage->bottom_section_short_title) }}">
-                                @error('bottom_section_short_title')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label" for="bottom_section_title"> Section
-                                Title</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="bottom_section_title" name="bottom_section_title" placeholder="Bottom Section Title" value="{{ old('bottom_section_title', $homepage->bottom_section_title) }}">
-                                @error('bottom_section_title')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label" for="bottom_section_description">
-                                Section Description</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="bottom_section_description" name="bottom_section_description" placeholder="Bottom Section Description" value="{{ old('bottom_section_description', $homepage->bottom_section_description) }}">
-                                @error('bottom_section_description')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 mb-3">
-                        <h5>Facts</h5>
-                        <table class="table table-bordered" id="facts-table">
-                            <thead>
-                                <tr>
-                                    <th>Label</th>
-                                    <th>Count</th>
-                                    <th style="width: 30%" class="mx-3">Actions <button type="button" class="btn btn-success" id="add-fact">+</button></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (!empty($homepage->sectionTwoFacts))
-                                @foreach ($homepage->sectionTwoFacts as $fact)
-                                <tr>
-                                    <td><input type="text" name="facts[{{ $loop->index }}][label]" class="form-control" value="{{ $fact->label }}" /></td>
-                                    <td><input type="text" name="facts[{{ $loop->index }}][count]" class="form-control" value="{{ $fact->count }}" /></td>
-                                    <td><button type="button" class="btn btn-danger remove-fact" onclick="return confirm('Are you sure you want to delete this page?')">Remove</button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                                @endif
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="row">
-                    <hr>
-                    <h3 class="text-center mb-4">7. Meta Tags </h3>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label" for="meta_title">Meta Title</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value="{{ old('meta_title', $homepage->meta_title) }}">
-                                @error('meta_title')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label" for="meta_description">Meta
-                                Description</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value="{{ old('meta_description', $homepage->meta_description) }}">
-                                @error('meta_description')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div> -->
-
-                            <!--Banner Area Section -->
-
-                            <!-- 
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label" for="meta_tags">Meta Tags</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="meta_tags" name="meta_tags" placeholder="Meta Tags" value="{{ old('meta_tags', $homepage->meta_tags) }}">
-                                @error('meta_tags')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label" for="meta_image">Meta Image</label>
-                            <div class="col-sm-9">
-                                <input type="file" name="meta_image" id="meta_image" class="form-control">
-                                @if (!empty($homepage->meta_image))
-                                <img src="{{ asset($homepage->meta_image) }}" alt="Meta Image" height="100px">
-                                @endif
-                                @error('meta_image')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>  -->
-
-                            <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
 
-@section('scripts')
 
-<script>
-    $(document).ready(function() {
-        var factIndex = {
-            {
-                !empty($homepage - > sectionTwoFacts) ? count($homepage - > sectionTwoFacts) : 0
+@push('scripts')
+<script type="text/javascript">
+    tinymce.init({
+        selector: '',
+        width: 800,
+        height: 400,
+        plugins: [
+            'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
+            'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
+            'media', 'table', 'emoticons', 'help'
+        ],
+        toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
+            'forecolor backcolor emoticons | help',
+        menu: {
+            favs: {
+                title: 'My Favorites',
+                items: 'code visualaid | searchreplace | emoticons'
             }
-        };
-        var maxFacts = 6; // Maximum number of facts allowed
-
-        // Initially hide the button if the number of facts is at least maxFacts
-        if (factIndex >= maxFacts) {
-            $('#add-fact').hide();
-        }
-
-        $('#add-fact').click(function() {
-            var newRow = `
-                <tr>
-                    <td><input type="text" name="facts[${factIndex}][label]" class="form-control" required /></td>
-                    <td><input type="text" name="facts[${factIndex}][count]" class="form-control" required /></td>
-                    <td><button type="button" class="btn btn-danger remove-fact">Remove</button></td>
-                </tr>`;
-            $('#facts-table tbody').append(newRow);
-            factIndex++;
-
-            // Check if the maximum number of facts is reached
-            if (factIndex >= maxFacts) {
-                $('#add-fact').hide(); // Hide the button
-            }
-        });
-
-        $(document).on('click', '.remove-fact', function() {
-            $(this).closest('tr').remove();
-            factIndex--;
-
-            // Show the add button when a fact is removed
-            if (factIndex < maxFacts) {
-                $('#add-fact').show(); // Show the button
-            }
-        });
+        },
+        menubar: 'favs file edit view insert format tools table help',
+        content_css: '/www.tiny.cloud/css/codepen.min.css',
+        readonly: false,
+        disabled: false,
     });
 </script>
-
-</script>
+@endpush
 @endsection

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FrontEndController;
 
+
 $settings = FrontEndController::settings();
 ?>
 
@@ -16,9 +17,14 @@ $settings = FrontEndController::settings();
   <link rel="stylesheet" href="<?php echo e(asset('adminassets/vendors/css/vendor.bundle.base.css')); ?>">
   <link rel="stylesheet" href="<?php echo e(asset('adminassets/css/style.css')); ?>">
   <link rel="shortcut icon" href="<?php echo e(asset('adminassets/images/favicon.ico')); ?>">
+  <script src="https://cdn.tiny.cloud/1/rhmjhy4d4ie52kbm64vwjpq0g48tk3s5dvqvnej2vi0y9cnc/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+ 
 </head>
 
 <body>
+<?php echo $__env->yieldPushContent('scripts'); ?>
+
   <div class="container-scroller">
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -62,16 +68,16 @@ $settings = FrontEndController::settings();
           </li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <span class="menu-title">Practice Areas</span>
+              <span class="menu-title">Services</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo e(url('admin/practice-areas')); ?>">Practice Areas Page</a>
+                  <a class="nav-link" href="<?php echo e(url('admin/services-areas')); ?>">Service Areas Page</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo e(url('admin/practice-area-categories')); ?>">Practice Areas Categories</a>
+                  <a class="nav-link" href="<?php echo e(url('admin/service-area-categories')); ?>">Service Areas Categories</a>
                 </li>
               </ul>
             </div>
@@ -93,10 +99,11 @@ $settings = FrontEndController::settings();
       <div class="main-panel">
         <?php echo $__env->yieldContent('content'); ?>
         <footer class="footer">
-          <div class="container-fluid d-flex justify-content-between">
-            <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © S and S Lawyers</span>
-            <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Designed & Developed By : <a href="https://thedevolutions.com/" target="_blank">The</a></span>
-          </div>
+              <div class="copy-right-area">
+        <p> <?php echo $settings['copyright_content']; ?> </p>
+
+    </div>
+
         </footer>
       </div>
     </div>

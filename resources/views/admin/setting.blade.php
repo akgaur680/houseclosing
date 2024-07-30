@@ -185,6 +185,61 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Meta Details -->
+                         
+                        <div class="row">
+                                <hr>
+                                <h3 class="text-center mb-4">4. Meta Section</h3>
+                                <!--Section Short Title -->
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="meta_title">Meta Title</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value="{{ old('meta_title', $setting->meta_title) }}">
+                                            @error('meta_title')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="meta_description">Meta Description</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value="{{ old('meta_description', $setting->meta_description) }}">
+                                            @error('meta_description')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="meta_tag">Meta Tag</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="meta_tag" name="meta_tag" placeholder="Meta Tag" value="{{ old('meta_tag', $setting->meta_tag) }}">
+                                            @error('meta_tag')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="meta_img">Meta Image</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="meta_img" id="meta_img" class="form-control">
+                                            @if (!empty($setting->meta_img))
+                                            <img src="{{ asset($setting->meta_img) }}" alt="Meta Image" height="100px">
+                                            @endif
+                                            @error('meta_img')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         <!-- Submit Button -->
                         <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
                     </form>
@@ -192,31 +247,28 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.tiny.cloud/1/ed94e1kbgmhzfmhws1206nz848jc19sucdyplatxm8tycvwo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-            selector: "input#copyright_content, #map",
-            plugins: [
-                'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
-                'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
-                'media', 'table', 'emoticons', 'help'
-            ],
-            toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media | forecolor backcolor emoticons',
-            menu: {
-                favs: {
-                    title: 'My Favorites',
-                    items: 'code visualaid | searchreplace | emoticons'
-                }
-            },
-            menubar: 'favs file edit view insert format tools table help',
-            toolbar_mode: 'floating',
-            height: 400,
-            setup: function(editor) {
-                editor.on('Change', function(e) {
-                    editor.save();
-                });
-            },
-            content_style: 'body { font-size: 14px; }' // Custom font size
-        });
-    </script>
+    @push('scripts')
+<script type="text/javascript">
+  tinymce.init({
+    selector: '#copyright_content',
+    width: 800,
+    height: 400,
+    plugins: [
+      'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
+      'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
+      'media', 'table', 'emoticons', 'help'
+    ],
+    toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
+      'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
+      'forecolor backcolor emoticons | help',
+    menu: {
+      favs: { title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons' }
+    },
+    menubar: 'favs file edit view insert format tools table help',
+    content_css: '/www.tiny.cloud/css/codepen.min.css',
+    readonly: false,
+    disabled: false,
+  });
+  </script>
+  @endpush
     @endsection
