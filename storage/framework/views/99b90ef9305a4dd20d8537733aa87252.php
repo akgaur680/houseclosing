@@ -16,24 +16,32 @@ $settings = FrontEndController::settings();
 <head>
     <?php echo $__env->yieldContent('meta'); ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="<?php echo e(asset('ssets/css/swiper-bundle.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/swiper-bundle.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/scrollCue.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/nouislider.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/remixicon.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/flaticon.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/style.css')); ?>">
     <link rel="icon" type="image/png" href="<?php echo e(asset($settings['header_logo'])); ?>">
-    <title>Laks - Real Estate Mortgage & Loans HTML Template</title>
+
 </head>
 
 <body>
     <div id="preloader">
         <div class="preloader">
             <div class="waviy">
-                <span>L</span>
-                <span>A</span>
-                <span>K</span>
+                <span>H</span>
+                <span>O</span>
+                <span>U</span>
                 <span>S</span>
+                <span>E</span>
+                <span>C</span>
+                <span>L</span>
+                <span>O</span>
+                <span>S</span>
+                <span>I</span>
+                <span>N</span>
+                <span>G</span>
             </div>
         </div>
     </div>
@@ -98,17 +106,12 @@ $settings = FrontEndController::settings();
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="quote" role="button">
-                            Free Quote
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
                         <a class="nav-link" href="#" role="button">
                             Hire Us
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link " href="#" role="button">
+                        <a class="nav-link " href="about" role="button">
                             About Us
                         </a>
                     </li>
@@ -124,9 +127,6 @@ $settings = FrontEndController::settings();
                                 </a>
                             </li>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-
-
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -135,7 +135,12 @@ $settings = FrontEndController::settings();
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="calculate-tax" role="button">
+                            Tax Calculator
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="/lawyers">
                             Lawyers
                         </a>
                     </li>
@@ -156,11 +161,6 @@ $settings = FrontEndController::settings();
         </div>
     </nav>
     <?php echo $__env->yieldContent('content'); ?>
-
-
-
-
-
 
     <!-- FOOTER -->
 
@@ -272,6 +272,29 @@ $settings = FrontEndController::settings();
 
                                 </ul>
                             </div>
+                        </div>
+                        
+                        <!-- Map -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="map">Map</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="map" name="map" placeholder="Map" value="<?php echo e(old('map', $settings['map'])); ?>">
+                                        <?php $__errorArgs = ['map'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <span class="text-danger"><?php echo e($message); ?></span>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <div class="footer-single-item">

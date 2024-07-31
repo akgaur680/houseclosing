@@ -1,18 +1,12 @@
 <?php
-
 use App\Http\Controllers\FrontEndController;
 use App\Models\ServiceCategory;
-
 $services = ServiceCategory::all();
-
 $settings = FrontEndController::settings();
 ?>
-
-
 <!DOCTYPE html>
 <html lang="zxx">
 <!-- Mirrored from templates.hibootstrap.com/laks/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Jul 2024 14:16:49 GMT -->
-
 <head>
     @yield('meta')
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,17 +17,23 @@ $settings = FrontEndController::settings();
     <link rel="stylesheet" href="{{asset('assets/css/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="icon" type="image/png" href="{{asset($settings['header_logo'])}}">
-
 </head>
-
 <body>
     <div id="preloader">
         <div class="preloader">
             <div class="waviy">
-                <span>L</span>
-                <span>A</span>
-                <span>K</span>
+                <span>H</span>
+                <span>O</span>
+                <span>U</span>
                 <span>S</span>
+                <span>E</span>
+                <span>C</span>
+                <span>L</span>
+                <span>O</span>
+                <span>S</span>
+                <span>I</span>
+                <span>N</span>
+                <span>G</span>
             </div>
         </div>
     </div>
@@ -88,16 +88,10 @@ $settings = FrontEndController::settings();
                 </span>
             </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
                 <ul class="navbar-nav m-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link active" href="/" role="button">
                             Home
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="quote" role="button">
-                            Free Quote
                         </a>
                     </li>
                     <li class="nav-item dropdown">
@@ -106,7 +100,7 @@ $settings = FrontEndController::settings();
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link " href="#" role="button">
+                        <a class="nav-link " href="about" role="button">
                             About Us
                         </a>
                     </li>
@@ -114,16 +108,12 @@ $settings = FrontEndController::settings();
                         <a class="nav-link dropdown-toggle" href="/services" role="button"> Services</a>
                         <ul class="dropdown-menu">
                             @foreach ($services as $service )
-
                             <li>
                                 <a class="dropdown-item" href="{{url('service-areas',$service['slug'])}}">
                                     {{$service['header_title']}}
                                 </a>
                             </li>
                             @endforeach
-
-
-
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -132,7 +122,12 @@ $settings = FrontEndController::settings();
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="calculate-tax" role="button">
+                            Tax Calculator
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="/lawyers">
                             Lawyers
                         </a>
                     </li>
@@ -153,15 +148,7 @@ $settings = FrontEndController::settings();
         </div>
     </nav>
     @yield('content')
-
-
-
-
-
-
     <!-- FOOTER -->
-
-
     <div class="guide-area bg-50 bottom border-tops-0">
         <div class="container mw-1380">
             <div class="guide-wrap position-relative z-1">
@@ -257,15 +244,11 @@ $settings = FrontEndController::settings();
                             <div class="footer-single-item">
                                 <h3>Services</h3>
                                 <ul class="ps-0 mb-0 list-unstyled additional-link">
-
                                     @foreach ($services->take(5) as $service )
                                     <li>
                                         <a href="{{url('service-areas',$service['slug'])}}">{{$service['header_title']}}</a>
                                     </li>
-
                                     @endforeach
-
-
                                 </ul>
                             </div>
                         </div>
@@ -323,27 +306,18 @@ $settings = FrontEndController::settings();
             </div>
         </div>
     </div>
-
-
     <div class="copy-right-area">
         <p> {!!$settings['copyright_content']!!} </p>
-
     </div>
-
-
     <button type="button" id="backtotop">
         <i class="ri-upload-line"></i>
     </button>
-
-
     <div class="settings-btn rtl-btn">
         <label id="switch" class="switch">
             <input type="checkbox" onchange="toggleTheme()" id="slider">
             <span class="slider round"></span>
         </label>
     </div>
-
-
     <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/js/swiper-bundle.min.js')}}"></script>
@@ -351,7 +325,5 @@ $settings = FrontEndController::settings();
     <script src="{{asset('assets/js/fslightbox.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
 </body>
-
 <!-- Mirrored from templates.hibootstrap.com/laks/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Jul 2024 14:17:59 GMT -->
-
 </html>

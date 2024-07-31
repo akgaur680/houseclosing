@@ -16,6 +16,13 @@ class ServiceCategoryController extends Controller
         return view('admin.service_area_categories', compact('services', 'categories'));
     }
 
+    public function add()
+    {
+        $services = Services::first();
+        $categories = ServiceCategory::all();
+        return view('admin/add_service_category', compact('services', 'categories'));
+    }
+
     public function show($id)
     {
         $category = ServiceCategory::findOrFail($id);

@@ -1,11 +1,6 @@
 
-
-
 <?php $__env->startSection('content'); ?>
-
 <div class="content-wrapper">
-
-
     <!-- List of Categories -->
     <div class="row">
         <?php if(session('success')): ?>
@@ -18,23 +13,31 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
+                      <!-- Breadcrumbs -->
+                      <div class="page-banner-content">
+                        <ul class="list-unstyled breadcrumbs" style="display:inline-block;">
+                            <li style="display: inline;">
+                                <a href="<?php echo e(url('admin/dashboard')); ?>" style="text-decoration: none; color:black" class="fw-bold fs-6" >Home/ </a>
+                            </li>
+                            <li style="display: inline;">
+                                <a href="<?php echo e(url('admin/service-area-categories')); ?>" style="text-decoration: none; color:green" class="fw-bold fs-6">Service Area Categories/ </a>
+                            </li>
+                            <li style="display: inline;">
+                                <span class="fs-6" >Add New Category</span>
+                            </li>
+                        </ul>
+                    </div>
                     <div id="add-category-form-container" class="mt-5">
                         <hr>
                         <h2 class="text-center my-3">Add New Service Area Category</h2>
                         <form id="create-category-form" action="<?php echo e(route('admin.add-service-category.store')); ?>" method="POST" enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
-
                             <h3 class="text-center">1. Header</h3>
                             <br>
-
-
-                            <input type="hidden" name="services_id">
-
+                            <input type="hidden" name="services_id" value="<?php echo e($services->id); ?>">
                             <div class="row">
-
                                 <!-- Header Title -->
                                 <div class="col-sm-6">
-
                                     <div class="form-group">
                                         <label for="header_title">Header Title</label>
                                         <input type="text" class="form-control" id="header_title" name="header_title" placeholder="Header Title" required>
@@ -49,11 +52,9 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
-
                                 </div>
                                 <!-- Header Description -->
                                 <div class="col-sm-6">
-
                                     <div class="form-group">
                                         <label for="header_description">Header Description</label>
                                         <input class="form-control" id="header_description" name="header_description" placeholder="Header Description"></input>
@@ -71,7 +72,6 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                                 <!-- Header Button Label -->
                                 <div class="col-sm-6">
-
                                     <div class="form-group">
                                         <label for="header_button_label">Button Label</label>
                                         <input type="text" class="form-control" id="header_button_label" name="header_button_label" placeholder="Header Title" required>
@@ -87,7 +87,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
-
                                 <!-- Header Button Link -->
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -105,8 +104,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
-
-
                                 <!-- Slug -->
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -124,7 +121,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
-
                                 <!-- Header Background Image -->
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -142,13 +138,8 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
-
                                 <hr>
                                 <h2 class="text-center">2. Section</h2>
-
-
-
-
                                 <!-- Section 1 Description -->
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -183,7 +174,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
-
                                 <!-- Section 1 Button Link -->
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -201,7 +191,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
-
                                 <!-- Section 1 Image -->
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -219,10 +208,8 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
-
                                 <hr>
                                 <h2 class="text-center">3. Section</h2>
-
                                 <!-- Section 2 Title -->
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -240,7 +227,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
-
                                 <!-- Section 2 Description -->
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -258,91 +244,85 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
-                                
                                 <!-- Meta Details -->
-                            <div class="row">
-                                <hr>
-                                <h3 class="text-center mb-4">4. Meta Section</h3>
-                                <!--Section Short Title -->
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label" for="meta_title">Meta Title</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value="<?php echo e(old('meta_title')); ?>">
-                                            <?php $__errorArgs = ['meta_title'];
+                                <div class="row">
+                                    <hr>
+                                    <h3 class="text-center mb-4">4. Meta Section</h3>
+                                    <!--Section Short Title -->
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label" for="meta_title">Meta Title</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value="<?php echo e(old('meta_title')); ?>">
+                                                <?php $__errorArgs = ['meta_title'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                            <span class="text-danger"><?php echo e($message); ?></span>
-                                            <?php unset($message);
+                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label" for="meta_description">Meta Description</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value="<?php echo e(old('meta_description')); ?>">
-                                            <?php $__errorArgs = ['meta_description'];
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label" for="meta_description">Meta Description</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value="<?php echo e(old('meta_description')); ?>">
+                                                <?php $__errorArgs = ['meta_description'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                            <span class="text-danger"><?php echo e($message); ?></span>
-                                            <?php unset($message);
+                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label" for="meta_tag">Meta Tag</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="meta_tag" name="meta_tag" placeholder="Meta Tag" value="<?php echo e(old('meta_tag')); ?>">
-                                            <?php $__errorArgs = ['meta_tag'];
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label" for="meta_tag">Meta Tag</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="meta_tag" name="meta_tag" placeholder="Meta Tag" value="<?php echo e(old('meta_tag')); ?>">
+                                                <?php $__errorArgs = ['meta_tag'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                            <span class="text-danger"><?php echo e($message); ?></span>
-                                            <?php unset($message);
+                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label" for="meta_img">Meta Image</label>
-                                        <div class="col-sm-9">
-                                            <input type="file" name="meta_img" id="meta_img" class="form-control">
-                                           
-                                            <?php $__errorArgs = ['meta_img'];
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label" for="meta_img">Meta Image</label>
+                                            <div class="col-sm-9">
+                                                <input type="file" name="meta_img" id="meta_img" class="form-control">
+                                                <?php $__errorArgs = ['meta_img'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                            <span class="text-danger"><?php echo e($message); ?></span>
-                                            <?php unset($message);
+                                                <span class="text-danger"><?php echo e($message); ?></span>
+                                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-                            </div>
-
-
                             <!-- Submit Button -->
                             <button type="submit" class="btn btn-gradient-primary me-2">Add Category</button>
                         </form>
@@ -352,7 +332,6 @@ unset($__errorArgs, $__bag); ?>
         </div>
     </div>
 </div>
-
 <?php $__env->startPush('scripts'); ?>
 <script type="text/javascript">
     tinymce.init({
@@ -380,6 +359,5 @@ unset($__errorArgs, $__bag); ?>
     });
 </script>
 <?php $__env->stopPush(); ?>
-
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\houseclosing\resources\views\admin\add_service_category.blade.php ENDPATH**/ ?>

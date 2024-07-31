@@ -1,6 +1,8 @@
 <?php
+
 use App\Models\ServiceCategory;
 use App\Http\Controllers\FrontEndController;
+
 $homepage = FrontEndController::Homepage();
 $services = ServiceCategory::all()->take(4);
 ?>
@@ -20,7 +22,7 @@ $services = ServiceCategory::all()->take(4);
             <h1> <?php echo e($homepage['header_title']); ?> </h1>
             <p> <?php echo e($homepage['header_description']); ?> </p>
             <div class="banner-btn d-flex align-items-center justify-content-center">
-                <a href=" <?php echo e($homepage['header_button_link1']); ?> " class="btn btn-dark border-0">
+                <a href=" <?php echo e(@$homepage['header_button_link1']); ?> " class="btn btn-dark border-0">
                     <?php echo e($homepage['header_button_label1']); ?>
 
                     <!-- <img src="assets/images/cart.svg" alt="cart"> -->
@@ -333,127 +335,7 @@ $services = ServiceCategory::all()->take(4);
         </div>
     </div>
 </div>
-<div class="container-fluid p-0">
-    <img src="<?php echo e(asset('assets/images/testimonial-bg.jpg')); ?>" alt="testimonial-bg">
-</div>
-<div class="testimonials-area">
-    <div class="container mw-1380">
-        <div class="swiper testimonials-slide position-relative">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="testimonials-single-item position-relative z-1">
-                        <ul class="ps-0 list-unstyled d-flex justify-content-center gap-1">
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                        </ul>
-                        <p>My Husband and I recently purchase our first home, and as first time home buyers the process was very new to us. Laks were absolutely incredible. They made us feel so confident, and calm due to their expertise, proficiency, and efficiency. They kept up updated, they were able to answer any questions we had and made sure that we had an understanding every step of the way. Avni is welcoming, professional and caring. It was an absolute pleasure and we are so appreciative of all their hard work and efforts! We highly recommend them, they are amazing🙏🏽.</p>
-                        <div class="d-flex justify-content-center">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <div class="flex-shrink-0">
-                                    <img src="<?php echo e(asset('assets/images/testimonial-1.jpg')); ?>" class="rounded-circle img" alt="testimonial">
-                                </div>
-                                <div class="flex-grow-1 ms-3 text-start">
-                                    <h3>William John</h3>
-                                    <span>05 days ago</span>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="<?php echo e(asset('assets/images/shape-1.png')); ?>" class="shape shape-1" alt="shape">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="testimonials-single-item position-relative z-1">
-                        <ul class="ps-0 list-unstyled d-flex justify-content-center gap-1">
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                        </ul>
-                        <p>Amazing service and highly recommended! The team is not just highly knowledgable and experienced but also treats their clients with respect! Very professional and proactive team! Thank you Avni and Sukhpreet, we are really grateful!.</p>
-                        <div class="d-flex justify-content-center">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <div class="flex-shrink-0">
-                                    <img src="<?php echo e(asset('assets/images/testimonial-2.jpg')); ?>" class="rounded-circle img" alt="testimonial">
-                                </div>
-                                <div class="flex-grow-1 ms-3 text-start">
-                                    <h3>John Dew</h3>
-                                    <span>03 days ago</span>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="<?php echo e(asset('assets/images/shape-1.png')); ?>" class="shape shape-1" alt="shape">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="testimonials-single-item position-relative z-1">
-                        <ul class="ps-0 list-unstyled d-flex justify-content-center gap-1">
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                            <li>
-                                <i class="ri-star-fill"></i>
-                            </li>
-                        </ul>
-                        <p>We had a great experience with great service and Avni was an amazing lawyer!</p>
-                        <div class="d-flex justify-content-center">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <div class="flex-shrink-0">
-                                    <img src="<?php echo e(asset('assets/images/testimonial-3.jpg')); ?>" class="rounded-circle img" alt="testimonial">
-                                </div>
-                                <div class="flex-grow-1 ms-3 text-start">
-                                    <h3>Alex Smith</h3>
-                                    <span>01 days ago</span>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="<?php echo e(asset('assets/images/shape-1.png')); ?>" class="shape shape-1" alt="shape">
-                    </div>
-                </div>
-            </div>
-            <div class="testimonials-controller">
-                <div class="controller-icon prev3">
-                    <i class="flaticon-left-arrow"></i>
-                </div>
-                <div class="controller-icon next3">
-                    <i class="flaticon-right-arrow"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<?php echo $__env->make('web.components.testimonials', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <div class="contact-us-area overflow-hidden pt-130">
     <div class="container">
         <div class="row">
@@ -517,164 +399,211 @@ $services = ServiceCategory::all()->take(4);
     </div>
 </div>
 <div class="blog-area ptb-130 overflow-hidden">
-    <div class="container mw-1380 position-relative z-1">
+      <div class="container mw-1380 position-relative z-1">
         <div class="section-title">
-            <h2>Read the latest news on lending from Laks Mortgage company</h2>
+          <h2>Read the latest news on lending from Laks Mortgage company</h2>
         </div>
-        <img src="assets/images/shape-3.png" class="shape shape-6" alt="shape">
-    </div>
-    <div class="container-fluid p-0">
-        <div class="swiper blog-slide swiper-initialized swiper-horizontal swiper-backface-hidden">
-            <div class="swiper-wrapper" id="swiper-wrapper-f80a2abbbc53bd10" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-220.571px, 0px, 0px); transition-delay: 0ms;">
-                <div class="swiper-slide swiper-slide-prev" role="group" aria-label="4 / 4" data-swiper-slide-index="3" style="width: 416.143px; margin-right: 25px;">
-                    <div class="blog-single-item style-three">
-                        <div class="blog-content">
-                            <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
-                                <li>
-                                    <a href="tags.html">ChatGPT</a>
-                                </li>
-                                <li>
-                                    <a href="tags.html">Internet</a>
-                                </li>
-                            </ul>
-                            <h3>
-                                <a href="blog-details.html">ChatGPT frenzy sweeps China as firms as that scramble home-grown</a>
-                            </h3>
-                            <p>If you are looking for a lender who offers&nbsp;competitive prices and products, stands behind its commitments, is honest and will not walk away from you after your loan closes,&nbsp;call us&nbsp;to speak to one of our knowledgeable loan originators.</p>
-                            <ul class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info">
-                                <li>
-                                    <a href="author.html">
-                                        <i class="ri-user-3-line"></i>
-                                        <span>Admin</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="blog-details.html">
-                                        <i class="ri-message-2-line"></i>
-                                        <span>06 Comments</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <i class="ri-calendar-2-line"></i>
-                                    <span>05 June, 2024</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+        <img
+          src="assets/images/shape-3.png"
+          class="shape shape-6"
+          alt="shape"
+        />
+      </div>
+      <div class="container-fluid p-0">
+        <div class="swiper blog-slide">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="blog-single-item style-three">
+                <div class="blog-content">
+                  <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
+                    <li>
+                      <a href="tags.html">London</a>
+                    </li>
+                    <li>
+                      <a href="tags.html">Europe</a>
+                    </li>
+                  </ul>
+                  <h3>
+                    <a href="blog-details.html"
+                      >Why Slovenia its dining should Be on your this is
+                      European bucket List in the dribbble</a
+                    >
+                  </h3>
+                  <p>
+                    If you are looking for a lender who offers competitive
+                    prices and products, stands behind its commitments, is
+                    honest and will not walk away from you after your loan
+                    closes, call us to speak to one of our knowledgeable loan
+                    originators.
+                  </p>
+                  <ul
+                    class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info"
+                  >
+                    <li>
+                      <a href="author.html">
+                        <i class="ri-user-3-line"></i>
+                        <span>Admin</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="blog-details.html">
+                        <i class="ri-message-2-line"></i>
+                        <span>02 Comments</span>
+                      </a>
+                    </li>
+                    <li>
+                      <i class="ri-calendar-2-line"></i>
+                      <span>08 June, 2024</span>
+                    </li>
+                  </ul>
                 </div>
-                <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4" data-swiper-slide-index="0" style="width: 416.143px; margin-right: 25px;">
-                    <div class="blog-single-item style-three">
-                        <div class="blog-content">
-                            <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
-                                <li>
-                                    <a href="tags.html">London</a>
-                                </li>
-                                <li>
-                                    <a href="tags.html">Europe</a>
-                                </li>
-                            </ul>
-                            <h3>
-                                <a href="blog-details.html">Why Slovenia its dining should Be on your this is European bucket List in the dribbble</a>
-                            </h3>
-                            <p>If you are looking for a lender who offers&nbsp;competitive prices and products, stands behind its commitments, is honest and will not walk away from you after your loan closes,&nbsp;call us&nbsp;to speak to one of our knowledgeable loan originators.</p>
-                            <ul class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info">
-                                <li>
-                                    <a href="author.html">
-                                        <i class="ri-user-3-line"></i>
-                                        <span>Admin</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="blog-details.html">
-                                        <i class="ri-message-2-line"></i>
-                                        <span>02 Comments</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <i class="ri-calendar-2-line"></i>
-                                    <span>08 June, 2024</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4" data-swiper-slide-index="1" style="width: 416.143px; margin-right: 25px;">
-                    <div class="blog-single-item style-three">
-                        <div class="blog-content">
-                            <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
-                                <li>
-                                    <a href="tags.html">Driving</a>
-                                </li>
-                                <li>
-                                    <a href="tags.html">Striking</a>
-                                </li>
-                            </ul>
-                            <h3>
-                                <a href="blog-details.html">Super Bowl ad features a literally striking visual full self-driving for your project</a>
-                            </h3>
-                            <p>If you are looking for a lender who offers&nbsp;competitive prices and products, stands behind its commitments, is honest and will not walk away from you after your loan closes,&nbsp;call us&nbsp;to speak to one of our knowledgeable loan originators.</p>
-                            <ul class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info">
-                                <li>
-                                    <a href="author.html">
-                                        <i class="ri-user-3-line"></i>
-                                        <span>Admin</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="blog-details.html">
-                                        <i class="ri-message-2-line"></i>
-                                        <span>45 Comments</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <i class="ri-calendar-2-line"></i>
-                                    <span>07 June, 2024</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide" role="group" aria-label="3 / 4" data-swiper-slide-index="2" style="width: 416.143px; margin-right: 25px;">
-                    <div class="blog-single-item style-three">
-                        <div class="blog-content">
-                            <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
-                                <li>
-                                    <a href="tags.html">Work</a>
-                                </li>
-                                <li>
-                                    <a href="tags.html">Artists</a>
-                                </li>
-                            </ul>
-                            <h3>
-                                <a href="blog-details.html">These three young artists are redefining jewelry with deeply personal work</a>
-                            </h3>
-                            <p>If you are looking for a lender who offers&nbsp;competitive prices and products, stands behind its commitments, is honest and will not walk away from you after your loan closes,&nbsp;call us&nbsp;to speak to one of our knowledgeable loan originators.</p>
-                            <ul class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info">
-                                <li>
-                                    <a href="author.html">
-                                        <i class="ri-user-3-line"></i>
-                                        <span>Admin</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="blog-details.html">
-                                        <i class="ri-message-2-line"></i>
-                                        <span>22 Comments</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <i class="ri-calendar-2-line"></i>
-                                    <span>28 June, 2024</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            <div class="swiper-slide">
+              <div class="blog-single-item style-three">
+                <div class="blog-content">
+                  <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
+                    <li>
+                      <a href="tags.html">Driving</a>
+                    </li>
+                    <li>
+                      <a href="tags.html">Striking</a>
+                    </li>
+                  </ul>
+                  <h3>
+                    <a href="blog-details.html"
+                      >Super Bowl ad features a literally striking visual full
+                      self-driving for your project</a
+                    >
+                  </h3>
+                  <p>
+                    If you are looking for a lender who offers competitive
+                    prices and products, stands behind its commitments, is
+                    honest and will not walk away from you after your loan
+                    closes, call us to speak to one of our knowledgeable loan
+                    originators.
+                  </p>
+                  <ul
+                    class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info"
+                  >
+                    <li>
+                      <a href="author.html">
+                        <i class="ri-user-3-line"></i>
+                        <span>Admin</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="blog-details.html">
+                        <i class="ri-message-2-line"></i>
+                        <span>45 Comments</span>
+                      </a>
+                    </li>
+                    <li>
+                      <i class="ri-calendar-2-line"></i>
+                      <span>07 June, 2024</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="blog-single-item style-three">
+                <div class="blog-content">
+                  <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
+                    <li>
+                      <a href="tags.html">Work</a>
+                    </li>
+                    <li>
+                      <a href="tags.html">Artists</a>
+                    </li>
+                  </ul>
+                  <h3>
+                    <a href="blog-details.html"
+                      >These three young artists are redefining jewelry with
+                      deeply personal work</a
+                    >
+                  </h3>
+                  <p>
+                    If you are looking for a lender who offers competitive
+                    prices and products, stands behind its commitments, is
+                    honest and will not walk away from you after your loan
+                    closes, call us to speak to one of our knowledgeable loan
+                    originators.
+                  </p>
+                  <ul
+                    class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info"
+                  >
+                    <li>
+                      <a href="author.html">
+                        <i class="ri-user-3-line"></i>
+                        <span>Admin</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="blog-details.html">
+                        <i class="ri-message-2-line"></i>
+                        <span>22 Comments</span>
+                      </a>
+                    </li>
+                    <li>
+                      <i class="ri-calendar-2-line"></i>
+                      <span>28 June, 2024</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="blog-single-item style-three">
+                <div class="blog-content">
+                  <ul class="tags d-flex ps-0 list-unstyled flex-wrap gap-2">
+                    <li>
+                      <a href="tags.html">ChatGPT</a>
+                    </li>
+                    <li>
+                      <a href="tags.html">Internet</a>
+                    </li>
+                  </ul>
+                  <h3>
+                    <a href="blog-details.html"
+                      >ChatGPT frenzy sweeps China as firms as that scramble
+                      home-grown</a
+                    >
+                  </h3>
+                  <p>
+                    If you are looking for a lender who offers competitive
+                    prices and products, stands behind its commitments, is
+                    honest and will not walk away from you after your loan
+                    closes, call us to speak to one of our knowledgeable loan
+                    originators.
+                  </p>
+                  <ul
+                    class="ps-0 mb-0 list-unstyled d-flex flex-wrap blog-info"
+                  >
+                    <li>
+                      <a href="author.html">
+                        <i class="ri-user-3-line"></i>
+                        <span>Admin</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="blog-details.html">
+                        <i class="ri-message-2-line"></i>
+                        <span>06 Comments</span>
+                      </a>
+                    </li>
+                    <li>
+                      <i class="ri-calendar-2-line"></i>
+                      <span>05 June, 2024</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="swiper-pagination1 text-center swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span></div>
+        <div class="swiper-pagination1 text-center"></div>
+      </div>
     </div>
-</div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.web', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\houseclosing\resources\views\web\index.blade.php ENDPATH**/ ?>

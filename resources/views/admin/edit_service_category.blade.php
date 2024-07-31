@@ -12,6 +12,20 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
+                    <!-- Breadcrumbs -->
+                    <div class="page-banner-content">
+                        <ul class="list-unstyled breadcrumbs" style="display:inline-block;">
+                            <li style="display: inline;">
+                                <a href="{{url('admin/dashboard')}}" style="text-decoration: none; color:black" class="fw-bold fs-6" >Home/ </a>
+                            </li>
+                            <li style="display: inline;">
+                                <a href="{{url('admin/service-area-categories')}}" style="text-decoration: none; color:green" class="fw-bold fs-6">Service Area Categories/ </a>
+                            </li>
+                            <li style="display: inline;">
+                                <span class="fs-6" >{{@$category->header_title}}</span>
+                            </li>
+                        </ul>
+                    </div>
                     <div id="add-category-form-container" class="mt-5">
                         <hr>
                         <h2 class="text-center my-3">Edit Service Area Category</h2>
@@ -89,7 +103,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="section1_description">Section 1 Description</label>
-                                        <textarea class="form-control" id="section1_description" name="section1_description"  placeholder="Section 1 Description">{{$category->section1_description}}</textarea>
+                                        <textarea class="form-control" id="section1_description" name="section1_description" placeholder="Section 1 Description">{{$category->section1_description}}</textarea>
                                         @error('section1_description')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -99,7 +113,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="section1_button_label">Section 1 Button Label</label>
-                                        <input type="text" class="form-control" id="section1_button_label" name="section1_button_label"  value="{{$category->section1_button_label}}" placeholder="Section 1 Button Label">
+                                        <input type="text" class="form-control" id="section1_button_label" name="section1_button_label" value="{{$category->section1_button_label}}" placeholder="Section 1 Button Label">
                                         @error('section1_button_label')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -120,7 +134,7 @@
                                     <div class="form-group">
                                         <label for="section1_img">Section 1 Image</label>
                                         <input type="file" class="form-control" id="section1_img" name="section1_img">
-                                        <img src="{{asset($category->section1_img)}}" height="70px" >
+                                        <img src="{{asset($category->section1_img)}}" height="70px">
                                         @error('section1_img')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -132,8 +146,8 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="section2_img">Section 2 Image</label>
-                                        <input type="file" class="form-control" id="section2_img" name="section2_img" >
-                                        <img src="{{asset($category->section2_img)}}" height="70px" >
+                                        <input type="file" class="form-control" id="section2_img" name="section2_img">
+                                        <img src="{{asset($category->section2_img)}}" height="70px">
                                         @error('section2_img')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -149,60 +163,60 @@
                                         @enderror
                                     </div>
                                 </div>
-                                
+
                                 <!-- Meta Details -->
-                            <div class="row">
-                                <hr>
-                                <h3 class="text-center mb-4">4. Meta Section</h3>
-                                <!--Section Short Title -->
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label" for="meta_title">Meta Title</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value="{{ old('meta_title', $category->meta_title) }}">
-                                            @error('meta_title')
-                                            <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+                                <div class="row">
+                                    <hr>
+                                    <h3 class="text-center mb-4">4. Meta Section</h3>
+                                    <!--Section Short Title -->
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label" for="meta_title">Meta Title</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value="{{ old('meta_title', $category->meta_title) }}">
+                                                @error('meta_title')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label" for="meta_description">Meta Description</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value="{{ old('meta_description', $category->meta_description) }}">
+                                                @error('meta_description')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label" for="meta_tag">Meta Tag</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="meta_tag" name="meta_tag" placeholder="Meta Tag" value="{{ old('meta_tag', $category->meta_tag) }}">
+                                                @error('meta_tag')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label" for="meta_img">Meta Image</label>
+                                            <div class="col-sm-9">
+                                                <input type="file" name="meta_img" id="meta_img" class="form-control">
+                                                @if (!empty($category->meta_img))
+                                                <img src="{{ asset($category->meta_img) }}" alt="Meta Image" height="100px">
+                                                @endif
+                                                @error('meta_img')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label" for="meta_description">Meta Description</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value="{{ old('meta_description', $category->meta_description) }}">
-                                            @error('meta_description')
-                                            <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label" for="meta_tag">Meta Tag</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="meta_tag" name="meta_tag" placeholder="Meta Tag" value="{{ old('meta_tag', $category->meta_tag) }}">
-                                            @error('meta_tag')
-                                            <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label" for="meta_img">Meta Image</label>
-                                        <div class="col-sm-9">
-                                            <input type="file" name="meta_img" id="meta_img" class="form-control">
-                                            @if (!empty($category->meta_img))
-                                            <img src="{{ asset($category->meta_img) }}" alt="Meta Image" height="100px">
-                                            @endif
-                                            @error('meta_img')
-                                            <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             </div>
                             <!-- Submit Button -->
                             <button type="submit" class="btn btn-gradient-primary me-2">Edit Category</button>

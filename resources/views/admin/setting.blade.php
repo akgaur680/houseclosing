@@ -79,6 +79,23 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- Map -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="map">Map</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="map" name="map" placeholder="Map" value="{{ old('map', $setting->map) }}">
+                                        @error('map')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
                         <!-- Copyright Content -->
                         <div class="row">
                             <div class="col-md-12">
@@ -250,13 +267,13 @@
     @push('scripts')
 <script type="text/javascript">
   tinymce.init({
-    selector: '#copyright_content',
+    selector: '#copyright_content, #map',
     width: 800,
     height: 400,
     plugins: [
       'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
       'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
-      'media', 'table', 'emoticons', 'help'
+      'media', 'table', 'emoticons', 'help', 'jsplus_maps'
     ],
     toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
       'bullist numlist outdent indent | link image | print preview media fullscreen | ' +

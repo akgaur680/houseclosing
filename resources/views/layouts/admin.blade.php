@@ -19,11 +19,11 @@ $settings = FrontEndController::settings();
   <link rel="shortcut icon" href="{{ asset('adminassets/images/favicon.ico') }}">
   <script src="https://cdn.tiny.cloud/1/rhmjhy4d4ie52kbm64vwjpq0g48tk3s5dvqvnej2vi0y9cnc/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
- 
+
 </head>
 
 <body>
-@stack('scripts')
+  @stack('scripts')
 
   <div class="container-scroller">
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -94,15 +94,68 @@ $settings = FrontEndController::settings();
               <i class="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic-lawyer" aria-expanded="false" aria-controls="ui-basic-lawyer">
+              <span class="menu-title">Lawyers</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic-lawyer">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('admin/lawyers-area')}}">Lawyers Area</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('admin/lawyer-member-area')}}">Lawyer Members Area</a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('admin/testimonials')}}">
+              <span class="menu-title">Testimonials</span>
+              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('admin/about')}}">
+              <span class="menu-title">About Us</span>
+              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('admin/contact')}}">
+              <span class="menu-title">Contact Us</span>
+              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('admin/tax-calculator')}}">
+              <span class="menu-title">Tax Calculator</span>
+              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('admin/hire-us')}}">
+              <span class="menu-title">Hire Us</span>
+              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('admin/faq')}}">
+              <span class="menu-title">FAQ</span>
+              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            </a>
+          </li>
         </ul>
       </nav>
       <div class="main-panel">
         @yield('content')
         <footer class="footer">
-              <div class="copy-right-area">
-        <p> {!!$settings['copyright_content']!!} </p>
+          <div class="copy-right-area">
+            <p> {!!$settings['copyright_content']!!} </p>
 
-    </div>
+          </div>
 
         </footer>
       </div>

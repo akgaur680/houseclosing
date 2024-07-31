@@ -12,6 +12,20 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
+                      <!-- Breadcrumbs -->
+                      <div class="page-banner-content">
+                        <ul class="list-unstyled breadcrumbs" style="display:inline-block;">
+                            <li style="display: inline;">
+                                <a href="{{url('admin/dashboard')}}" style="text-decoration: none; color:black" class="fw-bold fs-6" >Home/ </a>
+                            </li>
+                            <li style="display: inline;">
+                                <a href="{{url('admin/service-area-categories')}}" style="text-decoration: none; color:green" class="fw-bold fs-6">Service Area Categories/ </a>
+                            </li>
+                            <li style="display: inline;">
+                                <span class="fs-6" >Add New Category</span>
+                            </li>
+                        </ul>
+                    </div>
                     <div id="add-category-form-container" class="mt-5">
                         <hr>
                         <h2 class="text-center my-3">Add New Service Area Category</h2>
@@ -19,7 +33,7 @@
                             @csrf
                             <h3 class="text-center">1. Header</h3>
                             <br>
-                            <input type="hidden" name="services_id">
+                            <input type="hidden" name="services_id" value="{{$services->id}}">
                             <div class="row">
                                 <!-- Header Title -->
                                 <div class="col-sm-6">
