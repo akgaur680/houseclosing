@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\Experience;
 use App\Models\Faq;
+use App\Models\HireusArea;
 use App\Models\Homepage;
 use App\Models\Lawyers;
 use App\Models\Services;
@@ -14,15 +15,14 @@ use App\Models\Teams;
 use App\Models\Testimonial;
 use App\Models\Blog;
 use App\Models\Testimonials;
+use App\Models\ContactArea;
+use App\Models\FAQArea;
 use Illuminate\Http\Request;
 
 
 class FrontEndController extends Controller
 {
 
-
-
-    // Newly Added
 
 
     public static function servicesdata()
@@ -61,4 +61,17 @@ class FrontEndController extends Controller
         $about = About::first();
         return @$about ? @$about : [];
     }
+    public static function contact(){
+        $contact =ContactArea::first();
+        return @$contact ? @$contact : [];
+    }
+    public static function hireus(){
+        $hire =HireusArea::first()->toArray();
+        return @$hire ? @$hire : [];
+    }
+    public static function faq(){
+        $faq = FAQArea::with('faqs')->first()->toArray();
+        return @$faq ? @$faq : [];
+    }
+    
 }

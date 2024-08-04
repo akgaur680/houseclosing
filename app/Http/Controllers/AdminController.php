@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\HireusForm;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Models\Homepage;
@@ -8,7 +9,8 @@ use App\Models\Faq;
 use App\Models\About;
 use App\Models\Experience;
 use App\Models\Setting;
-use App\Models\QueryForm;
+use App\Models\ContactForm;
+use App\Models\ContactArea;
 class AdminController extends Controller
 {
     public function __construct()
@@ -302,5 +304,59 @@ class AdminController extends Controller
         }
         return redirect()->route('admin.about.edit')->with('success', 'About Page Updated Successfully');
 
+    }
+    public function editcontact(){
+        $contact = ContactArea::first();
+        if(!$contact){
+            $contact = new ContactArea();
+        }
+        return view('admin.edit_contact_area', compact('contact'));
+    }
+    public function updatecontact(Request $request){
+        $request->validate([
+        'header_title'=>'required|string|max:255',
+        'header_description'=>'nullable|string|max:2048',
+        'header_button_label'=>'nullable|string|max:255',
+        'header_button_link'=>'nullable|string|max:255',
+        'header_img'=>'nullable|image|max:2048',    
+        'meta_title'=>'nullable|string|max:255',
+        'meta_description'=>'nullable|string|max:2048',
+        'meta_tag'=>'nullable|string|max:255',
+        'meta_img'=>'nullable|image|max:2048',
+        ]);
+        $data = $request->except(['header_img', 'meta_img']);
+
+        if($request->hasFile('header_img')){
+            $header_img = $request->file('header_img');
+            $customeFileNameHeaderImg = time().'_'.$header_img->getClientOriginalName();
+            $path1 = $header_img->storeAs('public/images',$customeFileNameHeaderImg);
+            $data['header_img'] = 'storage/images/'.$customeFileNameHeaderImg;
+        }
+
+        if($request->hasFile('meta_img')){
+            $meta_img = $request->file('meta_img');
+            $customeFileNameMetaImg = time().'_'.$meta_img->getClientOriginalName();
+            $path1 = $meta_img->storeAs('public/images',$customeFileNameMetaImg);
+            $data['meta_img'] = 'storage/images/'.$customeFileNameMetaImg;
+        }
+        $contact = ContactArea::first();
+        if($contact)
+        {
+            $contact->update($data);
+        }
+        else
+        {
+            ContactArea::create($data);
+        }
+        return redirect()->route('admin.contact-area.edit')->with('success', 'Contact Page Updated Successfully');
+    }
+    public function contactqueries(){
+        $queries = ContactForm::all();
+        return view('admin/contact_queries', compact('queries'));
+    }
+    
+    public function hireusqueries(){
+        $queries = HireusForm::all();
+        return view('admin/hireus_queries', compact('queries'));
     }
 }

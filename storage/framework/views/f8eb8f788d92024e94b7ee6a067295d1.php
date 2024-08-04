@@ -21,6 +21,13 @@ $members = Lawyer_Members::all()->take(4);
 
 <div class="page-banner-area bg-gray2">
     <div class="container mw-1380">
+    <?php if(session('success')): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo e(session('success')); ?>
+
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php endif; ?>
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="page-banner-content">
@@ -215,59 +222,7 @@ $members = Lawyer_Members::all()->take(4);
 <div class="contact-us-area overflow-hidden pt-130">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="contact-us-content">
-                    <h2>Contact with us for any help needed from our company</h2>
-                    <form class="contact-us-form" action="https://houseclosing.ca/contact" method="POST">
-                        <input type="hidden" name="_token" value="rpPZusYgvYxPIv3rvBqhOXRqmdJcArSm75u6oTuI" autocomplete="off">
-                        <div class="mb-3 row align-items-center">
-                            <label class="col-sm-2 col-form-label label">Your email</label>
-                            <div class="col-sm-10">
-                                <input type="email" name="email" class="form-control" value="">
-                            </div>
-                        </div>
-                        <div class="mb-3 row align-items-center">
-                            <label class="col-sm-2 col-form-label label">Your name</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="name" class="form-control" value="">
-                            </div>
-                        </div>
-                        <div class="mb-3 row align-items-center">
-                            <label class="col-sm-2 col-form-label label">Phone</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="phone" class="form-control" value="">
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row align-items-center">
-                            <label class="col-sm-2 col-form-label label">Zip Code</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="zipcode" class="form-control" value="">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-sm-2 col-form-label label">Message</label>
-                            <div class="col-sm-10">
-                                <textarea cols="30" rows="5" name="message" class="form-control"></textarea>
-                                <div class="g-recaptcha" data-sitekey="6Lc4NBoqAAAAACD1FiX596PGkcmpPpcbhobQsDte" style="padding: 10px;
-                                margin: 10px;">
-                                    <div style="width: 304px; height: 78px;">
-                                        <div><iframe title="reCAPTCHA" width="304" height="78" role="presentation" name="a-a526ulnn2kwg" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6Lc4NBoqAAAAACD1FiX596PGkcmpPpcbhobQsDte&amp;co=aHR0cHM6Ly9ob3VzZWNsb3NpbmcuY2E6NDQz&amp;hl=en&amp;v=hfUfsXWZFeg83qqxrK27GB8P&amp;size=normal&amp;cb=rnolkkuskgfp"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
-                                    </div><iframe style="display: none;"></iframe>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pt-lg-3 mb-3 row">
-                            <label class="col-sm-2 col-form-label label"></label>
-                            <div class="col-sm-10">
-                                <button class="btn btn-dark border-0" type="submit">
-                                    Submit Your Message
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+          <?php echo $__env->make('web.components.contact_form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <div class="col-lg-6">
                 <div class="google-map">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2893.794509250526!2d-79.67194082333658!3d43.506622161898115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f131!3m3!1m2!1s0x882b437253d7d05b:0x9606cc87969b3a5!2s2010%20Winston%20Park%20Dr%20Suite%20200B,%20Oakville,%20ON%20L6H%206P5,%20Canada!5e0!3m2!1sen!2sin!4v1722136655926!5m2!1sen!2sin" style="width: 100%;"></iframe>

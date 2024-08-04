@@ -1,18 +1,12 @@
 <?php
-
 use App\Http\Controllers\FrontEndController;
 use App\Models\ServiceCategory;
-
 $services = ServiceCategory::all();
-
 $settings = FrontEndController::settings();
 ?>
-
-
 <!DOCTYPE html>
 <html lang="zxx">
 <!-- Mirrored from templates.hibootstrap.com/laks/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Jul 2024 14:16:49 GMT -->
-
 <head>
     <?php echo $__env->yieldContent('meta'); ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,9 +17,7 @@ $settings = FrontEndController::settings();
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/flaticon.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/style.css')); ?>">
     <link rel="icon" type="image/png" href="<?php echo e(asset($settings['header_logo'])); ?>">
-
 </head>
-
 <body>
     <div id="preloader">
         <div class="preloader">
@@ -98,18 +90,13 @@ $settings = FrontEndController::settings();
                 </span>
             </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
                 <ul class="navbar-nav m-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link active" href="/" role="button">
                             Home
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" role="button">
-                            Hire Us
-                        </a>
-                    </li>
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link " href="about" role="button">
                             About Us
@@ -119,7 +106,6 @@ $settings = FrontEndController::settings();
                         <a class="nav-link dropdown-toggle" href="/services" role="button"> Services</a>
                         <ul class="dropdown-menu">
                             <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
                             <li>
                                 <a class="dropdown-item" href="<?php echo e(url('service-areas',$service['slug'])); ?>">
                                     <?php echo e($service['header_title']); ?>
@@ -130,8 +116,13 @@ $settings = FrontEndController::settings();
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#">
-                            Blog
+                        <a class="nav-link" href="hire-us" role="button">
+                            Hire Us
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="/faq">
+                            FAQ’s
                         </a>
                     </li>
                     <li class="nav-item dropdown">
@@ -144,27 +135,19 @@ $settings = FrontEndController::settings();
                             Lawyers
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#">
-                            Contact Us
-                        </a>
-                    </li>
                 </ul>
             </div>
             <ul class="others-options ps-0 mb-0 list-unstyled justify-content-end">
                 <li>
-                    <a href="/calculate-mortgage" class="btn btn-primary">
-                        Apply Now
+                    <a href="contactus" class="btn btn-primary">
+                        Contact Us
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
     <?php echo $__env->yieldContent('content'); ?>
-
     <!-- FOOTER -->
-
-
     <div class="guide-area bg-50 bottom border-tops-0">
         <div class="container mw-1380">
             <div class="guide-wrap position-relative z-1">
@@ -261,40 +244,13 @@ $settings = FrontEndController::settings();
                             <div class="footer-single-item">
                                 <h3>Services</h3>
                                 <ul class="ps-0 mb-0 list-unstyled additional-link">
-
                                     <?php $__currentLoopData = $services->take(5); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <li>
                                         <a href="<?php echo e(url('service-areas',$service['slug'])); ?>"><?php echo e($service['header_title']); ?></a>
                                     </li>
-
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-
                                 </ul>
                             </div>
-                        </div>
-                        
-                        <!-- Map -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label" for="map">Map</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="map" name="map" placeholder="Map" value="<?php echo e(old('map', $settings['map'])); ?>">
-                                        <?php $__errorArgs = ['map'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                        <span class="text-danger"><?php echo e($message); ?></span>
-                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <div class="footer-single-item">
@@ -350,27 +306,18 @@ unset($__errorArgs, $__bag); ?>
             </div>
         </div>
     </div>
-
-
     <div class="copy-right-area">
         <p> <?php echo $settings['copyright_content']; ?> </p>
-
     </div>
-
-
     <button type="button" id="backtotop">
         <i class="ri-upload-line"></i>
     </button>
-
-
     <div class="settings-btn rtl-btn">
         <label id="switch" class="switch">
             <input type="checkbox" onchange="toggleTheme()" id="slider">
             <span class="slider round"></span>
         </label>
     </div>
-
-
     <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="<?php echo e(asset('assets/js/bootstrap.bundle.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/js/swiper-bundle.min.js')); ?>"></script>
@@ -378,7 +325,5 @@ unset($__errorArgs, $__bag); ?>
     <script src="<?php echo e(asset('assets/js/fslightbox.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/js/custom.js')); ?>"></script>
 </body>
-
 <!-- Mirrored from templates.hibootstrap.com/laks/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Jul 2024 14:17:59 GMT -->
-
 </html><?php /**PATH C:\wamp64\www\houseclosing\resources\views\layouts\web.blade.php ENDPATH**/ ?>

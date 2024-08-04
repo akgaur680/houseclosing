@@ -124,10 +124,21 @@ $settings = FrontEndController::settings();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(url('admin/contact')); ?>">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic-contact" aria-expanded="false" aria-controls="ui-basic-contact">
               <span class="menu-title">Contact Us</span>
-              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="ui-basic-contact">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo e(url('admin/contact-query')); ?>">Contact Us Queries</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo e(url('admin/contact-area')); ?>">Contact Us Area</a>
+                </li>
+
+              </ul>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(url('admin/tax-calculator')); ?>">
@@ -136,16 +147,38 @@ $settings = FrontEndController::settings();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(url('admin/hire-us')); ?>">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic-hireus" aria-expanded="false" aria-controls="ui-basic-hireus">
               <span class="menu-title">Hire Us</span>
-              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="ui-basic-hireus">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo e(url('admin/hireus-query')); ?>">Hire Us Queries</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo e(url('admin/hireus-area')); ?>">Hire Us Area</a>
+                </li>
+
+              </ul>
+            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(url('admin/faq')); ?>">
-              <span class="menu-title">FAQ</span>
-              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic-faq" aria-expanded="false" aria-controls="ui-basic-faq">
+              <span class="menu-title"> FAQ </span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="ui-basic-faq">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo e(url('admin/faq-question-answer')); ?>">FAQ Q & A</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo e(url('admin/faq-area')); ?>">FAQ Area</a>
+                </li>
+
+              </ul>
+            </div>
           </li>
         </ul>
       </nav>

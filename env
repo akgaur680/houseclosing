@@ -1,4 +1,4 @@
-APP_NAME="S&S Lawyers"
+APP_NAME="HouseClosing"
 APP_ENV=local
 APP_KEY=base64:nEs5RMDRytqte3AZmTU6knJ4HCQL7Jdobqn2vDBOxHY=
 APP_DEBUG=true
@@ -10,9 +10,9 @@ LOG_LEVEL=debug
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=u997691288_sslawyersnew
-DB_USERNAME=u997691288_sslawyersnew
-DB_PASSWORD="Ritu0065@123#"
+DB_DATABASE=houseclosing
+DB_USERNAME=root
+DB_PASSWORD=
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
@@ -30,11 +30,11 @@ REDIS_PORT=6379
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
-MAIL_USERNAME=sslawyerllp@gmail.com
-MAIL_PASSWORD=xbxmcilpnkbayubf
+MAIL_USERNAME=akgaur680@gmail.com
+MAIL_PASSWORD=fixbhbmlrmminoji
 MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=bhuvneshwebs99@gmail.com
-MAIL_FROM_NAME="Query Form"
+MAIL_FROM_ADDRESS=akgaur680@gmail.com
+MAIL_FROM_NAME="House Closing"
 
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=

@@ -96,11 +96,7 @@ $settings = FrontEndController::settings();
                             Home
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" role="button">
-                            Hire Us
-                        </a>
-                    </li>
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link " href="about" role="button">
                             About Us
@@ -120,8 +116,13 @@ $settings = FrontEndController::settings();
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#">
-                            Blog
+                        <a class="nav-link" href="hire-us" role="button">
+                            Hire Us
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="/faq">
+                            FAQ’s
                         </a>
                     </li>
                     <li class="nav-item dropdown">
@@ -134,17 +135,12 @@ $settings = FrontEndController::settings();
                             Lawyers
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#">
-                            Contact Us
-                        </a>
-                    </li>
                 </ul>
             </div>
             <ul class="others-options ps-0 mb-0 list-unstyled justify-content-end">
                 <li>
-                    <a href="/calculate-mortgage" class="btn btn-primary">
-                        Apply Now
+                    <a href="contactus" class="btn btn-primary">
+                        Contact Us
                     </a>
                 </li>
             </ul>
