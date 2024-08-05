@@ -17,58 +17,7 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
     }
-    // Pages Index.
-    public function index()
-    {
-        $pages = Page::all();
-        return view('admin.pages', compact('pages'));
-    }
-    // Function for creating the pages.
-    public function create()
-    {
-        return view('admin.add_page');
-    }
-    // Function for storing the pages.
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:pages,slug',
-            'sequence' => 'required|integer',
-        ]);
-        Page::create([
-            'name' => $request->name,
-            'slug' => $request->slug,
-            'sequence' => $request->sequence,
-        ]);
-        return redirect()->route('admin.pages.index')->with('success', 'Page created successfully.');
-    }
-    // Function for editing the pages.
-    public function edit(Page $page)
-    {
-        return view('admin.edit_page', compact('page'));
-    }
-    // Function for updating the pages.
-    public function update(Request $request, Page $page)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:pages,slug,' . $page->id,
-            'sequence' => 'required|integer',
-        ]);
-        $page->update([
-            'name' => $request->name,
-            'slug' => $request->slug,
-            'sequence' => $request->sequence,
-        ]);
-        return redirect()->route('admin.pages.index')->with('success', 'Page updated successfully.');
-    }
-    // Function for deleting the pages.
-    public function delete(Page $page)
-    {
-        $page->delete();
-        return redirect()->route('admin.pages.index')->with('success', 'Page deleted successfully.');
-    }
+    
     // Function for editing the homepage
     public function editHomepage()
     {
