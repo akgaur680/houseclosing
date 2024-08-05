@@ -7,10 +7,25 @@ $services = ServiceCategory::all();
 $hire = FrontEndController::hireus();
 ?>
 
+<?php $__env->startSection('meta'); ?>
+<title><?php echo e(@$hire['meta_title'] ?? 'HouseClosing'); ?></title>
+<meta name="description" content="<?php echo e(@$hire['meta_description'] ?? 'HouseClosing'); ?>">
+<meta property="og:title" content="<?php echo e(@$hire['meta_title'] ?? 'HouseClosing'); ?>">
+<meta property="og:description" content="<?php echo e(@$hire['meta_description'] ?? 'HouseClosing'); ?>">
+<meta property="og:image" content="<?php echo e(asset(@$hire['meta_image'])); ?>">
+<meta name="keywords" content="<?php echo e(@$hire['meta_tags'] ?? 'HouseClosing'); ?>">
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 
 <div class="page-banner-area bg-gray2">
     <div class="container mw-1380">
+    <?php if(session('success')): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo e(session('success')); ?>
+
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php endif; ?>
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="page-banner-content">
@@ -162,7 +177,7 @@ unset($__errorArgs, $__bag); ?>
                     <div class="container mw-1380">
                         <div class="row justify-content-center">
 
-                            <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = @$services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-xl-6">
                                 <div class="team-member-single-item-hireus border transition-y">
                                     <div class="d-md-flex align-items-center">
@@ -171,9 +186,9 @@ unset($__errorArgs, $__bag); ?>
                                         </a>
                                         <div class="flex-grow-1 ms-34">
                                             <div class="form-check">
-                                                <input class="form-check-input service-checkbox" type="checkbox" value="<?php echo e($service->slug); ?>" data-name="<?php echo e($service->header_title); ?>" id="<?php echo e($service->slug); ?>">
-                                                <label class="form-check-label" for="<?php echo e($service->slug); ?>" style="font-size: 17px;">
-                                                    <?php echo e($service->header_title); ?>
+                                                <input class="form-check-input service-checkbox" type="checkbox" value="<?php echo e(@$service->slug); ?>" data-name="<?php echo e(@$service->header_title); ?>" id="<?php echo e(@@$service->slug); ?>">
+                                                <label class="form-check-label" for="<?php echo e(@$service->slug); ?>" style="font-size: 17px;">
+                                                    <?php echo e(@$service->header_title); ?>
 
                                                 </label>
                                             </div>

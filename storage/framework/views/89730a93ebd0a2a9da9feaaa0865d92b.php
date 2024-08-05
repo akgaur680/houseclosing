@@ -27,8 +27,9 @@ $services = FrontEndController::servicesdata();
                     </ul>
                     <h2><?php echo e(@$services['header_title']); ?></h2>
                     <p> <?php echo e(@$services['header_description']); ?> </p>
-                    <a href="calculate-mortgage.html" class="read-more text-primary">
-                        Calculate Your Payments
+                    <a href="/<?php echo e(@$services['header_button_link']); ?>" class="read-more text-primary">
+                        <?php echo e(@$services['header_button_label']); ?>
+
                         <i class="flaticon-right-arrow"></i>
                     </a>
                 </div>
@@ -49,19 +50,19 @@ $services = FrontEndController::servicesdata();
             <h2><?php echo e(@$services['section1_title']); ?></h2>
         </div>
         <div class="row">
-            <?php $__currentLoopData = $services['categories']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $servicelist): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php $__currentLoopData = @$services['categories']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $servicelist): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="col-lg-4 col-md-6">
                 <div class="buying-single-item mb-4 transition-y">
-                    <a href="<?php echo e(url('service-areas', $servicelist['slug'])); ?>" class="d-block buying-img">
-                        <img src="<?php echo e(asset($servicelist['header_img'])); ?>" alt="banner" style="height: 258px; width:100%;">
+                    <a href="<?php echo e(url('service-areas', @$servicelist['slug'])); ?>" class="d-block buying-img">
+                        <img src="<?php echo e(asset(@$servicelist['header_img'])); ?>" alt="banner" style="height: 258px; width:100%;">
                     </a>
                     <div class="buying-content">
                         <h3>
-                            <a href="<?php echo e(url('service-areas', $servicelist['slug'])); ?>"><?php echo e($servicelist['header_title']); ?></a>
+                            <a href="<?php echo e(url('service-areas', @$servicelist['slug'])); ?>"><?php echo e(@$servicelist['header_title']); ?></a>
                         </h3>
-                        <p style="height: 120px;"> <?php echo e($servicelist['header_description']); ?> </p>
+                        <p style="height: 120px;"> <?php echo e(@$servicelist['header_description']); ?> </p>
                         <div class="border-top">
-                            <a href="<?php echo e(url('service-areas', $servicelist['slug'])); ?>" class="read-more">
+                            <a href="<?php echo e(url('service-areas', @$servicelist['slug'])); ?>" class="read-more">
                                 Learn More
                                 <i class="flaticon-right-arrow"></i>
                             </a>
@@ -70,19 +71,7 @@ $services = FrontEndController::servicesdata();
                 </div>
             </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <div class="col-lg-12">
-                <div class="pagination-area text-center mt-4">
-                    <a href="loan-programs.html" class="next page-numbers">
-                        <i class="ri-arrow-left-line"></i>
-                    </a>
-                    <span class="page-numbers current" aria-current="page">01</span>
-                    <a href="loan-programs.html" class="page-numbers">02</a>
-                    <a href="loan-programs.html" class="page-numbers">03</a>
-                    <a href="loan-programs.html" class="next page-numbers">
-                        <i class="ri-arrow-right-line"></i>
-                    </a>
-                </div>
-            </div>
+          
         </div>
     </div>
 </div>

@@ -5,7 +5,14 @@ $faq = FrontEndController::faq();
 ?>
 
 @extends('layouts.web')
-
+@section('meta')
+<title>{{ @$faq['meta_title'] ?? 'HouseClosing' }}</title>
+<meta name="description" content="{{ @$faq['meta_description'] ?? 'HouseClosing' }}">
+<meta property="og:title" content="{{ @$faq['meta_title'] ?? 'HouseClosing' }}">
+<meta property="og:description" content="{{ @$faq['meta_description'] ?? 'HouseClosing' }}">
+<meta property="og:image" content="{{ asset(@$faq['meta_image']) }}">
+<meta name="keywords" content="{{ @$faq['meta_tags'] ?? 'HouseClosing' }}">
+@endsection
 @section('content')
 
 <div class="page-banner-area bg-gray2">
@@ -50,11 +57,11 @@ $faq = FrontEndController::faq();
                     
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <button class="accordion-button pt-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne{{@$faqs['id']}}" aria-controls="collapseOne{{@$faqs['id']}}">
-                                {{$faqs['question']}}
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne{{@$faqs['id']}}" aria-expanded="true" aria-controls="collapseOne{{@$faqs['id']}}">
+                                {{@$faqs['question']}}
                             </button>
                         </h2>
-                        <div id="collapseOne{{@$faqs['id']}}" class="accordion-collapse collapse " >
+                        <div id="collapseOne{{@$faqs['id']}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample3" >
                             <div class="accordion-body">
                                 <p> {{@$faqs['answer']}}</p>
                             </div>

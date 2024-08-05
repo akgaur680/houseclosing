@@ -440,10 +440,133 @@ unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="section2_img1">Image 1</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="section2_img1" id="section2_img1" class="form-control" value="<?php echo e($homepage->section2_img1); ?>">
+                                            <?php if(!empty($homepage->section2_img1)): ?>
+                                            <img src="<?php echo e(asset($homepage->section2_img1)); ?>" alt="Meta Image" height="100px">
+                                            <?php endif; ?>
+                                            <?php $__errorArgs = ['section2_img1'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="text-danger"><?php echo e($message); ?></span>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="section2_img2">Image 2</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="section2_img2" id="section2_img2" class="form-control" value="<?php echo e($homepage->section2_img2); ?>">
+                                            <?php if(!empty($homepage->section2_img2)): ?>
+                                            <img src="<?php echo e(asset($homepage->section2_img2)); ?>" alt="Meta Image" height="100px">
+                                            <?php endif; ?>
+                                            <?php $__errorArgs = ['section2_img2'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="text-danger"><?php echo e($message); ?></span>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <hr>
+                                <h3 class="text-center mb-4">4. Section (Member)</h3>
+                                <!--Section Title -->
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="section3_title">Section Title</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="section3_title" name="section3_title" placeholder="Section Short Title" value="<?php echo e(old('section3_title', $homepage->section3_title)); ?>">
+                                            <?php $__errorArgs = ['section3_title'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="text-danger"><?php echo e($message); ?></span>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="section3_description">Section Description</label>
+                                        <div class="col-sm-9">
+                                            <textarea type="text" class="form-control" id="section3_description" name="section3_description" placeholder="Section Desciption"> <?php echo e(old('section3_description', $homepage->section3_description)); ?> </textarea>
+                                            <?php $__errorArgs = ['section3_description'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="text-danger"><?php echo e($message); ?></span>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="section3_button_label">Button Label</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="section3_button_label" name="section3_button_label" placeholder="Section Button Label" value="<?php echo e(old('section3_button_label', $homepage->section3_button_label)); ?>">
+                                            <?php $__errorArgs = ['section3_button_label'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="text-danger"><?php echo e($message); ?></span>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="section3_button_link">Button Link</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="section3_button_link" name="section3_button_link" placeholder="Section Button Link" value="<?php echo e(old('section3_button_link', $homepage->section3_button_link)); ?>">
+                                            <?php $__errorArgs = ['section3_button_link'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="text-danger"><?php echo e($message); ?></span>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
 
                             <div class="row">
                                 <hr>
-                                <h3 class="text-center mb-4">4. Meta Section</h3>
+                                <h3 class="text-center mb-4">5. Meta Section</h3>
                                 <!--Section Short Title -->
                                 <div class="col-md-6">
                                     <div class="form-group row">
@@ -538,9 +661,9 @@ unset($__errorArgs, $__bag); ?>
 <?php $__env->startPush('scripts'); ?>
 <script type="text/javascript">
     tinymce.init({
-        selector: '',
-        width: 800,
-        height: 400,
+        selector: '#section3_description',
+        width: 700,
+        height: 500,
         plugins: [
             'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
             'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',

@@ -5,7 +5,14 @@ $faq = FrontEndController::faq();
 ?>
 
 
-
+<?php $__env->startSection('meta'); ?>
+<title><?php echo e(@$faq['meta_title'] ?? 'HouseClosing'); ?></title>
+<meta name="description" content="<?php echo e(@$faq['meta_description'] ?? 'HouseClosing'); ?>">
+<meta property="og:title" content="<?php echo e(@$faq['meta_title'] ?? 'HouseClosing'); ?>">
+<meta property="og:description" content="<?php echo e(@$faq['meta_description'] ?? 'HouseClosing'); ?>">
+<meta property="og:image" content="<?php echo e(asset(@$faq['meta_image'])); ?>">
+<meta name="keywords" content="<?php echo e(@$faq['meta_tags'] ?? 'HouseClosing'); ?>">
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 
 <div class="page-banner-area bg-gray2">
@@ -50,12 +57,12 @@ $faq = FrontEndController::faq();
                     
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <button class="accordion-button pt-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne<?php echo e(@$faqs['id']); ?>" aria-controls="collapseOne<?php echo e(@$faqs['id']); ?>">
-                                <?php echo e($faqs['question']); ?>
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne<?php echo e(@$faqs['id']); ?>" aria-expanded="true" aria-controls="collapseOne<?php echo e(@$faqs['id']); ?>">
+                                <?php echo e(@$faqs['question']); ?>
 
                             </button>
                         </h2>
-                        <div id="collapseOne<?php echo e(@$faqs['id']); ?>" class="accordion-collapse collapse " >
+                        <div id="collapseOne<?php echo e(@$faqs['id']); ?>" class="accordion-collapse collapse" data-bs-parent="#accordionExample3" >
                             <div class="accordion-body">
                                 <p> <?php echo e(@$faqs['answer']); ?></p>
                             </div>

@@ -6,7 +6,7 @@
 
     <!-- List of Categories -->
     <div class="row">
-    <?php if(session('success')): ?>
+        <?php if(session('success')): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?php echo e(session('success')); ?>
 
@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-body table-responsive">
                     <h3 class="mb-5" style="display: inline-block;">FAQ All Q & A</h3>
-                    <a href="faq-question-answer/add" id="addfaq" style="display: inline-block;  float:right;" class="btn btn-gradient-primary me-2">
+                    <a href="faq-question-answer/add" id="addfaq" style="display: inline-block; float: right;" class="btn btn-gradient-primary me-2">
                         Add FAQ
                     </a>
                     <table class="table table-bordered">
@@ -36,7 +36,7 @@
                                 <td><?php echo e(@$faqs->question); ?></td>
                                 <td><?php echo e(@$faqs->answer); ?></td>
                                 <td>
-                                    <a type="button" href="<?php echo e(url('admin/faq-question-answer/edit',@$faqs->id)); ?>" class="btn btn-warning btn-sm" >Edit</a>
+                                    <a type="button" href="<?php echo e(url('admin/faq-question-answer/edit',@$faqs->id)); ?>" class="btn btn-warning btn-sm">Edit</a>
                                     <form action="<?php echo e(route('admin.faq.delete', @$faqs->id)); ?>" method="POST" style="display:inline-block;">
                                         <?php echo csrf_field(); ?>
                                         <?php echo method_field('DELETE'); ?>

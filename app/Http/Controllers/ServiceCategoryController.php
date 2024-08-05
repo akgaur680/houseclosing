@@ -40,6 +40,7 @@ class ServiceCategoryController extends Controller
             'header_img' => 'nullable|image|max:2048',
             'header_button_label' => 'nullable|string',
             'header_button_link' => 'nullable|string',
+            'icon' => 'nullable|image|max:2048',
             'slug' => 'nullable|string',
             'section1_img' => 'nullable|image|max:2048',
             'section1_description' => 'nullable|string',
@@ -54,7 +55,7 @@ class ServiceCategoryController extends Controller
 
         ]);
 
-        $data = $request->except(['header_img', 'section1_img', 'section2_img', 'meta_img']);
+        $data = $request->except(['header_img', 'section1_img', 'section2_img', 'meta_img', 'icon']);
 
         if ($request->hasFile('header_img')) {
             $headerBgImage = $request->file('header_img');
@@ -80,8 +81,15 @@ class ServiceCategoryController extends Controller
         if ($request->hasFile('meta_img')) {
             $metaImage = $request->file('meta_img');
             $customFileNameMetaImage = time() . '-' . $metaImage->getClientOriginalName();
-            $path1 = $metaImage->storeAs('public/images', $customFileNameMetaImage);
-            $newData['meta_img'] = 'storage/images/' . $customFileNameMetaImage;
+            $path4 = $metaImage->storeAs('public/images', $customFileNameMetaImage);
+            $data['meta_img'] = 'storage/images/' . $customFileNameMetaImage;
+        }
+        
+        if ($request->hasFile('icon')) {
+            $icon = $request->file('icon');
+            $customFileNameIcon = time() . '-' . $icon->getClientOriginalName();
+            $path5 = $icon->storeAs('public/images', $customFileNameIcon);
+            $data['icon'] = 'storage/images/' . $customFileNameIcon;
         }
 
         ServiceCategory::create($data);
@@ -98,6 +106,7 @@ class ServiceCategoryController extends Controller
             'header_img' => 'nullable|image|max:2048',
             'header_button_label' => 'nullable|string',
             'header_button_link' => 'nullable|string',
+            'icon' => 'nullable|image|max:2048',
             'slug' => 'nullable|string',
             'section1_img' => 'nullable|image|max:2048',
             'section1_description' => 'nullable|string',
@@ -112,7 +121,7 @@ class ServiceCategoryController extends Controller
         ]);
 
         $category = ServiceCategory::findOrFail($id);
-        $data = $request->except(['header_img', 'section1_img', 'section2_img', 'meta_img']);
+        $data = $request->except(['header_img', 'section1_img', 'section2_img', 'meta_img', 'icon']);
 
         if ($request->hasFile('header_img')) {
             $headerBgImage = $request->file('header_img');
@@ -138,8 +147,14 @@ class ServiceCategoryController extends Controller
         if ($request->hasFile('meta_img')) {
             $metaImage = $request->file('meta_img');
             $customFileNameMetaImage = time() . '-' . $metaImage->getClientOriginalName();
-            $path1 = $metaImage->storeAs('public/images', $customFileNameMetaImage);
-            $newData['meta_img'] = 'storage/images/' . $customFileNameMetaImage;
+            $path4 = $metaImage->storeAs('public/images', $customFileNameMetaImage);
+            $data['meta_img'] = 'storage/images/' . $customFileNameMetaImage;
+        }
+        if ($request->hasFile('icon')) {
+            $icon = $request->file('icon');
+            $customFileNameIcon = time() . '-' . $icon->getClientOriginalName();
+            $path5 = $icon->storeAs('public/images', $customFileNameIcon);
+            $data['icon'] = 'storage/images/' . $customFileNameIcon;
         }
         
         $category->update($data);

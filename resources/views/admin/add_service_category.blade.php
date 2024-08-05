@@ -95,6 +95,15 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="icon">Icon</label>
+                                        <input type="file" class="form-control" id="icon" name="icon">
+                                        @error('icon')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <hr>
                                 <h2 class="text-center">2. Section</h2>
                                 <!-- Section 1 Description -->

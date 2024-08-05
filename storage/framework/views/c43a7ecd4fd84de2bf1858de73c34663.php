@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\FrontEndController;
 $contact = FrontEndController::contact();
+$settings = FrontEndController::settings();
 ?>
 
 
@@ -59,8 +60,9 @@ $contact = FrontEndController::contact();
           <?php echo $__env->make('web.components.contact_form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <div class="col-lg-6">
                 <div class="google-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2893.794509250526!2d-79.67194082333658!3d43.506622161898115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f131!3m3!1m2!1s0x882b437253d7d05b:0x9606cc87969b3a5!2s2010%20Winston%20Park%20Dr%20Suite%20200B,%20Oakville,%20ON%20L6H%206P5,%20Canada!5e0!3m2!1sen!2sin!4v1722136655926!5m2!1sen!2sin" style="width: 100%;"></iframe>
-                </div>
+                <?php echo @$settings['map']; ?>
+
+            </div>
             </div>
         </div>
     </div>

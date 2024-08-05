@@ -140,6 +140,24 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
+                                 <!-- Icon -->
+                                 <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="icon">Icon</label>
+                                        <input type="file" class="form-control" id="icon" name="icon">
+                                        <img src="<?php echo e(asset($category->icon)); ?>" height="70px">
+                                        <?php $__errorArgs = ['icon'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <span class="text-danger"><?php echo e($message); ?></span>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                    </div>
+                                </div>
                                 <hr>
                                 <h2 class="text-center">2. Section</h2>
                                 <!-- Section 1 Description -->

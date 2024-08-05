@@ -84,4 +84,26 @@ class FAQController extends Controller
        FAQ_Q_A::create($data);
        return redirect()->route('admin.faq.index')->with('success', 'FAQ Added Successfully');
     }
+    public function faqedit(Request $request, $id){
+        $faq = FAQArea::first();
+        $faqs = FAQ_Q_A::all()->find($id);
+        return view('admin/edit_faq', compact('faqs', 'faq'));
+    }
+    public function faqupdate(Request $request, $id){
+        $request->validate([
+            'faq_id'=>'required|string|max:255',
+            'question'=>'required|string',
+            'answer'=>'required|string',
+        ]);
+        $faq = FAQ_Q_A::findOrFail($id);
+        $data = $request->all();
+        $faq->update($data);
+        return redirect()->route('admin.faq.index')->with('success', 'FAQ Updated Successfully');
+    }
+
+    public function faqdelete($id){
+        $faq = FAQ_Q_A::findOrFail($id)->delete();
+        return redirect()->back()->with('success', 'FAQ Deleted Successfully');
+
+    }
 }

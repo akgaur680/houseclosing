@@ -286,10 +286,91 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="section2_img1">Image 1</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="section2_img1" id="section2_img1" class="form-control" value="{{$homepage->section2_img1}}">
+                                            @if (!empty($homepage->section2_img1))
+                                            <img src="{{ asset($homepage->section2_img1) }}" alt="Meta Image" height="100px">
+                                            @endif
+                                            @error('section2_img1')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="section2_img2">Image 2</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="section2_img2" id="section2_img2" class="form-control" value="{{$homepage->section2_img2}}">
+                                            @if (!empty($homepage->section2_img2))
+                                            <img src="{{ asset($homepage->section2_img2) }}" alt="Meta Image" height="100px">
+                                            @endif
+                                            @error('section2_img2')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <hr>
+                                <h3 class="text-center mb-4">4. Section (Member)</h3>
+                                <!--Section Title -->
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="section3_title">Section Title</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="section3_title" name="section3_title" placeholder="Section Short Title" value="{{ old('section3_title', $homepage->section3_title) }}">
+                                            @error('section3_title')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="section3_description">Section Description</label>
+                                        <div class="col-sm-9">
+                                            <textarea type="text" class="form-control" id="section3_description" name="section3_description" placeholder="Section Desciption"> {{ old('section3_description', $homepage->section3_description) }} </textarea>
+                                            @error('section3_description')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="section3_button_label">Button Label</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="section3_button_label" name="section3_button_label" placeholder="Section Button Label" value="{{ old('section3_button_label', $homepage->section3_button_label) }}">
+                                            @error('section3_button_label')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="section3_button_link">Button Link</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="section3_button_link" name="section3_button_link" placeholder="Section Button Link" value="{{ old('section3_button_link', $homepage->section3_button_link) }}">
+                                            @error('section3_button_link')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
 
                             <div class="row">
                                 <hr>
-                                <h3 class="text-center mb-4">4. Meta Section</h3>
+                                <h3 class="text-center mb-4">5. Meta Section</h3>
                                 <!--Section Short Title -->
                                 <div class="col-md-6">
                                     <div class="form-group row">
@@ -356,9 +437,9 @@
 @push('scripts')
 <script type="text/javascript">
     tinymce.init({
-        selector: '',
-        width: 800,
-        height: 400,
+        selector: '#section3_description',
+        width: 700,
+        height: 500,
         plugins: [
             'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
             'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',

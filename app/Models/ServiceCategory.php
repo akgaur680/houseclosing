@@ -17,6 +17,7 @@ protected $table  = 'servicecategory';
         'header_img',
         'header_button_label',
         'header_button_link',
+        'icon',
         'slug',
         'section1_img',
         'section1_description',

@@ -27,8 +27,8 @@ $services = FrontEndController::servicesdata();
                     </ul>
                     <h2>{{@$services['header_title']}}</h2>
                     <p> {{@$services['header_description']}} </p>
-                    <a href="calculate-mortgage.html" class="read-more text-primary">
-                        Calculate Your Payments
+                    <a href="/{{@$services['header_button_link']}}" class="read-more text-primary">
+                        {{@$services['header_button_label']}}
                         <i class="flaticon-right-arrow"></i>
                     </a>
                 </div>
@@ -49,19 +49,19 @@ $services = FrontEndController::servicesdata();
             <h2>{{@$services['section1_title']}}</h2>
         </div>
         <div class="row">
-            @foreach ($services['categories'] as $servicelist )
+            @foreach (@$services['categories'] as $servicelist )
             <div class="col-lg-4 col-md-6">
                 <div class="buying-single-item mb-4 transition-y">
-                    <a href="{{url('service-areas', $servicelist['slug'])}}" class="d-block buying-img">
-                        <img src="{{asset($servicelist['header_img'])}}" alt="banner" style="height: 258px; width:100%;">
+                    <a href="{{url('service-areas', @$servicelist['slug'])}}" class="d-block buying-img">
+                        <img src="{{asset(@$servicelist['header_img'])}}" alt="banner" style="height: 258px; width:100%;">
                     </a>
                     <div class="buying-content">
                         <h3>
-                            <a href="{{url('service-areas', $servicelist['slug'])}}">{{$servicelist['header_title']}}</a>
+                            <a href="{{url('service-areas', @$servicelist['slug'])}}">{{@$servicelist['header_title']}}</a>
                         </h3>
-                        <p style="height: 120px;"> {{$servicelist['header_description']}} </p>
+                        <p style="height: 120px;"> {{@$servicelist['header_description']}} </p>
                         <div class="border-top">
-                            <a href="{{url('service-areas', $servicelist['slug'])}}" class="read-more">
+                            <a href="{{url('service-areas', @$servicelist['slug'])}}" class="read-more">
                                 Learn More
                                 <i class="flaticon-right-arrow"></i>
                             </a>
@@ -70,19 +70,7 @@ $services = FrontEndController::servicesdata();
                 </div>
             </div>
             @endforeach
-            <div class="col-lg-12">
-                <div class="pagination-area text-center mt-4">
-                    <a href="loan-programs.html" class="next page-numbers">
-                        <i class="ri-arrow-left-line"></i>
-                    </a>
-                    <span class="page-numbers current" aria-current="page">01</span>
-                    <a href="loan-programs.html" class="page-numbers">02</a>
-                    <a href="loan-programs.html" class="page-numbers">03</a>
-                    <a href="loan-programs.html" class="next page-numbers">
-                        <i class="ri-arrow-right-line"></i>
-                    </a>
-                </div>
-            </div>
+          
         </div>
     </div>
 </div>

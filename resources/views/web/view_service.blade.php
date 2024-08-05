@@ -1,3 +1,11 @@
+<?php
+
+use App\Http\Controllers\FrontEndController;
+
+$homepage = FrontEndController::homepage();
+?>
+
+
 @extends('layouts.web')
 @section('meta')
 <title>{{ @$servicecategory['meta_title'] ?? 'HouseClosing' }}</title>
@@ -21,20 +29,20 @@
                             <a href="/services">Services</a>
                         </li>
                         <li>
-                            <span>{{$servicecategory['header_title']}}</span>
+                            <span>{{@$servicecategory['header_title']}}</span>
                         </li>
                     </ul>
-                    <h2>{{$servicecategory['header_title']}} - HouseClosing.CA</h2>
-                    <p> {{$servicecategory['header_description']}} </p>
-                    <a href="/{{$servicecategory['header_button_link']}}" class="read-more text-primary">
-                        {{$servicecategory['header_button_label']}}
+                    <h2>{{@$servicecategory['header_title']}} - HouseClosing.CA</h2>
+                    <p> {{@$servicecategory['header_description']}} </p>
+                    <a href="/{{@$servicecategory['header_button_link']}}" class="read-more text-primary">
+                        {{@$servicecategory['header_button_label']}}
                         <i class="flaticon-right-arrow"></i>
                     </a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="page-banner-img text-center text-lg-end position-relative z-1">
-                    <img src="{{asset($servicecategory['header_img'])}}" class="img" alt="banner-img">
+                    <img src="{{asset(@$servicecategory['header_img'])}}" class="img" alt="banner-img">
                     <img src="{{asset('assets/images/shape-7.png')}}" class="shape shape-7" alt="shape">
                     <img src="{{asset('assets/images/shape-8.png')}}" class="shape shape-8" alt="shape">
                 </div>
@@ -46,13 +54,13 @@
     <div class="container">
         <div class="details-contenet mw-1095">
             <div class="buying-img">
-                <img src="{{asset($servicecategory['section1_img'])}}" alt="buying" style="width:100%;">
+                <img src="{{asset(@$servicecategory['section1_img'])}}" alt="buying" style="width:100%;">
             </div>
-            {!!$servicecategory['section1_description']!!}
+            {!!@$servicecategory['section1_description']!!}
             <div class="mb-2">
-                <a href="/quote" class="btn btn-primary">Get Free Quote</a>
+                <a href="/{{@$servicecategory['section1_button_link']}}" class="btn btn-primary">{{@$servicecategory['section1_button_label']}}</a>
             </div>
-            @if ($servicecategory['section2_description'])
+            @if (@$servicecategory['section2_description'])
             <div class="mb-40"></div>
             <div class="bg-gray2 p-4  rounded-4 border">
                 <div class="row justify-content-center">
@@ -60,31 +68,31 @@
                         <div class="why-us-single-item">
                             <div class="d-flex align-items-center">
                                 <i class="flaticon-currency"></i>
-                                <h3>Regulatory Compliance</h3>
+                                <h3>{{@$homepage['section1_card1_title']}}</h3>
                             </div>
-                            <p>Navigate complex real estate regulations with ease. </p>
+                            <p>{{@$homepage['section1_card1_description']}}</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="why-us-single-item">
                             <div class="d-flex align-items-center">
                                 <i class="flaticon-credit-card"></i>
-                                <h3>Transaction Management</h3>
+                                <h3>{{@$homepage['section1_card2_title']}}</h3>
                             </div>
-                            <p>Seamlessly handle all legal aspects of buying and selling property.</p>
+                            <p>{{@$homepage['section1_card2_description']}}</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="why-us-single-item">
                             <div class="d-flex align-items-center">
                                 <i class="flaticon-rating"></i>
-                                <h3>Property Development Advice</h3>
+                                <h3>{{@$homepage['section1_card3_title']}}</h3>
                             </div>
-                            <p>Provide legal guidance on zoning, permits, and development projects.</p>
+                            <p>{{@$homepage['section1_card3_description']}}</p>
                         </div>
                     </div>
                     <div class="border-bottom"></div>
-                    <h3 class="text-center pt-4">We offer Legal Services on properties including:</h3>
+                    <h3 class="text-center pt-4">We Do it All:</h3>
                     <ul class="ps-0 mb-0 list-unstyled d-flex flex-wrap justify-content-center gap-3 gap-lg-4 properties-list">
                         <li>
                             <i class="ri-check-line"></i>
@@ -132,43 +140,19 @@
                         </li>
                     </ul>
                 </div>
-                <div class="mb-40"></div>
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <h2>What is needed from you to get started?</h2>
-                        <div>
-                            <h3>STEP 1:</h3>
-                            <h5>Send Us Your Agreement of Purchase and Sale:</h5>
-                            <p>Forward your Assignment Agreement along with any other documents to our office. (Can be sent by you or your Real Estate Agent).</p>
-                        </div>
-                        <div>
-                            <h3>STEP 2:</h3>
-                            <h5>Contact your Lender:</h5>
-                            <p>Contact your Mortgage Broker or Lender (Bank)</p>
-                            <ul>
-                                <li>Contact your Mortgage Broker or Lender (Bank)</li>
-                                <li>Ask them to forward Mortgage Instructions to our office.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h5>All documentation can be sent by:</h5>
-                            <p>Email : <span>docs.@laks.ca</span> Or </p>
-                            <p>Toll Free Fax: 1 (855) 466-3803 or 905-477-6778</p>
-                            <ul>
-                                <li>Contact your Mortgage Broker or Lender (Bank)</li>
-                                <li>Ask them to forward Mortgage Instructions to our office.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="easy-img mt-4 mt-lg-0 text-center">
-                            <img src="{{asset('assets/images/buying-6.jpg')}}" class="rounded-4" alt="buying">
-                        </div>
+            </div>
+            <div class="row align-items-center mt-5">
+                <div class="col-lg-6">
+                    {!!@$servicecategory['section2_description']!!}
+                </div>
+                <div class="col-lg-6">
+                    <div class="easy-img mt-4 mt-lg-0 text-center">
+                        <img src="{{asset(@$servicecategory['section2_img'])}}" class="rounded-4" alt="buying">
                     </div>
                 </div>
             </div>
-            @endif
         </div>
+        @endif
     </div>
 </div>
 @endsection

@@ -23,19 +23,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::middleware('auth:admin')->group(function () {
         Route::get('dashboard', [AdminAuthController::class, 'dashboard'])->name('dashboard');
 
-        //  pages
         // homepage
         Route::get('homepage', [AdminController::class, 'editHomepage'])->name('homepage.edit');
         Route::put('homepage/update', [AdminController::class, 'updateHomepage'])->name('homepage.update');
-
-        //  faq
 
         //  about
         Route::get('about', [AdminController::class, 'editabout'])->name('about.edit');
         Route::put('about/update', [AdminController::class, 'updateabout'])->name('about.update');
 
-
-        //  experiences
         //  Services areas
         Route::get('/services-areas', [ServicesController::class, 'edit'])->name('service-area.edit');
         Route::put('/services-areas/update', [ServicesController::class, 'update'])->name('service-area.update');
@@ -74,7 +69,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
        //Contact Us Page Area
-       Route::get('/contact-query', [AdminController::class, 'contactqueries'])->name('contact.queries');
+        Route::get('/contact-query', [AdminController::class, 'contactqueries'])->name('contact.queries');
         Route::get('/contact-area', [AdminController::class, 'editcontact'])->name('contact-area.edit');
         Route::put('/contact-area/update', [AdminController::class, 'updatecontact'])->name('contact-area.update');
 
@@ -90,12 +85,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/faq-question-answer/add', [FAQController::class, 'faqadd'])->name('faq.add');
         Route::post('/faq-question-answer/store', [FAQController::class, 'faqstore'])->name('faq.store');
         Route::get('/faq-question-answer/edit/{id}', [FAQController::class, 'faqedit'])->name('faq.edit');
-        Route::get('/faq-question-answer/update/{id}', [FAQController::class, 'faqupdate'])->name('faq.update');
-        Route::get('/faq-question-answer/delete/{id}', [FAQController::class, 'faqdelete'])->name('faq.delete');
+        Route::put('/faq-question-answer/update/{id}', [FAQController::class, 'faqupdate'])->name('faq.update');
+        Route::delete('/faq-question-answer/delete/{id}', [FAQController::class, 'faqdelete'])->name('faq.delete');
         
 
 
-        // setting
+        // Common Settings
         Route::get('setting', [AdminController::class, 'Setting'])->name('setting.edit');
         Route::put('setting/update', [AdminController::class, 'updateSetting'])->name('setting.update');
         
@@ -108,9 +103,6 @@ Route::get('/practice-areas', function () {
     return view('web/practice_areas');
 });
 Route::get('/service-areas/{serviceSlug}', [FrontEndController::class, 'servicecategory'])->name('category.show');
-
-
-//Added New Routes
 
 Route::get('/', function () {
     return view('web/index');

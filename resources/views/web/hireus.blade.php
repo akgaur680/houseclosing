@@ -7,6 +7,14 @@ $services = ServiceCategory::all();
 $hire = FrontEndController::hireus();
 ?>
 @extends('layouts.web')
+@section('meta')
+<title>{{ @$hire['meta_title'] ?? 'HouseClosing' }}</title>
+<meta name="description" content="{{ @$hire['meta_description'] ?? 'HouseClosing' }}">
+<meta property="og:title" content="{{ @$hire['meta_title'] ?? 'HouseClosing' }}">
+<meta property="og:description" content="{{ @$hire['meta_description'] ?? 'HouseClosing' }}">
+<meta property="og:image" content="{{ asset(@$hire['meta_image']) }}">
+<meta name="keywords" content="{{ @$hire['meta_tags'] ?? 'HouseClosing' }}">
+@endsection
 @section('content')
 
 <div class="page-banner-area bg-gray2">
@@ -119,18 +127,22 @@ $hire = FrontEndController::hireus();
                     <div class="container mw-1380">
                         <div class="row justify-content-center">
 
-                            @foreach ($services as $service)
+                            @foreach (@$services as $service)
                             <div class="col-xl-6">
                                 <div class="team-member-single-item-hireus border transition-y">
                                     <div class="d-md-flex align-items-center">
                                         <a class="flex-shrink-0 mb-4 mb-md-0 d-block">
-                                            <img src="https://houseclosing.ca/assets/images/hireus/1.png" alt="service" style="max-width: 35px; margin-right:10px;">
+                                            @if (@$service->icon)
+                                            <img src="{{@$service->icon}}" alt="service" style="max-width: 35px; margin-right:10px;">
+                                            @else
+                                            <img src="{{asset('assets/images/1.png')}}" alt="service" style="max-width: 35px; margin-right:10px;">
+                                            @endif
                                         </a>
                                         <div class="flex-grow-1 ms-34">
                                             <div class="form-check">
-                                                <input class="form-check-input service-checkbox" type="checkbox" value="{{ $service->slug }}" data-name="{{ $service->header_title }}" id="{{ $service->slug }}">
-                                                <label class="form-check-label" for="{{ $service->slug }}" style="font-size: 17px;">
-                                                    {{ $service->header_title }}
+                                                <input class="form-check-input service-checkbox" type="checkbox" value="{{ @$service->slug }}" data-name="{{ @$service->header_title }}" id="{{ @@$service->slug }}">
+                                                <label class="form-check-label" for="{{ @$service->slug }}" style="font-size: 17px;">
+                                                    {{ @$service->header_title }}
                                                 </label>
                                             </div>
 

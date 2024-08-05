@@ -21,7 +21,7 @@
                                 <a href="{{url('admin/dashboard')}}" style="text-decoration: none; color:black" class="fw-bold fs-6" >Home/ </a>
                             </li>
                             <li style="display: inline;">
-                                <a href="{{url('admin/lawyer-member-area')}}" style="text-decoration: none; color:green" class="fw-bold fs-6">Lawyer Members Area/ </a>
+                                <a href="{{url('admin/faq-area')}}" style="text-decoration: none; color:green" class="fw-bold fs-6">FAQ/ </a>
                             </li>
                             <li style="display: inline;">
                                 <span class="fs-6" >Add New FAQ</span>
@@ -30,7 +30,7 @@
                     </div>
                     <div id="add-faq-container" class="mt-5">
                         <hr>
-                        <h2 class="text-center my-3">Add New Lawyer</h2>
+                        <h2 class="text-center my-3">Add New FAQ</h2>
                         <form id="create-category-form" action="{{ route('admin.faq.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <h3 class="text-center">1. FAQ Details</h3>
