@@ -19,26 +19,20 @@ $hire = FrontEndController::hireus();
 
 <div class="page-banner-area bg-gray2">
     <div class="container mw-1380">
-    <?php if(session('success')): ?>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <?php echo e(session('success')); ?>
-
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        <?php endif; ?>
+ 
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="page-banner-content">
                     <ul class="ps-0 list-unstyled breadcrumbs">
                         <li>
-                            <a href="https://houseclosing.ca">Home</a>
+                            <a href="/">Home</a>
                         </li>
                         <li>
                             <span>Hire Us</span>
                         </li>
                     </ul>
                     <h2> <?php echo e(@$hire['header_title']); ?> </h2>
-                    <p> <?php echo e(@$hire['header_description']); ?> </p>
+                    <p> <?php echo @$hire['header_description']; ?> </p>
 
                 </div>
             </div>
@@ -60,7 +54,7 @@ $hire = FrontEndController::hireus();
                         <div class="mb-3 row align-items-center">
                             <label class="col-sm-2 col-form-label label">Full Name</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="name" >
+                                <input type="text" class="form-control" name="name" value="<?php echo e(old('name')); ?>" required>
                                 <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -76,7 +70,7 @@ unset($__errorArgs, $__bag); ?>
                         <div class="mb-3 row align-items-center">
                             <label class="col-sm-2 col-form-label label">Email</label>
                             <div class="col-sm-10">
-                                <input type="email" name="email" class="form-control" >
+                                <input type="email" name="email" class="form-control" value="<?php echo e(old('email')); ?>" required>
                                 <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -93,7 +87,7 @@ unset($__errorArgs, $__bag); ?>
                         <div class="mb-3 row align-items-center">
                             <label class="col-sm-2 col-form-label label">Phone</label>
                             <div class="col-sm-10">
-                                <input type="text" name="phone" class="form-control">
+                                <input type="text" name="phone" class="form-control" value="<?php echo e(old('phone')); ?>" required >
                                 <?php $__errorArgs = ['phone'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -110,7 +104,7 @@ unset($__errorArgs, $__bag); ?>
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label label">Address</label>
                             <div class="col-sm-10">
-                                <textarea cols="30" rows="5" class="form-control" name="address"></textarea>
+                                <textarea cols="30" rows="5" class="form-control" name="address"> <?php echo e(old('address')); ?> </textarea>
                                 <?php $__errorArgs = ['address'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -126,7 +120,7 @@ unset($__errorArgs, $__bag); ?>
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label label">Message</label>
                             <div class="col-sm-10">
-                                <textarea cols="30" rows="5" class="form-control" name="message" ></textarea>
+                                <textarea cols="30" rows="5" class="form-control" name="message" required> <?php echo e(old('message')); ?> </textarea>
                                 <?php $__errorArgs = ['message'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -139,7 +133,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
-                        <input type="hidden" name="selected_services" id="selected_services" >
+                        <input type="hidden" name="selected_services" id="selected_services" value="<?php echo e(old('selected_services')); ?>" >
                         <?php $__errorArgs = ['selected_services'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -150,7 +144,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                        <input type="hidden" name="selected_service_names" id="selected_service_names" >
+                        <input type="hidden" name="selected_service_names" id="selected_service_names" value="<?php echo e(old('selected_service_names')); ?>"  >
                         <?php $__errorArgs = ['selected_service_names'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -182,7 +176,11 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="team-member-single-item-hireus border transition-y">
                                     <div class="d-md-flex align-items-center">
                                         <a class="flex-shrink-0 mb-4 mb-md-0 d-block">
-                                            <img src="https://houseclosing.ca/assets/images/hireus/1.png" alt="service" style="max-width: 35px; margin-right:10px;">
+                                            <?php if(@$service->icon): ?>
+                                            <img src="<?php echo e(@$service->icon); ?>" alt="service" style="max-width: 35px; margin-right:10px;">
+                                            <?php else: ?>
+                                            <img src="<?php echo e(asset('assets/images/1.png')); ?>" alt="service" style="max-width: 35px; margin-right:10px;">
+                                            <?php endif; ?>
                                         </a>
                                         <div class="flex-grow-1 ms-34">
                                             <div class="form-check">

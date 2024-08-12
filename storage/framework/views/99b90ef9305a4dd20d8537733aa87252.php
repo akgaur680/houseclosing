@@ -16,7 +16,7 @@ $settings = FrontEndController::settings();
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/remixicon.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/flaticon.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/style.css')); ?>">
-    <link rel="icon" type="image/png" href="<?php echo e(asset($settings['header_logo'])); ?>">
+    <link rel="icon" type="image/png" href="<?php echo e(asset($settings['meta_img'])); ?>">
 </head>
 <body>
     <div id="preloader">
@@ -40,10 +40,6 @@ $settings = FrontEndController::settings();
                             </a>
                         </li>
                         <li>
-                            <i class="ri-calendar-line"></i>
-                            M-F 7 AM - 5:30 PM PT
-                        </li>
-                        <li>
                             <i class="ri-map-pin-line"></i>
                             <?php echo e(@$settings['contact_address']); ?>
 
@@ -56,7 +52,7 @@ $settings = FrontEndController::settings();
     <nav class="navbar navbar-expand-lg ptb-19 bg-gray2 border" id="navbar">
         <div class="container mw-1380">
             <a class="navbar-brand" href="/">
-                <img src="<?php echo e(asset(@$settings['header_logo'])); ?>" style="height: 70px; width:100px;" class="main-logo" alt="white-logo">
+                <img src="<?php echo e(asset(@$settings['header_logo'])); ?>" style="height: 70px;" class="main-logo" alt="white-logo">
                 <img src="<?php echo e(asset('assets/images/white-logo.svg')); ?>" class="white-logo d-none" alt="white-logo">
             </a>
             <a class="navbar-toggler" data-bs-toggle="offcanvas" href="#navbarOffcanvas" role="button" aria-controls="navbarOffcanvas">
@@ -102,7 +98,7 @@ $settings = FrontEndController::settings();
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/calculate-tax" role="button">
+                        <a class="nav-link" href="/tax-calculator" role="button">
                             Tax Calculator
                         </a>
                     </li>
@@ -161,9 +157,9 @@ $settings = FrontEndController::settings();
         <div class="container mw-1380">
             <div class="row justify-content-center">
                 <div class="col-lg-3">
-                    <div class="footer-single-item text-center">
+                    <div class="footer-single-item">
                         <a href="/" class="d-inline-block logo">
-                            <img src="<?php echo e(asset(@$settings['footer_logo'])); ?>" alt="logo" style="height: 100px; width: 100%;">
+                            <img src="<?php echo e(asset(@$settings['footer_logo'])); ?>" alt="logo" style="height: 100px;">
                         </a>
                         <p> <?php echo e(@$settings['footer_title']); ?> </p>
                         <ul class="ps-0 mb-0 list-unstyled d-flex gap-4 flex-wrap social-link">
@@ -213,7 +209,7 @@ $settings = FrontEndController::settings();
                             <div class="footer-single-item">
                                 <h3>Services</h3>
                                 <ul class="ps-0 mb-0 list-unstyled additional-link">
-                                    <?php $__currentLoopData = @$services->take(5); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $__currentLoopData = @$services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <li>
                                         <a href="<?php echo e(url('service-areas',@$service['slug'])); ?>"><?php echo e(@$service['header_title']); ?></a>
                                     </li>
@@ -232,10 +228,6 @@ $settings = FrontEndController::settings();
                                     <li class="d-flex align-items-center">
                                         <i class="ri-phone-fill"></i>
                                         <a href="tel:<?php echo e(@$settings['contact_no']); ?>"> <?php echo e(@$settings['contact_no']); ?> </a>
-                                    </li>
-                                    <li class="d-flex align-items-center">
-                                        <i class="ri-calendar-2-line"></i>
-                                        <span>Mon - Fri 12:00 - 18:00</span>
                                     </li>
                                     <li class="d-flex align-items-center">
                                         <i class="ri-map-pin-line"></i>

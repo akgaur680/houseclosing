@@ -162,10 +162,10 @@ $about = FrontEndController::about();
               </div>
             </div>
           </div>
-          <a href="{{@$homepage['section2_button_link']}}" class="read-more text-primarydiv mt-lg-5 d-inline-block">
+          <!-- <a href="{{@$homepage['section2_button_link']}}" class="read-more text-primarydiv mt-lg-5 d-inline-block">
             {{@$homepage['section2_button_label']}}
             <i class="flaticon-right-arrow"></i>
-          </a>
+          </a> -->
         </div>
       </div>
       <div class="col-lg-6">
@@ -191,13 +191,13 @@ $about = FrontEndController::about();
           @foreach (@$lawyers as $lawyer )
           <div class="col-xl-6 col-sm-6">
             <div class="team-member-single-item border transition-y">
-              <a href="lawyers" class="d-block mb-4">
+              <a href="/lawyers" class="d-block mb-4">
                 <img src="{{asset(@$lawyer['lawyer_img'])}}" class="mw-100" alt="team">
               </a>
               <div>
                 <span class="title"> {{@$lawyer['lawyer_designation']}} </span>
                 <h3>
-                  <a href="management-details.html"> {{@$lawyer['lawyer_name']}} </a>
+                  <a href="/lawyers"> {{@$lawyer['lawyer_name']}} </a>
                 </h3>
                 <!-- <ul class="ps-0 mb-0 list-unstyled">
                                     <li>

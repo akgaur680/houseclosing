@@ -26,12 +26,12 @@ $services = FrontEndController::servicesdata();
                         </li>
                     </ul>
                     <h2><?php echo e(@$services['header_title']); ?></h2>
-                    <p> <?php echo e(@$services['header_description']); ?> </p>
-                    <a href="/<?php echo e(@$services['header_button_link']); ?>" class="read-more text-primary">
+                    <p> <?php echo @$services['header_description']; ?> </p>
+                    <!-- <a href="/<?php echo e(@$services['header_button_link']); ?>" class="read-more text-primary">
                         <?php echo e(@$services['header_button_label']); ?>
 
                         <i class="flaticon-right-arrow"></i>
-                    </a>
+                    </a> -->
                 </div>
             </div>
             <div class="col-lg-6">

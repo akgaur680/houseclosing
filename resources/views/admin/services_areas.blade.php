@@ -19,24 +19,29 @@
                             <div class="row">
                                 <h2>1. Header</h2>
                                 <!-- Title -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="title">Header Title</label>
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <label class="col-md-3" for="title">Header Title</label>
+                                        <div class="col-md-9" >
                                         <input type="text" class="form-control" id="header_title" name="header_title" placeholder="Title" value="{{ old('header_title', $services->header_title) }}" required>
                                         @error('header_title')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- Description -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="description">Header Description</label>
-                                        <input type="text" class="form-control" id="header_description" name="header_description" placeholder="Description" value="{{ old('header_description', @$services->header_description) }}">
+                                 <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <label class="col-md-3" for="description">Header Description</label>
+                                        <div class="col-md-9">
+                                        <textarea type="text" class="form-control" id="header_description" name="header_description" placeholder="Description"> {{ old('header_description', @$services->header_description) }} </textarea>
                                         @error('header_description')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
+                                        </div>
                                     </div>
+                               
                                 </div>
                                 <!-- Button Label -->
                                 <div class="col-md-6">
@@ -163,4 +168,31 @@
         </div>
     </div>
 </div>
+@push('scripts')
+<script type="text/javascript">
+    tinymce.init({
+        selector: '#header_description',
+        width: 800,
+        height: 500,
+        plugins: [
+            'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
+            'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
+            'media', 'table', 'emoticons', 'help'
+        ],
+        toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
+            'forecolor backcolor emoticons | help',
+        menu: {
+            favs: {
+                title: 'My Favorites',
+                items: 'code visualaid | searchreplace | emoticons'
+            }
+        },
+        menubar: 'favs file edit view insert format tools table help',
+        content_css: '/www.tiny.cloud/css/codepen.min.css',
+        readonly: false,
+        disabled: false,
+    });
+</script>
+@endpush
 @endsection

@@ -22,11 +22,11 @@
                         <?php echo method_field('PUT'); ?>
                         <h3 class="text-center mb-4">1. Section (Header)</h3>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label" for="header_title">Title :</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="header_title" name="header_title" placeholder="Header Title" value="<?php echo e(old('header_title', @$hire['header_title'])); ?>" required>
+                        <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <label class="col-md-3" for="title">Header Title</label>
+                                        <div class="col-md-9" >
+                                        <input type="text" class="form-control" id="header_title" name="header_title" placeholder="Title" value="<?php echo e(old('header_title', @$hire['header_title'])); ?>" required>
                                         <?php $__errorArgs = ['header_title'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -37,10 +37,10 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label" for="header_description">
                                         Description</label>
@@ -211,8 +211,37 @@ unset($__errorArgs, $__bag); ?>
                 </div>
             </div>
         </div>
+        
     </div>
+    
 </div>
+<?php $__env->startPush('scripts'); ?>
+<script type="text/javascript">
+    tinymce.init({
+        selector: '#header_description',
+        width: 800,
+        height: 500,
+        plugins: [
+            'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
+            'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
+            'media', 'table', 'emoticons', 'help'
+        ],
+        toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
+            'forecolor backcolor emoticons | help',
+        menu: {
+            favs: {
+                title: 'My Favorites',
+                items: 'code visualaid | searchreplace | emoticons'
+            }
+        },
+        menubar: 'favs file edit view insert format tools table help',
+        content_css: '/www.tiny.cloud/css/codepen.min.css',
+        readonly: false,
+        disabled: false,
+    });
+</script>
+<?php $__env->stopPush(); ?>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\houseclosing\resources\views\admin\edit_hireus_area.blade.php ENDPATH**/ ?>

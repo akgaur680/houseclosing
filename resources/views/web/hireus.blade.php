@@ -19,25 +19,20 @@ $hire = FrontEndController::hireus();
 
 <div class="page-banner-area bg-gray2">
     <div class="container mw-1380">
-    @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{session('success')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
+ 
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="page-banner-content">
                     <ul class="ps-0 list-unstyled breadcrumbs">
                         <li>
-                            <a href="https://houseclosing.ca">Home</a>
+                            <a href="/">Home</a>
                         </li>
                         <li>
                             <span>Hire Us</span>
                         </li>
                     </ul>
                     <h2> {{@$hire['header_title']}} </h2>
-                    <p> {{@$hire['header_description']}} </p>
+                    <p> {!!@$hire['header_description']!!} </p>
 
                 </div>
             </div>
@@ -59,7 +54,7 @@ $hire = FrontEndController::hireus();
                         <div class="mb-3 row align-items-center">
                             <label class="col-sm-2 col-form-label label">Full Name</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="name" >
+                                <input type="text" class="form-control" name="name" value="{{old('name')}}" required>
                                 @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -68,7 +63,7 @@ $hire = FrontEndController::hireus();
                         <div class="mb-3 row align-items-center">
                             <label class="col-sm-2 col-form-label label">Email</label>
                             <div class="col-sm-10">
-                                <input type="email" name="email" class="form-control" >
+                                <input type="email" name="email" class="form-control" value="{{old('email')}}" required>
                                 @error('email')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -78,7 +73,7 @@ $hire = FrontEndController::hireus();
                         <div class="mb-3 row align-items-center">
                             <label class="col-sm-2 col-form-label label">Phone</label>
                             <div class="col-sm-10">
-                                <input type="text" name="phone" class="form-control">
+                                <input type="text" name="phone" class="form-control" value="{{old('phone')}}" required >
                                 @error('phone')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -88,7 +83,7 @@ $hire = FrontEndController::hireus();
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label label">Address</label>
                             <div class="col-sm-10">
-                                <textarea cols="30" rows="5" class="form-control" name="address"></textarea>
+                                <textarea cols="30" rows="5" class="form-control" name="address"> {{old('address')}} </textarea>
                                 @error('address')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -97,17 +92,17 @@ $hire = FrontEndController::hireus();
                         <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label label">Message</label>
                             <div class="col-sm-10">
-                                <textarea cols="30" rows="5" class="form-control" name="message" ></textarea>
+                                <textarea cols="30" rows="5" class="form-control" name="message" required> {{old('message')}} </textarea>
                                 @error('message')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
-                        <input type="hidden" name="selected_services" id="selected_services" >
+                        <input type="hidden" name="selected_services" id="selected_services" value="{{old('selected_services')}}" >
                         @error('selected_services')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
-                        <input type="hidden" name="selected_service_names" id="selected_service_names" >
+                        <input type="hidden" name="selected_service_names" id="selected_service_names" value="{{old('selected_service_names')}}"  >
                         @error('selected_service_names')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror

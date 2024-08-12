@@ -194,7 +194,7 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             <!-- Submit Button -->
-                            <button type="submit" class="btn btn-gradient-primary me-2">Add Lawyer</button>
+                            <button type="submit" class="btn btn-gradient-primary me-2">Edit Lawyer</button>
                         </form>
                     </div>
                 </div>

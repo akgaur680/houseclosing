@@ -69,14 +69,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
        //Contact Us Page Area
-        Route::get('/contact-query', [AdminController::class, 'contactqueries'])->name('contact.queries');
-        Route::get('/contact-area', [AdminController::class, 'editcontact'])->name('contact-area.edit');
-        Route::put('/contact-area/update', [AdminController::class, 'updatecontact'])->name('contact-area.update');
+        Route::get('/contact-query', [ContactFormController::class, 'contactqueries'])->name('contact.queries');
+        Route::get('/contact-area', [ContactFormController::class, 'editcontact'])->name('contact-area.edit');
+        Route::put('/contact-area/update', [ContactFormController::class, 'updatecontact'])->name('contact-area.update');
+        Route::get('/contact-query/view/{queryid}', [ContactFormController::class, 'viewquery'])->name('query.view');
+        Route::delete('/contact-query/delete/{queryid}', [ContactFormController::class, 'deletequery'])->name('query.delete');
 
         //  Hire Us Area
         Route::get('/hireus-area', [HireusController::class, 'edit'])->name('hireus.edit');
         Route::put('/hireus-area/update', [HireusController::class, 'update'])->name('hireus.update');
-        Route::get('/hireus-query', [AdminController::class, 'hireusqueries'])->name('hireus.query');
+        Route::get('/hireus-query', [HireusController::class, 'hireusqueries'])->name('hireus.query');
+        Route::get('/hireus-query/view/{queryid}', [HireusController::class, 'viewquery'])->name('hireus_query.view');
+        Route::delete('/hireus-query/delete/{queryid}', [HireusController::class, 'deletequery'])->name('hireus_query.delete');
+
 
         //FAQ Area
         Route::get('/faq-area', [FAQController::class, 'edit'])->name('faq-area.edit');
@@ -110,12 +115,6 @@ Route::get('/', function () {
 Route::get('/services', function(){
     return view('web/services');
 });
-Route::get('/register', function(){
-    return view('web/register');
-});
-Route::get('/calculate-mortgage', function(){
-    return view('web/calculate-mortgage');
-});
 
 Route::get('/view_service', function(){
     return view('/web/view_service');
@@ -123,8 +122,8 @@ Route::get('/view_service', function(){
 Route::get('/lawyers', function(){
     return view('web/lawyers');
 });
-Route::get('/calculate-tax', function(){
-    return view('web/calculate-tax');
+Route::get('/tax-calculator', function(){
+    return view('web/tax-calculator');
 });
 Route::get('/about', function(){
     return view('web/about');

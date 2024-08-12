@@ -34,10 +34,10 @@ $homepage = FrontEndController::homepage();
                     </ul>
                     <h2>{{@$servicecategory['header_title']}} - HouseClosing.CA</h2>
                     <p> {{@$servicecategory['header_description']}} </p>
-                    <a href="/{{@$servicecategory['header_button_link']}}" class="read-more text-primary">
+                    <!-- <a href="/{{@$servicecategory['header_button_link']}}" class="read-more text-primary">
                         {{@$servicecategory['header_button_label']}}
                         <i class="flaticon-right-arrow"></i>
-                    </a>
+                    </a> -->
                 </div>
             </div>
             <div class="col-lg-6">
@@ -57,41 +57,13 @@ $homepage = FrontEndController::homepage();
                 <img src="{{asset(@$servicecategory['section1_img'])}}" alt="buying" style="width:100%;">
             </div>
             {!!@$servicecategory['section1_description']!!}
-            <div class="mb-2">
+            <!-- <div class="mb-2">
                 <a href="/{{@$servicecategory['section1_button_link']}}" class="btn btn-primary">{{@$servicecategory['section1_button_label']}}</a>
-            </div>
+            </div> -->
             @if (@$servicecategory['section2_description'])
             <div class="mb-40"></div>
             <div class="bg-gray2 p-4  rounded-4 border">
                 <div class="row justify-content-center">
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="why-us-single-item">
-                            <div class="d-flex align-items-center">
-                                <i class="flaticon-currency"></i>
-                                <h3>{{@$homepage['section1_card1_title']}}</h3>
-                            </div>
-                            <p>{{@$homepage['section1_card1_description']}}</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="why-us-single-item">
-                            <div class="d-flex align-items-center">
-                                <i class="flaticon-credit-card"></i>
-                                <h3>{{@$homepage['section1_card2_title']}}</h3>
-                            </div>
-                            <p>{{@$homepage['section1_card2_description']}}</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="why-us-single-item">
-                            <div class="d-flex align-items-center">
-                                <i class="flaticon-rating"></i>
-                                <h3>{{@$homepage['section1_card3_title']}}</h3>
-                            </div>
-                            <p>{{@$homepage['section1_card3_description']}}</p>
-                        </div>
-                    </div>
-                    <div class="border-bottom"></div>
                     <h3 class="text-center pt-4">We Do it All:</h3>
                     <ul class="ps-0 mb-0 list-unstyled d-flex flex-wrap justify-content-center gap-3 gap-lg-4 properties-list">
                         <li>

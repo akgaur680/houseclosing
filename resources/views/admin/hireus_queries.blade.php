@@ -23,10 +23,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Phone</th>
-                                <th>Address</th>
-                                <th>Message</th>
-                                <th>Services</th>
+                                <th>Date    </th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -36,22 +33,23 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{ @$query->name }}</td>
                                 <td>{{ @$query->email }}</td>
-                                <td>{{ @$query->phone }}</td>
-                                <td>{{ @$query->address }}</td>
-                                <td>{{ @$query->message }}</td>
-                                <td>{{ @$query->selected_service_names }}</td>
+                                <td>{{@$query->created_at->setTimezone('Canada/Newfoundland')->format('Y-m-d h:i A')}}</td>
                                 <td>
-                                    <a type="button" href="#" class="btn btn-warning btn-sm" >Reply</a>
-                                    <form action="{{ route('admin.lawyer-member.destroy', @$query->id) }}" method="POST" style="display:inline-block;">
+                                    <a type="button" href="{{url('admin/hireus-query/view', @$query->id)}}" class="btn btn-warning btn-sm" >View</a>
+                                    <form action="{{ route('admin.hireus_query.delete', @$query->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
-                                        <!-- @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this page?')">Delete</button> -->
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Query?')">Delete</button>
                                     </form>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                     <!-- Pagination Links -->
+                     <div class="mt-4">
+                        {{ $queries->links('pagination::bootstrap-5') }}
+                    </div>
                 </div>
             </div>
         </div>

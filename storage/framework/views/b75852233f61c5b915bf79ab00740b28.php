@@ -19,9 +19,10 @@
                             <div class="row">
                                 <h2>1. Header</h2>
                                 <!-- Title -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="title">Header Title</label>
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <label class="col-md-3" for="title">Header Title</label>
+                                        <div class="col-md-9" >
                                         <input type="text" class="form-control" id="header_title" name="header_title" placeholder="Title" value="<?php echo e(old('header_title', $services->header_title)); ?>" required>
                                         <?php $__errorArgs = ['header_title'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -33,13 +34,15 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- Description -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="description">Header Description</label>
-                                        <input type="text" class="form-control" id="header_description" name="header_description" placeholder="Description" value="<?php echo e(old('header_description', @$services->header_description)); ?>">
+                                 <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <label class="col-md-3" for="description">Header Description</label>
+                                        <div class="col-md-9">
+                                        <textarea type="text" class="form-control" id="header_description" name="header_description" placeholder="Description"> <?php echo e(old('header_description', @$services->header_description)); ?> </textarea>
                                         <?php $__errorArgs = ['header_description'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -50,7 +53,9 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                        </div>
                                     </div>
+                               
                                 </div>
                                 <!-- Button Label -->
                                 <div class="col-md-6">
@@ -240,5 +245,32 @@ unset($__errorArgs, $__bag); ?>
         </div>
     </div>
 </div>
+<?php $__env->startPush('scripts'); ?>
+<script type="text/javascript">
+    tinymce.init({
+        selector: '#header_description',
+        width: 800,
+        height: 500,
+        plugins: [
+            'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
+            'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
+            'media', 'table', 'emoticons', 'help'
+        ],
+        toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
+            'forecolor backcolor emoticons | help',
+        menu: {
+            favs: {
+                title: 'My Favorites',
+                items: 'code visualaid | searchreplace | emoticons'
+            }
+        },
+        menubar: 'favs file edit view insert format tools table help',
+        content_css: '/www.tiny.cloud/css/codepen.min.css',
+        readonly: false,
+        disabled: false,
+    });
+</script>
+<?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\houseclosing\resources\views\admin\services_areas.blade.php ENDPATH**/ ?>

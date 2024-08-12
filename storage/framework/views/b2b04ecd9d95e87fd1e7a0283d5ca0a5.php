@@ -74,6 +74,12 @@ $settings = FrontEndController::settings();
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
+                  <a class="nav-link" href="<?php echo e(url('admin/homepage')); ?>">
+                    <span class="menu-title">Homepage</span>
+                    <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="<?php echo e(url('admin/services-areas')); ?>">Service Areas Page</a>
                 </li>
                 <li class="nav-item">
@@ -81,12 +87,6 @@ $settings = FrontEndController::settings();
                 </li>
               </ul>
             </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(url('admin/homepage')); ?>">
-              <span class="menu-title">Homepage</span>
-              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(url('admin/setting')); ?>">

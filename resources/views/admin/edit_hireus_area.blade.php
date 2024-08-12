@@ -21,18 +21,18 @@
                         @method('PUT')
                         <h3 class="text-center mb-4">1. Section (Header)</h3>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label" for="header_title">Title :</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="header_title" name="header_title" placeholder="Header Title" value="{{ old('header_title', @$hire['header_title']) }}" required>
+                        <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <label class="col-md-3" for="title">Header Title</label>
+                                        <div class="col-md-9" >
+                                        <input type="text" class="form-control" id="header_title" name="header_title" placeholder="Title" value="{{ old('header_title', @$hire['header_title']) }}" required>
                                         @error('header_title')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label" for="header_description">
                                         Description</label>
@@ -147,7 +147,36 @@
                 </div>
             </div>
         </div>
+        
     </div>
+    
 </div>
+@push('scripts')
+<script type="text/javascript">
+    tinymce.init({
+        selector: '#header_description',
+        width: 800,
+        height: 500,
+        plugins: [
+            'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
+            'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
+            'media', 'table', 'emoticons', 'help'
+        ],
+        toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
+            'forecolor backcolor emoticons | help',
+        menu: {
+            favs: {
+                title: 'My Favorites',
+                items: 'code visualaid | searchreplace | emoticons'
+            }
+        },
+        menubar: 'favs file edit view insert format tools table help',
+        content_css: '/www.tiny.cloud/css/codepen.min.css',
+        readonly: false,
+        disabled: false,
+    });
+</script>
+@endpush
 
 @endsection

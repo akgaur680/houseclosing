@@ -58,7 +58,7 @@ class HireusController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:255',
-            'phone' => 'nullable|string|max:255',
+            'phone' => 'required|string|max:255',
             'address' => 'nullable|string|max:2048',
             'message' => 'required|string',
             'selected_services' => 'nullable|string',
@@ -75,5 +75,20 @@ class HireusController extends Controller
         });
 
         return redirect()->back()->with('success', 'Thank You to Choose Us, We will shortly Contact You.');
+    }
+    
+    public function hireusqueries(){
+        $queries = HireusForm::orderBy('id', 'desc')->paginate(10);
+        return view('admin/hireus_queries', compact('queries'));
+    }
+    
+    public function viewquery($queryid){
+        $query = HireusForm::findOrFail($queryid);
+        return view('admin.view_hireus_query', compact('query'));
+    }
+    public function deletequery($queryid){
+        $query = HireusForm::findOrFail($queryid)->delete();
+        return redirect()->back()->with('success', 'Query Deleted Successfully');
+
     }
 }

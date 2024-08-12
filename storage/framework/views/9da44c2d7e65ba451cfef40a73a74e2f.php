@@ -8,6 +8,7 @@ $homepage = FrontEndController::Homepage();
 $settings = FrontEndController::settings();
 $services = ServiceCategory::all()->take(4);
 $lawyers = Lawyer_Members::all()->take(4);
+$about = FrontEndController::about();
 ?>
 
 <?php $__env->startSection('meta'); ?>
@@ -93,7 +94,7 @@ $lawyers = Lawyer_Members::all()->take(4);
       </div>
       <div class="col-lg-6">
         <div class="service-content">
-          <p>We specialize in providing expert legal services for all real estate matters. With years of experience in navigating the complexities of property transactions, disputes, and regulatory requirements, our team is dedicated to delivering tailored solutions to meet your needs. Whether you’re buying, selling, or developing property, we offer comprehensive support to ensure your real estate dealings are handled with the utmost professionalism and care. Trust us to protect your interests and guide you through every step of the process.</p>
+          <p> <?php echo e(@$about['header_description']); ?> </p>
         </div>
       </div>
     </div>
@@ -109,8 +110,8 @@ $lawyers = Lawyer_Members::all()->take(4);
           <div class="col-xl-6 col-sm-6">
             <div class="service-single-item transition-y style-two">
               <!-- <i class="flaticon-house icon"></i> -->
-              <img src="<?php echo e(asset(@$service['header_img'])); ?>" style="border-radius: 50%;" width="100px">
-              <h3>
+              <img src="<?php echo e(asset(@$service['icon'])); ?>">
+              <h3 class="mt-3">
                 <a href="<?php echo e(url('service-areas', @$service['slug'])); ?>"><?php echo e(@$service['header_title']); ?></a>
               </h3>
               <p style="height:120px; overflow:hidden"> <?php echo e(@$service['header_description']); ?> </p>
@@ -163,11 +164,11 @@ $lawyers = Lawyer_Members::all()->take(4);
               </div>
             </div>
           </div>
-          <a href="<?php echo e(@$homepage['section2_button_link']); ?>" class="read-more text-primarydiv mt-lg-5 d-inline-block">
+          <!-- <a href="<?php echo e(@$homepage['section2_button_link']); ?>" class="read-more text-primarydiv mt-lg-5 d-inline-block">
             <?php echo e(@$homepage['section2_button_label']); ?>
 
             <i class="flaticon-right-arrow"></i>
-          </a>
+          </a> -->
         </div>
       </div>
       <div class="col-lg-6">
@@ -193,13 +194,13 @@ $lawyers = Lawyer_Members::all()->take(4);
           <?php $__currentLoopData = @$lawyers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lawyer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <div class="col-xl-6 col-sm-6">
             <div class="team-member-single-item border transition-y">
-              <a href="lawyers" class="d-block mb-4">
+              <a href="/lawyers" class="d-block mb-4">
                 <img src="<?php echo e(asset(@$lawyer['lawyer_img'])); ?>" class="mw-100" alt="team">
               </a>
               <div>
                 <span class="title"> <?php echo e(@$lawyer['lawyer_designation']); ?> </span>
                 <h3>
-                  <a href="management-details.html"> <?php echo e(@$lawyer['lawyer_name']); ?> </a>
+                  <a href="/lawyers"> <?php echo e(@$lawyer['lawyer_name']); ?> </a>
                 </h3>
                 <!-- <ul class="ps-0 mb-0 list-unstyled">
                                     <li>
