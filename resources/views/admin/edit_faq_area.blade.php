@@ -1,5 +1,3 @@
-
-
 @extends('layouts.admin')
 
 @section('content')
@@ -40,7 +38,7 @@
                                         Description</label>
                                     <div class="col-sm-9">
                                         <textarea type="text" class="form-control" id="header_description" name="header_description" placeholder="Header Description" required>{{ old('header_description', @$faq->header_description) }}
-</textarea>
+                                        </textarea>
                                         @error('header_description')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror

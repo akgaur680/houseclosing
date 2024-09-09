@@ -16,6 +16,9 @@ $settings = FrontEndController::settings();
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/remixicon.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/flaticon.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/calculator.css')); ?>">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <link rel="icon" type="image/png" href="<?php echo e(asset($settings['meta_img'])); ?>">
 </head>
 <body>
@@ -65,21 +68,21 @@ $settings = FrontEndController::settings();
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav m-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link active" href="/" role="button">
+                        <a class="nav-link active" href="<?php echo e(url('/')); ?>" role="button">
                             Home
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link " href="/about" role="button">
+                        <a class="nav-link " href="<?php echo e(url('about')); ?>" role="button">
                             About Us
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/services" role="button"> Services</a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button"> Services</a>
                         <ul class="dropdown-menu">
                             <?php $__currentLoopData = @$services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li>
-                                <a class="dropdown-item" href="<?php echo e(url('service-areas',@$service['slug'])); ?>">
+                                <a class="dropdown-item" href="<?php echo e(url('services',@$service['slug'])); ?>">
                                     <?php echo e(@$service['header_title']); ?>
 
                                 </a>
@@ -88,22 +91,22 @@ $settings = FrontEndController::settings();
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/hire-us" role="button">
+                        <a class="nav-link" href="<?php echo e(url('hire-us')); ?>" role="button">
                             Hire Us
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/faq">
-                            FAQ’s
+                        <a class="nav-link" href="<?php echo e(url('faq')); ?>">
+                            FAQ
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/tax-calculator" role="button">
+                        <a class="nav-link" href="<?php echo e(url('tax-calculator')); ?>" role="button">
                             Tax Calculator
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/lawyers">
+                        <a class="nav-link" href="<?php echo e(url('lawyers')); ?>">
                             Lawyers
                         </a>
                     </li>
@@ -111,7 +114,7 @@ $settings = FrontEndController::settings();
             </div>
             <ul class="others-options ps-0 mb-0 list-unstyled justify-content-end">
                 <li>
-                    <a href="/contactus" class="btn btn-primary">
+                    <a href="<?php echo e(url('contactus')); ?>" class="btn btn-primary">
                         Contact Us
                     </a>
                 </li>
@@ -158,23 +161,23 @@ $settings = FrontEndController::settings();
             <div class="row justify-content-center">
                 <div class="col-lg-3">
                     <div class="footer-single-item">
-                        <a href="/" class="d-inline-block logo">
+                        <a href="<?php echo e(url('/')); ?>" class="d-inline-block logo">
                             <img src="<?php echo e(asset(@$settings['footer_logo'])); ?>" alt="logo" style="height: 100px;">
                         </a>
                         <p> <?php echo e(@$settings['footer_title']); ?> </p>
                         <ul class="ps-0 mb-0 list-unstyled d-flex gap-4 flex-wrap social-link">
                             <li>
-                                <a href="<?php echo e(@$settings['facebook_link']); ?>" target="_blank">
+                                <a href="<?php echo e(url(@$settings['facebook_link'])); ?>" target="_blank">
                                     <i class="ri-facebook-fill"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo e(@$settings['instagram_link']); ?>" target="_blank">
+                                <a href="<?php echo e(url(@$settings['instagram_link'])); ?>" target="_blank">
                                     <i class="ri-instagram-line"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo e(@$settings['twitter_link']); ?>" target="_blank">
+                                <a href="<?php echo e(url(@$settings['twitter_link'])); ?>" target="_blank">
                                     <i class="ri-twitter-x-line"></i>
                                 </a>
                             </li>
@@ -188,19 +191,19 @@ $settings = FrontEndController::settings();
                                 <h3>Quick Links</h3>
                                 <ul class="ps-0 mb-0 list-unstyled additional-link">
                                     <li>
-                                        <a href="/about">About Us</a>
+                                        <a href="<?php echo e(url('about')); ?>">About Us</a>
                                     </li>
                                     <li>
-                                        <a href="/contactus">Contact Us</a>
+                                        <a href="<?php echo e(url('contactus')); ?>">Contact Us</a>
                                     </li>
                                     <li>
-                                        <a href="/lawyers">Our Members</a>
+                                        <a href="<?php echo e(url('lawyers')); ?>">Our Members</a>
                                     </li>
                                     <li>
-                                        <a href="/services">Services</a>
+                                        <a href="<?php echo e(url('services')); ?>">Services</a>
                                     </li>
                                     <li>
-                                        <a href="/faq">FAQ’s</a>
+                                        <a href="<?php echo e(url('faq')); ?>">FAQ</a>
                                     </li>
                                 </ul>
                             </div>
@@ -211,7 +214,7 @@ $settings = FrontEndController::settings();
                                 <ul class="ps-0 mb-0 list-unstyled additional-link">
                                     <?php $__currentLoopData = @$services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <li>
-                                        <a href="<?php echo e(url('service-areas',@$service['slug'])); ?>"><?php echo e(@$service['header_title']); ?></a>
+                                        <a href="<?php echo e(url('services',@$service['slug'])); ?>"><?php echo e(@$service['header_title']); ?></a>
                                     </li>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
@@ -258,6 +261,8 @@ $settings = FrontEndController::settings();
     <script src="<?php echo e(asset('assets/js/scrollCue.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/js/fslightbox.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/js/custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/calculator.js')); ?>"></script>
+    
 </body>
 <!-- Mirrored from templates.hibootstrap.com/laks/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Jul 2024 14:17:59 GMT -->
 </html><?php /**PATH C:\wamp64\www\houseclosing\resources\views\layouts\web.blade.php ENDPATH**/ ?>

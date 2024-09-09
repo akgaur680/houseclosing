@@ -14,7 +14,7 @@
         @endif
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <h3 class="mb-5" style="display: inline-block;">Contact Us Queries</h3>
                     
                     <table class="table table-bordered">

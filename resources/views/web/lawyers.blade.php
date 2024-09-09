@@ -22,7 +22,7 @@ $lawyers = FrontEndController::lawyers();
                 <div class="page-banner-content">
                     <ul class="ps-0 list-unstyled breadcrumbs">
                         <li>
-                            <a href="/">Home</a>
+                            <a href="{{url('/')}}">Home</a>
                         </li>
                         <li>
                             <span>Lawyers</span>
@@ -30,10 +30,10 @@ $lawyers = FrontEndController::lawyers();
                     </ul>
                     <h2>{{@$lawyers['header_title']}}</h2>
                     <p> {{@$lawyers['header_description']}} </p>
-                    <a href="{{@$lawyers['header_button_link']}}" class="read-more text-primary">
+                    <!-- <a href="{{@$lawyers['header_button_link']}}" class="read-more text-primary">
                         {{@$lawyers['header_button_label']}}
                         <i class="flaticon-right-arrow"></i>
-                    </a>
+                    </a> -->
                 </div>
             </div>
             <div class="col-lg-6">
@@ -55,13 +55,13 @@ $lawyers = FrontEndController::lawyers();
             <div class="col-xl-6">
                 <div class="team-member-single-item border transition-y">
                     <div class="d-md-flex align-items-center">
-                        <a href="lawyers" class="flex-shrink-0 mb-4 mb-md-0 d-block">
+                        <a href="{{url('lawyers')}}" class="flex-shrink-0 mb-4 mb-md-0 d-block">
                             <img src="{{asset($member['lawyer_img'])}}" alt="Tajinder Kaur Sivia">
                         </a>
                         <div class="flex-grow-1 ms-34 text-center">
                             <span class="title"> {{$member['lawyer_designation']}} </span>
                             <h3 class="text-center">
-                                <a href="lawyers">{{$member['lawyer_name']}}</a>
+                                <a href="{{url('lawyers')}}">{{$member['lawyer_name']}}</a>
                             </h3>
                         </div>
                     </div>

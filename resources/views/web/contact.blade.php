@@ -16,18 +16,12 @@ $settings = FrontEndController::settings();
 @section('content')
 <div class="page-banner-area bg-gray2">
     <div class="container mw-1380">
-    @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{session('success')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="page-banner-content">
                     <ul class="ps-0 list-unstyled breadcrumbs">
                         <li>
-                            <a href="/">Home</a>
+                            <a href="{{url('/')}}">Home</a>
                         </li>
                         <li>
                             <span>Contact Us</span>

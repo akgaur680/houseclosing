@@ -1,14 +1,9 @@
 <?php
-
 use App\Http\Controllers\FrontEndController;
-
-
 $settings = FrontEndController::settings();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,17 +13,14 @@ $settings = FrontEndController::settings();
   <link rel="stylesheet" href="<?php echo e(asset('adminassets/css/style.css')); ?>">
   <link rel="shortcut icon" href="<?php echo e(asset('adminassets/images/favicon.ico')); ?>">
   <script src="https://cdn.tiny.cloud/1/rhmjhy4d4ie52kbm64vwjpq0g48tk3s5dvqvnej2vi0y9cnc/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-
-
+  
 </head>
-
 <body>
   <?php echo $__env->yieldPushContent('scripts'); ?>
-
   <div class="container-scroller">
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="<?php echo e(url('/admin/dashboard')); ?>"><img src="<?php echo e(asset(@$settings['header_logo'])); ?>" alt="logo" /></a>
+        <a class="navbar-brand brand-logo mt-2" href="<?php echo e(url('/admin/dashboard')); ?>"><img src="<?php echo e(asset(@$settings['header_logo'])); ?>" alt="logo" /></a>
         <a class="navbar-brand brand-logo-mini" href="<?php echo e(url('/admin/dashboard')); ?>"><img src="<?php echo e(asset(@$settings['header_logo'])); ?>" alt="logo" /></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -67,18 +59,18 @@ $settings = FrontEndController::settings();
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(url('admin/homepage')); ?>">
+              <span class="menu-title">Homepage</span>
+              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-title">Services</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo e(url('admin/homepage')); ?>">
-                    <span class="menu-title">Homepage</span>
-                    <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                  </a>
-                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo e(url('admin/services-areas')); ?>">Service Areas Page</a>
                 </li>
@@ -107,7 +99,6 @@ $settings = FrontEndController::settings();
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo e(url('admin/lawyer-member-area')); ?>">Lawyer Members Area</a>
                 </li>
-
               </ul>
             </div>
           </li>
@@ -136,15 +127,8 @@ $settings = FrontEndController::settings();
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo e(url('admin/contact-area')); ?>">Contact Us Area</a>
                 </li>
-
               </ul>
             </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(url('admin/tax-calculator')); ?>">
-              <span class="menu-title">Tax Calculator</span>
-              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic-hireus" aria-expanded="false" aria-controls="ui-basic-hireus">
@@ -159,7 +143,6 @@ $settings = FrontEndController::settings();
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo e(url('admin/hireus-area')); ?>">Hire Us Area</a>
                 </li>
-
               </ul>
             </div>
           </li>
@@ -176,7 +159,6 @@ $settings = FrontEndController::settings();
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo e(url('admin/faq-area')); ?>">FAQ Area</a>
                 </li>
-
               </ul>
             </div>
           </li>
@@ -187,9 +169,7 @@ $settings = FrontEndController::settings();
         <footer class="footer">
           <div class="copy-right-area">
             <p> <?php echo $settings['copyright_content']; ?> </p>
-
           </div>
-
         </footer>
       </div>
     </div>
@@ -200,5 +180,4 @@ $settings = FrontEndController::settings();
   <script src="<?php echo e(asset('adminassets/js/misc.js')); ?>"></script>
   <?php echo $__env->yieldContent('scripts'); ?>
 </body>
-
 </html><?php /**PATH C:\wamp64\www\houseclosing\resources\views/layouts/admin.blade.php ENDPATH**/ ?>

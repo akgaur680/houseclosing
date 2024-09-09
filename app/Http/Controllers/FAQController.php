@@ -66,7 +66,7 @@ class FAQController extends Controller
     }
 
     public function index(){
-        $faq = FAQ_Q_A::all();
+        $faq = FAQ_Q_A::paginate(10);
         return view('admin/faq', compact('faq'));
     }
     public function faqadd(){

@@ -22,7 +22,7 @@
                                 <a href="<?php echo e(url('admin/dashboard')); ?>" style="text-decoration: none; color:black" class="fw-bold fs-6" >Home/ </a>
                             </li>
                             <li style="display: inline;">
-                                <a href="<?php echo e(url('admin/faq-area')); ?>" style="text-decoration: none; color:green" class="fw-bold fs-6">FAQ/ </a>
+                                <a href="<?php echo e(url('admin/faq-question-answer')); ?>" style="text-decoration: none; color:green" class="fw-bold fs-6">FAQ/ </a>
                             </li>
                             <li style="display: inline;">
                                 <span class="fs-6" >Edit FAQ /</span>

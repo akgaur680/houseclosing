@@ -415,8 +415,7 @@ unset($__errorArgs, $__bag); ?>
     <script type="text/javascript">
         tinymce.init({
             selector: '#copyright_content',
-            width: 800,
-            height: 400,
+            
             plugins: [
                 'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
                 'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',

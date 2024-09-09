@@ -1,14 +1,9 @@
 <?php
-
 use App\Http\Controllers\FrontEndController;
-
-
 $settings = FrontEndController::settings();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,17 +13,14 @@ $settings = FrontEndController::settings();
   <link rel="stylesheet" href="{{ asset('adminassets/css/style.css') }}">
   <link rel="shortcut icon" href="{{ asset('adminassets/images/favicon.ico') }}">
   <script src="https://cdn.tiny.cloud/1/rhmjhy4d4ie52kbm64vwjpq0g48tk3s5dvqvnej2vi0y9cnc/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-
-
+  
 </head>
-
 <body>
   @stack('scripts')
-
   <div class="container-scroller">
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="{{url('/admin/dashboard')}}"><img src="{{ asset(@$settings['header_logo']) }}" alt="logo" /></a>
+        <a class="navbar-brand brand-logo mt-2" href="{{url('/admin/dashboard')}}"><img src="{{ asset(@$settings['header_logo']) }}" alt="logo" /></a>
         <a class="navbar-brand brand-logo-mini" href="{{url('/admin/dashboard')}}"><img src="{{ asset(@$settings['header_logo']) }}" alt="logo" /></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -67,18 +59,18 @@ $settings = FrontEndController::settings();
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{url('admin/homepage')}}">
+              <span class="menu-title">Homepage</span>
+              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-title">Services</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="{{url('admin/homepage')}}">
-                    <span class="menu-title">Homepage</span>
-                    <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                  </a>
-                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{url('admin/services-areas')}}">Service Areas Page</a>
                 </li>
@@ -107,7 +99,6 @@ $settings = FrontEndController::settings();
                 <li class="nav-item">
                   <a class="nav-link" href="{{url('admin/lawyer-member-area')}}">Lawyer Members Area</a>
                 </li>
-
               </ul>
             </div>
           </li>
@@ -136,15 +127,8 @@ $settings = FrontEndController::settings();
                 <li class="nav-item">
                   <a class="nav-link" href="{{url('admin/contact-area')}}">Contact Us Area</a>
                 </li>
-
               </ul>
             </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url('admin/tax-calculator')}}">
-              <span class="menu-title">Tax Calculator</span>
-              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic-hireus" aria-expanded="false" aria-controls="ui-basic-hireus">
@@ -159,7 +143,6 @@ $settings = FrontEndController::settings();
                 <li class="nav-item">
                   <a class="nav-link" href="{{url('admin/hireus-area')}}">Hire Us Area</a>
                 </li>
-
               </ul>
             </div>
           </li>
@@ -176,7 +159,6 @@ $settings = FrontEndController::settings();
                 <li class="nav-item">
                   <a class="nav-link" href="{{url('admin/faq-area')}}">FAQ Area</a>
                 </li>
-
               </ul>
             </div>
           </li>
@@ -187,9 +169,7 @@ $settings = FrontEndController::settings();
         <footer class="footer">
           <div class="copy-right-area">
             <p> {!!$settings['copyright_content']!!} </p>
-
           </div>
-
         </footer>
       </div>
     </div>
@@ -200,5 +180,4 @@ $settings = FrontEndController::settings();
   <script src="{{ asset('adminassets/js/misc.js') }}"></script>
   @yield('scripts')
 </body>
-
 </html>

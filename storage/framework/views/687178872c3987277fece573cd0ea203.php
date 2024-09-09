@@ -23,14 +23,15 @@ $homepage = FrontEndController::homepage();
                 <div class="page-banner-content">
                     <ul class="ps-0 list-unstyled breadcrumbs">
                         <li>
-                            <a href="/">Home</a>
+                            <a href="<?php echo e(url('/')); ?>">Home</a>
                         </li>
                         <li>
-                            <a href="/services">Services</a>
+                            <!-- <a href="<?php echo e(url('services')); ?>">Services</a> -->
+                             Services
                         </li>
-                        <li>
+                        <!-- <li>
                             <span><?php echo e(@$servicecategory['header_title']); ?></span>
-                        </li>
+                        </li> -->
                     </ul>
                     <h2><?php echo e(@$servicecategory['header_title']); ?> - HouseClosing.CA</h2>
                     <p> <?php echo e(@$servicecategory['header_description']); ?> </p>
@@ -59,9 +60,12 @@ $homepage = FrontEndController::homepage();
             </div>
             <?php echo @$servicecategory['section1_description']; ?>
 
-            <div class="mb-2">
+            <!-- <div class="mb-2">
                 <a href="/<?php echo e(@$servicecategory['section1_button_link']); ?>" class="btn btn-primary"><?php echo e(@$servicecategory['section1_button_label']); ?></a>
-            </div>
+            </div> -->
+            <?php if(!@$servicecategory['section2_description']): ?>
+            <p>For more information, visit&nbsp;<a href="<?php echo e(url(@$servicecategory['section2_button_link'])); ?>"><?php echo e(@$servicecategory['section2_button_label']); ?></a>&nbsp;for our flat rate legal fees..</p>
+            <?php endif; ?>
             <?php if(@$servicecategory['section2_description']): ?>
             <div class="mb-40"></div>
             <div class="bg-gray2 p-4  rounded-4 border">
@@ -119,6 +123,7 @@ $homepage = FrontEndController::homepage();
                 <div class="col-lg-6">
                     <?php echo @$servicecategory['section2_description']; ?>
 
+                    <p>For more information, visit&nbsp;<a href="<?php echo e(url(@$servicecategory['section2_button_link'])); ?>"><?php echo e(@$servicecategory['section2_button_label']); ?></a>.</p>
                 </div>
                 <div class="col-lg-6">
                     <div class="easy-img mt-4 mt-lg-0 text-center">

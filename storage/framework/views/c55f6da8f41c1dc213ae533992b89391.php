@@ -20,7 +20,7 @@
                             </li>
                         </ul>
                     </div>
-        <div class="card-body">
+        <div class="">
 
           <div class="container">
 
@@ -28,7 +28,7 @@
               <div class="card-header">
                 <h3>View Contact Us Query Form </h3>
               </div>
-              <div class="card-body">
+              <div class="m-1 table-responsive">
                 <table class="table">
                   <tr>
                     <td>Name: </td>

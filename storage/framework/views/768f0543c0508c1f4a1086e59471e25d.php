@@ -1,7 +1,5 @@
 
 
-
-
 <?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
@@ -49,7 +47,7 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-sm-9">
                                         <textarea type="text" class="form-control" id="header_description" name="header_description" placeholder="Header Description" required><?php echo e(old('header_description', @$faq->header_description)); ?>
 
-</textarea>
+                                        </textarea>
                                         <?php $__errorArgs = ['header_description'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -281,5 +279,4 @@ unset($__errorArgs, $__bag); ?>
 </div>
 
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\houseclosing\resources\views\admin\edit_faq_area.blade.php ENDPATH**/ ?>

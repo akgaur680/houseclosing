@@ -19,7 +19,7 @@ $services = FrontEndController::servicesdata();
                 <div class="page-banner-content">
                     <ul class="ps-0 list-unstyled breadcrumbs">
                         <li>
-                            <a href="/">Home</a>
+                            <a href="{{url('/')}}">Home</a>
                         </li>
                         <li>
                             <span>Services</span>
@@ -52,16 +52,16 @@ $services = FrontEndController::servicesdata();
             @foreach (@$services['categories'] as $servicelist )
             <div class="col-lg-4 col-md-6">
                 <div class="buying-single-item mb-4 transition-y">
-                    <a href="{{url('service-areas', @$servicelist['slug'])}}" class="d-block buying-img">
+                    <a href="{{url('services', @$servicelist['slug'])}}" class="d-block buying-img">
                         <img src="{{asset(@$servicelist['header_img'])}}" alt="banner" style="height: 258px; width:100%;">
                     </a>
                     <div class="buying-content">
                         <h3>
-                            <a href="{{url('service-areas', @$servicelist['slug'])}}">{{@$servicelist['header_title']}}</a>
+                            <a href="{{url('services', @$servicelist['slug'])}}">{{@$servicelist['header_title']}}</a>
                         </h3>
-                        <p style="height: 120px;"> {{@$servicelist['header_description']}} </p>
+                        <p style="height: 120px; overflow:hidden"> {{@$servicelist['header_description']}} </p>
                         <div class="border-top">
-                            <a href="{{url('service-areas', @$servicelist['slug'])}}" class="read-more">
+                            <a href="{{url('services', @$servicelist['slug'])}}" class="read-more">
                                 Learn More
                                 <i class="flaticon-right-arrow"></i>
                             </a>

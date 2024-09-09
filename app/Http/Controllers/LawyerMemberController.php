@@ -55,13 +55,15 @@ class LawyerMemberController extends Controller
 
    public function edit($id)
    {
+    $lawyers = Lawyers::first();
     $member = Lawyer_Members::findOrFail($id);
-    return view('admin/edit_lawyer', compact('member'));
+    return view('admin/edit_lawyer', compact('member', 'lawyers'));
    }
 
    
    public function update(Request $request, $id){
     $request->validate([
+        'lawyers_id'=> 'required|exists:lawyers,id',
         'lawyer_name'=> 'nullable|string|max:255',
         'lawyer_designation'=> 'nullable|string|max:255',
         'lawyer_img'=> 'nullable|image|max:2048',

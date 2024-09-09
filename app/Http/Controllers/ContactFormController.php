@@ -6,6 +6,7 @@ use App\Models\ContactForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Models\ContactArea;
+use GuzzleHttp\Client;
 
 class ContactFormController extends Controller
 {
@@ -14,6 +15,13 @@ class ContactFormController extends Controller
     }
     public function show(){
         return view('web/components/contact_form');
+    }
+    public function editcontact(){
+        $contact = ContactArea::first();
+        if(!$contact){
+            $contact = new ContactArea();
+        }
+        return view('admin.edit_contact_area', compact('contact'));
     }
     public function updatecontact(Request $request){
         $request->validate([
@@ -54,28 +62,57 @@ class ContactFormController extends Controller
         return redirect()->route('admin.contact-area.edit')->with('success', 'Contact Page Updated Successfully');
     }
     public function contactqueries(){
-        $queries = ContactForm::orderBy('id', 'desc')->paginate(10);
+        $queries = ContactForm::orderBy('id', 'desc')->paginate(20);
         return view('admin/contact_queries', compact('queries'));
     }
     
     
     public function store(Request $request){
-        $request->validate([
-            'email'=> 'required|string|max:255',
-            'name'=> 'required|string|max:255',
-            'phone'=> 'nullable|string|max:255',
-            'zipcode'=> 'nullable|string|max:255',
-            'message'=> 'required|string',
+      $validatedData =  $request->validate([
+           'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^(\+1\s?)?(\(?\d{3}\)?[\s.-]?)?\d{3}[\s.-]?\d{4}$/',
+            ],
+            'message' => 'required|string',
+            'zipcode' => 'required|string',
         ]);
-        $contact = $request->all();
-      $form =  ContactForm::create($contact);
-       
-       Mail::send('emails.contact', ['form' => $form], function ($message) use ($form, $request) {
+        // Verify reCaptcha
+            $client = new Client();
+      $response = $client->post('https://www.google.com/recaptcha/api/siteverify', [
+        'form_params' => [
+            'secret' => '6Lc4NBoqAAAAAE5j384Lz1ePL3N5UIhwQDgHyDtT',
+            'response' => $request->input('g-recaptcha-response'),
+            'remoteip' => $request->ip(),
+        ],
+    ]);
+
+    $body = json_decode((string)$response->getBody());
+    if ($body->success) {
+        $emailData = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'zipcode' => $request->input('zipcode'),
+            'message' => $request->input('message'),
+            
+    ]; 
+       Mail::send('emails.contact', ['form' => $emailData], function ($message) use ($emailData, $request) {
         $message->to('akgaur680@gmail.com')
             ->subject('New Query Form Submission')
             ->from('akgaur680@gmail.com', 'HouseClosing'); 
     });
+    
+    ContactForm::create($validatedData);
         return redirect()->back()->with('success', 'Thank You for Contacting Us');
+    }
+    else{
+        return redirect()->back()->withErrors(['g-recaptcha-response' => 'Please verify that you are not a robot.'])->withInput();
+
+    }
     }
     public function viewquery($queryid){
         $query = ContactForm::findOrFail($queryid);

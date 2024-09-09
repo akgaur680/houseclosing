@@ -36,7 +36,7 @@
                             @method('PUT')
                             <h3 class="text-center">1. Member Details</h3>
                             <br>
-                            <input type="hidden" name="lawyers_id">
+                            <input type="hidden" name="lawyers_id" value="{{ $lawyers->id }}">
                             <div class="row">
                                 <!-- Lawyer Name -->
                                 <div class="col-sm-6">

@@ -21,11 +21,12 @@ $hire = FrontEndController::hireus();
     <div class="container mw-1380">
  
         <div class="row align-items-center">
+       
             <div class="col-lg-6">
                 <div class="page-banner-content">
                     <ul class="ps-0 list-unstyled breadcrumbs">
                         <li>
-                            <a href="/">Home</a>
+                            <a href="{{url('/')}}">Home</a>
                         </li>
                         <li>
                             <span>Hire Us</span>
@@ -49,6 +50,22 @@ $hire = FrontEndController::hireus();
             <div class="col-lg-6">
                 <div class="contact-us-content">
                     <h2>Hire Us Now</h2>
+                    <div  >
+                    @if ($errors->any())
+                            <div class="alert alert-danger" id="hireus_form">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if (session('success'))
+                            <div class="alert alert-success" id="hireus_form">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        </div>
                     <form id="hireUsForm" class="contact-us-form" action="{{route('hireus.store')}}" method="POST">
                         @csrf
                         <div class="mb-3 row align-items-center">
@@ -96,6 +113,10 @@ $hire = FrontEndController::hireus();
                                 @error('message')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
+                                <div class="g-recaptcha" data-sitekey="6Lc4NBoqAAAAACD1FiX596PGkcmpPpcbhobQsDte" style="padding: 10px;  margin: 10px;"></div>
+                            @if ($errors->has('g-recaptcha-response'))
+                            <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                            @endif
                             </div>
                         </div>
                         <input type="hidden" name="selected_services" id="selected_services" value="{{old('selected_services')}}" >
@@ -157,6 +178,8 @@ $hire = FrontEndController::hireus();
         </div>
     </div>
 </div>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const checkboxes = document.querySelectorAll('.service-checkbox');
@@ -181,6 +204,14 @@ $hire = FrontEndController::hireus();
             console.log('Selected Service Names:', selectedServiceNames);
         });
     });
+</script>
+
+<script type="text/javascript">
+    jQuery("html").animate({
+        scrollTop:jQuery("#hireus_form").offset().top - 200
+    });
+
+    
 </script>
 
 @endsection

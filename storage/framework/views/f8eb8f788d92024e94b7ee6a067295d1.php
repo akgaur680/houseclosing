@@ -51,8 +51,8 @@ $members = Lawyer_Members::all()->take(4);
             <div class="col-lg-6">
                 <div class="page-banner-img text-center text-lg-end position-relative z-1">
                     <img src="<?php echo e(asset(@$about['header_img'])); ?>" class="img" alt="banner-img">
-                    <img src="https://houseclosing.ca/assets/images/shape-7.png" class="shape shape-7" alt="shape">
-                    <img src="https://houseclosing.ca/assets/images/shape-8.png" class="shape shape-8" alt="shape">
+                    <img src="<?php echo e(asset('assets/images/shape-7.png')); ?>" class="shape shape-7" alt="shape">
+                    <img src="<?php echo e(asset('assets/images/shape-8.png')); ?>" class="shape shape-8" alt="shape">
                 </div>
             </div>
         </div>
@@ -202,12 +202,12 @@ $members = Lawyer_Members::all()->take(4);
                 <div class="team-member-single-item border transition-y">
                     <div class="d-md-flex align-items-center">
                         <a href="lawyers" class="flex-shrink-0 mb-4 mb-md-0 d-block">
-                            <img src="<?php echo e(@$member['lawyer_img']); ?>" alt="team">
+                            <img src="<?php echo e(asset(@$member['lawyer_img'])); ?>" alt="team">
                         </a>
                         <div class="flex-grow-1 ms-34">
                             <span class="title"><?php echo e(@$member['lawyer_designation']); ?></span>
                             <h3 class="text-center">
-                                <a href="lawyers"><?php echo e(@$member['lawyer_name']); ?></a>
+                                <a href="<?php echo e(url('lawyers')); ?>"><?php echo e(@$member['lawyer_name']); ?></a>
                             </h3>
                         </div>
                     </div>

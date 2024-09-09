@@ -23,14 +23,15 @@ $homepage = FrontEndController::homepage();
                 <div class="page-banner-content">
                     <ul class="ps-0 list-unstyled breadcrumbs">
                         <li>
-                            <a href="/">Home</a>
+                            <a href="{{url('/')}}">Home</a>
                         </li>
                         <li>
-                            <a href="/services">Services</a>
+                            <!-- <a href="{{url('services')}}">Services</a> -->
+                             Services
                         </li>
-                        <li>
+                        <!-- <li>
                             <span>{{@$servicecategory['header_title']}}</span>
-                        </li>
+                        </li> -->
                     </ul>
                     <h2>{{@$servicecategory['header_title']}} - HouseClosing.CA</h2>
                     <p> {{@$servicecategory['header_description']}} </p>
@@ -60,6 +61,9 @@ $homepage = FrontEndController::homepage();
             <!-- <div class="mb-2">
                 <a href="/{{@$servicecategory['section1_button_link']}}" class="btn btn-primary">{{@$servicecategory['section1_button_label']}}</a>
             </div> -->
+            @if(!@$servicecategory['section2_description'])
+            <p>For more information, visit&nbsp;<a href="{{url(@$servicecategory['section2_button_link'])}}">{{@$servicecategory['section2_button_label']}}</a>&nbsp;for our flat rate legal fees..</p>
+            @endif
             @if (@$servicecategory['section2_description'])
             <div class="mb-40"></div>
             <div class="bg-gray2 p-4  rounded-4 border">
@@ -116,6 +120,7 @@ $homepage = FrontEndController::homepage();
             <div class="row align-items-center mt-5">
                 <div class="col-lg-6">
                     {!!@$servicecategory['section2_description']!!}
+                    <p>For more information, visit&nbsp;<a href="{{url(@$servicecategory['section2_button_link'])}}">{{@$servicecategory['section2_button_label']}}</a>.</p>
                 </div>
                 <div class="col-lg-6">
                     <div class="easy-img mt-4 mt-lg-0 text-center">

@@ -15,7 +15,7 @@
         @endif
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <h3 class="mb-5" style="display: inline-block;">All Testimonials</h3>
                     <a href="testimonial/create" id="addtestimonial" style="display: inline-block;  float:right;" class="btn btn-gradient-primary me-2">
                         Add New Testimonial

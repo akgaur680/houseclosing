@@ -266,6 +266,41 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
+                                 <!-- Section 2 Button Label -->
+                                 <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="section2_button_label">Section 2 Button Label</label>
+                                        <input type="text" class="form-control" id="section2_button_label" name="section2_button_label" value="<?php echo e($category->section2_button_label); ?>" placeholder="Section 2 Button Label">
+                                        <?php $__errorArgs = ['section2_button_label'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <span class="text-danger"><?php echo e($message); ?></span>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                    </div>
+                                </div>
+                                <!-- Section 2 Button Link -->
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="section2_button_link">Section 2 Button Link</label>
+                                        <input type="text" class="form-control" id="section2_button_link" name="section2_button_link" value="<?php echo e($category->section2_button_link); ?>" placeholder="Section 2 Button Link">
+                                        <?php $__errorArgs = ['section2_button_link'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <span class="text-danger"><?php echo e($message); ?></span>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                    </div>
+                                </div>
+                               
 
                                 <!-- Meta Details -->
                                 <div class="row">
@@ -362,8 +397,7 @@ unset($__errorArgs, $__bag); ?>
 <script type="text/javascript">
     tinymce.init({
         selector: '#section1_description, #section2_description',
-        width: 800,
-        height: 400,
+        
         plugins: [
             'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
             'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',

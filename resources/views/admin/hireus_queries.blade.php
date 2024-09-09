@@ -17,23 +17,25 @@
                 <div class="card-body table-responsive">
                     <h3 class="mb-5" style="display: inline-block;">Hire Us Queries</h3>
                     
-                    <table class="table table-bordered ">
+                    <!-- <table class="container table-bordered text-center"> -->
+
+                    <table class="table table-bordered text-center">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Date    </th>
-                                <th>Actions</th>
+                                <th class="p-2">#</th>
+                                <th class="p-2">Name</th>
+                                <th class="p-2">Email</th>
+                                <th class="p-2">Date    </th>
+                                <th class="p-2">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (@$queries as $query)
                             <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{ @$query->name }}</td>
-                                <td>{{ @$query->email }}</td>
-                                <td>{{@$query->created_at->setTimezone('Canada/Newfoundland')->format('Y-m-d h:i A')}}</td>
+                                <td class="p-2">{{$loop->iteration}}</td>
+                                <td class="p-2">{{ @$query->name }}</td>
+                                <td class="p-2">{{ @$query->email }}</td>
+                                <td class="p-2">{{@$query->created_at->setTimezone('Canada/Newfoundland')->format('Y-m-d h:i A')}}</td>
                                 <td>
                                     <a type="button" href="{{url('admin/hireus-query/view', @$query->id)}}" class="btn btn-warning btn-sm" >View</a>
                                     <form action="{{ route('admin.hireus_query.delete', @$query->id) }}" method="POST" style="display:inline-block;">

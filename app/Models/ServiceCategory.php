@@ -25,6 +25,8 @@ protected $table  = 'servicecategory';
         'section1_button_link',
         'section2_img',
         'section2_description',
+        'section2_button_label',
+        'section2_button_link',
         'meta_title',
         'meta_description',
         'meta_tag',

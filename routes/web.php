@@ -98,6 +98,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // Common Settings
         Route::get('setting', [AdminController::class, 'Setting'])->name('setting.edit');
         Route::put('setting/update', [AdminController::class, 'updateSetting'])->name('setting.update');
+
+        
+        // homepage
+        Route::get('tax-calculator', [AdminController::class, 'edittax'])->name('tax.edit');
+        Route::put('tax-calculator/update', [AdminController::class, 'updatetax'])->name('tax.update');
+
         
 
     });
@@ -107,7 +113,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 Route::get('/practice-areas', function () {
     return view('web/practice_areas');
 });
-Route::get('/service-areas/{serviceSlug}', [FrontEndController::class, 'servicecategory'])->name('category.show');
+Route::get('/services/{serviceSlug}', [FrontEndController::class, 'servicecategory'])->name('category.show');
 
 Route::get('/', function () {
     return view('web/index');
@@ -123,7 +129,7 @@ Route::get('/lawyers', function(){
     return view('web/lawyers');
 });
 Route::get('/tax-calculator', function(){
-    return view('web/tax-calculator');
+    return view('web/tax_calculator');
 });
 Route::get('/about', function(){
     return view('web/about');

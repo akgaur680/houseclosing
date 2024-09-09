@@ -174,6 +174,27 @@
                                         @enderror
                                     </div>
                                 </div>
+                                 <!-- Section 2 Button Label -->
+                                 <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="section2_button_label">Section 2 Button Label</label>
+                                        <input type="text" class="form-control" id="section2_button_label" name="section2_button_label" value="{{$category->section2_button_label}}" placeholder="Section 2 Button Label">
+                                        @error('section2_button_label')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!-- Section 2 Button Link -->
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="section2_button_link">Section 2 Button Link</label>
+                                        <input type="text" class="form-control" id="section2_button_link" name="section2_button_link" value="{{$category->section2_button_link}}" placeholder="Section 2 Button Link">
+                                        @error('section2_button_link')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                               
 
                                 <!-- Meta Details -->
                                 <div class="row">
@@ -242,8 +263,7 @@
 <script type="text/javascript">
     tinymce.init({
         selector: '#section1_description, #section2_description',
-        width: 800,
-        height: 400,
+        
         plugins: [
             'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
             'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',

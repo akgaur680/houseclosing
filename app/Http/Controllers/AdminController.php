@@ -11,6 +11,7 @@ use App\Models\Experience;
 use App\Models\Setting;
 use App\Models\ContactForm;
 use App\Models\ContactArea;
+use App\Models\TaxCalculator;
 class AdminController extends Controller
 {
     public function __construct()
@@ -259,12 +260,7 @@ class AdminController extends Controller
         return redirect()->route('admin.about.edit')->with('success', 'About Page Updated Successfully');
 
     }
-    public function editcontact(){
-        $contact = ContactArea::first();
-        if(!$contact){
-            $contact = new ContactArea();
-        }
-        return view('admin.edit_contact_area', compact('contact'));
-    }
+  
+
   
 }

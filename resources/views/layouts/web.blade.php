@@ -16,6 +16,9 @@ $settings = FrontEndController::settings();
     <link rel="stylesheet" href="{{asset('assets/css/remixicon.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/calculator.css')}}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <link rel="icon" type="image/png" href="{{asset($settings['meta_img'])}}">
 </head>
 <body>
@@ -63,21 +66,21 @@ $settings = FrontEndController::settings();
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav m-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link active" href="/" role="button">
+                        <a class="nav-link active" href="{{url('/')}}" role="button">
                             Home
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link " href="/about" role="button">
+                        <a class="nav-link " href="{{url('about')}}" role="button">
                             About Us
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/services" role="button"> Services</a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button"> Services</a>
                         <ul class="dropdown-menu">
                             @foreach (@$services as $service )
                             <li>
-                                <a class="dropdown-item" href="{{url('service-areas',@$service['slug'])}}">
+                                <a class="dropdown-item" href="{{url('services',@$service['slug'])}}">
                                     {{@$service['header_title']}}
                                 </a>
                             </li>
@@ -85,22 +88,22 @@ $settings = FrontEndController::settings();
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/hire-us" role="button">
+                        <a class="nav-link" href="{{url('hire-us')}}" role="button">
                             Hire Us
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/faq">
-                            FAQ’s
+                        <a class="nav-link" href="{{url('faq')}}">
+                            FAQ
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/tax-calculator" role="button">
+                        <a class="nav-link" href="{{url('tax-calculator')}}" role="button">
                             Tax Calculator
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/lawyers">
+                        <a class="nav-link" href="{{url('lawyers')}}">
                             Lawyers
                         </a>
                     </li>
@@ -108,7 +111,7 @@ $settings = FrontEndController::settings();
             </div>
             <ul class="others-options ps-0 mb-0 list-unstyled justify-content-end">
                 <li>
-                    <a href="/contactus" class="btn btn-primary">
+                    <a href="{{url('contactus')}}" class="btn btn-primary">
                         Contact Us
                     </a>
                 </li>
@@ -154,23 +157,23 @@ $settings = FrontEndController::settings();
             <div class="row justify-content-center">
                 <div class="col-lg-3">
                     <div class="footer-single-item">
-                        <a href="/" class="d-inline-block logo">
+                        <a href="{{url('/')}}" class="d-inline-block logo">
                             <img src="{{asset(@$settings['footer_logo'])}}" alt="logo" style="height: 100px;">
                         </a>
                         <p> {{@$settings['footer_title']}} </p>
                         <ul class="ps-0 mb-0 list-unstyled d-flex gap-4 flex-wrap social-link">
                             <li>
-                                <a href="{{@$settings['facebook_link']}}" target="_blank">
+                                <a href="{{url(@$settings['facebook_link'])}}" target="_blank">
                                     <i class="ri-facebook-fill"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{@$settings['instagram_link']}}" target="_blank">
+                                <a href="{{url(@$settings['instagram_link'])}}" target="_blank">
                                     <i class="ri-instagram-line"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{@$settings['twitter_link']}}" target="_blank">
+                                <a href="{{url(@$settings['twitter_link'])}}" target="_blank">
                                     <i class="ri-twitter-x-line"></i>
                                 </a>
                             </li>
@@ -184,19 +187,19 @@ $settings = FrontEndController::settings();
                                 <h3>Quick Links</h3>
                                 <ul class="ps-0 mb-0 list-unstyled additional-link">
                                     <li>
-                                        <a href="/about">About Us</a>
+                                        <a href="{{url('about')}}">About Us</a>
                                     </li>
                                     <li>
-                                        <a href="/contactus">Contact Us</a>
+                                        <a href="{{url('contactus')}}">Contact Us</a>
                                     </li>
                                     <li>
-                                        <a href="/lawyers">Our Members</a>
+                                        <a href="{{url('lawyers')}}">Our Members</a>
                                     </li>
                                     <li>
-                                        <a href="/services">Services</a>
+                                        <a href="{{url('services')}}">Services</a>
                                     </li>
                                     <li>
-                                        <a href="/faq">FAQ’s</a>
+                                        <a href="{{url('faq')}}">FAQ</a>
                                     </li>
                                 </ul>
                             </div>
@@ -207,7 +210,7 @@ $settings = FrontEndController::settings();
                                 <ul class="ps-0 mb-0 list-unstyled additional-link">
                                     @foreach (@$services as $service )
                                     <li>
-                                        <a href="{{url('service-areas',@$service['slug'])}}">{{@$service['header_title']}}</a>
+                                        <a href="{{url('services',@$service['slug'])}}">{{@$service['header_title']}}</a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -253,6 +256,8 @@ $settings = FrontEndController::settings();
     <script src="{{asset('assets/js/scrollCue.min.js')}}"></script>
     <script src="{{asset('assets/js/fslightbox.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
+    <script src="{{asset('assets/js/calculator.js')}}"></script>
+    
 </body>
 <!-- Mirrored from templates.hibootstrap.com/laks/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 Jul 2024 14:17:59 GMT -->
 </html>

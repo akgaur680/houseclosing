@@ -52,7 +52,7 @@ div
                                 </div>
                                 <div class="flex-grow-1 ms-3 text-start">
                                     <h3> {{@$testimonial['name']}} </h3>
-                                    <span>05 days ago</span>
+                                    <!-- <span>05 days ago</span> -->
                                 </div>
                             </div>
                         </div>

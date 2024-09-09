@@ -6,6 +6,7 @@ use App\Models\HireusArea;
 use App\Models\HireusForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use GuzzleHttp\Client;
 
 class HireusController extends Controller
 {
@@ -55,7 +56,7 @@ class HireusController extends Controller
     }
     public function storehireusform(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:255',
             'phone' => 'required|string|max:255',
@@ -64,31 +65,54 @@ class HireusController extends Controller
             'selected_services' => 'nullable|string',
             'selected_service_names' => 'nullable|string',
         ]);
+        $client = new Client();
+        $response = $client->post('https://www.google.com/recaptcha/api/siteverify', [
+            'form_params' => [
+                'secret' => '6Lc4NBoqAAAAAE5j384Lz1ePL3N5UIhwQDgHyDtT',
+                'response' => $request->input('g-recaptcha-response'),
+                'remoteip' => $request->ip(),
+            ],
+        ]);
 
-        $data = $request->all();
+        $body = json_decode((string)$response->getBody());
+        if ($body->success) {
+            $emailData = [
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'phone' => $request->input('phone'),
+                'message' => $request->input('message'),
+                'address' => $request->input('address'),
+                'selected_services' =>$request->input('selected_services'),
+                'selected_service_names' => $request->input('selected_service_names')
+            ];
+            Mail::send('emails.hireus', ['form' => $emailData], function ($message) use ($emailData, $request) {
+                $message->to('akgaur680@gmail.com')
+                    ->subject('New Hire Us Form Submission')
+                    ->from('akgaur680@gmail.com', 'HouseClosing');
+            });
+            HireusForm::create($validatedData);
 
-        $form = HireusForm::create($data);
-        Mail::send('emails.hireus', ['form' => $form], function ($message) use ($form, $request) {
-            $message->to('akgaur680@gmail.com')
-                ->subject('New Query Form Submission')
-                ->from('akgaur680@gmail.com', 'HouseClosing'); 
-        });
 
-        return redirect()->back()->with('success', 'Thank You to Choose Us, We will shortly Contact You.');
+            return redirect()->back()->with('success', 'Thank You to Choose Us.');
+        } else {
+            return redirect()->back()->withErrors(['g-recaptcha-response' => 'Please verify that you are not a robot.'])->withInput();
+        }
     }
-    
-    public function hireusqueries(){
-        $queries = HireusForm::orderBy('id', 'desc')->paginate(10);
+
+    public function hireusqueries()
+    {
+        $queries = HireusForm::orderBy('id', 'desc')->paginate(20);
         return view('admin/hireus_queries', compact('queries'));
     }
-    
-    public function viewquery($queryid){
+
+    public function viewquery($queryid)
+    {
         $query = HireusForm::findOrFail($queryid);
         return view('admin.view_hireus_query', compact('query'));
     }
-    public function deletequery($queryid){
+    public function deletequery($queryid)
+    {
         $query = HireusForm::findOrFail($queryid)->delete();
         return redirect()->back()->with('success', 'Query Deleted Successfully');
-
     }
 }

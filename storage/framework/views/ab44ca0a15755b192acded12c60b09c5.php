@@ -22,7 +22,7 @@ $faq = FrontEndController::faq();
                 <div class="page-banner-content">
                     <ul class="ps-0 list-unstyled breadcrumbs">
                         <li>
-                            <a href="https://houseclosing.ca">Home</a>
+                            <a href="<?php echo e(url('/')); ?>">Home</a>
                         </li>
                         <li>
                             <span>FAQ</span>
@@ -36,8 +36,8 @@ $faq = FrontEndController::faq();
             <div class="col-lg-6">
                 <div class="page-banner-img text-center text-lg-end position-relative z-1">
                     <img src="<?php echo e(asset(@$faq['header_img'])); ?>" class="img" alt="banner-img">
-                    <img src="https://houseclosing.ca/assets/images/shape-7.png" class="shape shape-7" alt="shape">
-                    <img src="https://houseclosing.ca/assets/images/shape-8.png" class="shape shape-8" alt="shape">
+                    <img src="<?php echo e(url('assets/images/shape-7.png')); ?>" class="shape shape-7" alt="shape">
+                    <img src="<?php echo e(url('assets/images/shape-8.png')); ?>" class="shape shape-8" alt="shape">
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@ $faq = FrontEndController::faq();
                 <div class="faq-img">
                     <img src="<?php echo e(asset(@$faq['section1_img'])); ?>" style="height:587px" alt="faq">
                     <div class="text-end">
-                        <a href="<?php echo e(@$faq['section1_button_link']); ?>" class="read-more">
+                        <a href="<?php echo e(url(@$faq['section1_button_link'])); ?>" class="read-more">
                            <?php echo e(@$faq['section1_button_label']); ?>
 
                             <i class="flaticon-right-arrow"></i>

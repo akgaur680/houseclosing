@@ -19,7 +19,7 @@ $services = FrontEndController::servicesdata();
                 <div class="page-banner-content">
                     <ul class="ps-0 list-unstyled breadcrumbs">
                         <li>
-                            <a href="/">Home</a>
+                            <a href="<?php echo e(url('/')); ?>">Home</a>
                         </li>
                         <li>
                             <span>Services</span>
@@ -53,16 +53,16 @@ $services = FrontEndController::servicesdata();
             <?php $__currentLoopData = @$services['categories']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $servicelist): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="col-lg-4 col-md-6">
                 <div class="buying-single-item mb-4 transition-y">
-                    <a href="<?php echo e(url('service-areas', @$servicelist['slug'])); ?>" class="d-block buying-img">
+                    <a href="<?php echo e(url('services', @$servicelist['slug'])); ?>" class="d-block buying-img">
                         <img src="<?php echo e(asset(@$servicelist['header_img'])); ?>" alt="banner" style="height: 258px; width:100%;">
                     </a>
                     <div class="buying-content">
                         <h3>
-                            <a href="<?php echo e(url('service-areas', @$servicelist['slug'])); ?>"><?php echo e(@$servicelist['header_title']); ?></a>
+                            <a href="<?php echo e(url('services', @$servicelist['slug'])); ?>"><?php echo e(@$servicelist['header_title']); ?></a>
                         </h3>
-                        <p style="height: 120px;"> <?php echo e(@$servicelist['header_description']); ?> </p>
+                        <p style="height: 120px; overflow:hidden"> <?php echo e(@$servicelist['header_description']); ?> </p>
                         <div class="border-top">
-                            <a href="<?php echo e(url('service-areas', @$servicelist['slug'])); ?>" class="read-more">
+                            <a href="<?php echo e(url('services', @$servicelist['slug'])); ?>" class="read-more">
                                 Learn More
                                 <i class="flaticon-right-arrow"></i>
                             </a>

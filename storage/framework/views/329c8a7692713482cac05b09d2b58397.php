@@ -21,11 +21,12 @@ $hire = FrontEndController::hireus();
     <div class="container mw-1380">
  
         <div class="row align-items-center">
+       
             <div class="col-lg-6">
                 <div class="page-banner-content">
                     <ul class="ps-0 list-unstyled breadcrumbs">
                         <li>
-                            <a href="/">Home</a>
+                            <a href="<?php echo e(url('/')); ?>">Home</a>
                         </li>
                         <li>
                             <span>Hire Us</span>
@@ -49,6 +50,23 @@ $hire = FrontEndController::hireus();
             <div class="col-lg-6">
                 <div class="contact-us-content">
                     <h2>Hire Us Now</h2>
+                    <div  >
+                    <?php if($errors->any()): ?>
+                            <div class="alert alert-danger" id="hireus_form">
+                                <ul class="mb-0">
+                                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li><?php echo e($error); ?></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+                        <?php if(session('success')): ?>
+                            <div class="alert alert-success" id="hireus_form">
+                                <?php echo e(session('success')); ?>
+
+                            </div>
+                        <?php endif; ?>
+                        </div>
                     <form id="hireUsForm" class="contact-us-form" action="<?php echo e(route('hireus.store')); ?>" method="POST">
                         <?php echo csrf_field(); ?>
                         <div class="mb-3 row align-items-center">
@@ -131,6 +149,10 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                <div class="g-recaptcha" data-sitekey="6Lc4NBoqAAAAACD1FiX596PGkcmpPpcbhobQsDte" style="padding: 10px;  margin: 10px;"></div>
+                            <?php if($errors->has('g-recaptcha-response')): ?>
+                            <span class="text-danger"><?php echo e($errors->first('g-recaptcha-response')); ?></span>
+                            <?php endif; ?>
                             </div>
                         </div>
                         <input type="hidden" name="selected_services" id="selected_services" value="<?php echo e(old('selected_services')); ?>" >
@@ -207,6 +229,8 @@ unset($__errorArgs, $__bag); ?>
         </div>
     </div>
 </div>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const checkboxes = document.querySelectorAll('.service-checkbox');
@@ -231,6 +255,14 @@ unset($__errorArgs, $__bag); ?>
             console.log('Selected Service Names:', selectedServiceNames);
         });
     });
+</script>
+
+<script type="text/javascript">
+    jQuery("html").animate({
+        scrollTop:jQuery("#hireus_form").offset().top - 200
+    });
+
+    
 </script>
 
 <?php $__env->stopSection(); ?>

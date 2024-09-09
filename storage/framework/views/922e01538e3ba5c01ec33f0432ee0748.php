@@ -15,7 +15,7 @@
         <?php endif; ?>
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <h3 class="mb-5" style="display: inline-block;">Contact Us Queries</h3>
                     
                     <table class="table table-bordered">
@@ -24,6 +24,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Date</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -33,6 +34,7 @@
                                 <td><?php echo e($loop->iteration); ?></td>
                                 <td><?php echo e(@$query->name); ?></td>
                                 <td><?php echo e(@$query->email); ?></td>
+                                <td><?php echo e(@$query->created_at->setTimezone('Canada/Newfoundland')->format('Y-m-d h:i A')); ?></td>
                                 <td>
                                     <a type="button" href="<?php echo e(url('admin/contact-query/view', @$query->id)); ?>" class="btn btn-warning btn-sm" >View</a>
                                     <form action="<?php echo e(route('admin.query.delete', @$query->id)); ?>" method="POST" style="display:inline-block;">
@@ -45,6 +47,11 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
+                     <!-- Pagination Links -->
+                     <div class="mt-4">
+                        <?php echo e($queries->links('pagination::bootstrap-5')); ?>
+
+                    </div>
                 </div>
             </div>
         </div>

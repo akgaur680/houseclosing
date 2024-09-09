@@ -26,12 +26,12 @@ $about = FrontEndController::about();
       <h1> <?php echo e(@$homepage['header_title']); ?> </h1>
       <p> <?php echo e(@$homepage['header_description']); ?> </p>
       <div class="banner-btn d-flex align-items-center justify-content-center">
-        <a href=" <?php echo e(@$homepage['header_button_link1']); ?> " class="btn btn-dark border-0">
+        <a href=" <?php echo e(url(@$homepage['header_button_link1'])); ?> " class="btn btn-dark border-0">
           <?php echo e(@$homepage['header_button_label1']); ?>
 
           <!-- <img src="assets/images/cart.svg" alt="cart"> -->
         </a>
-        <a href="<?php echo e(@$homepage['header_button_link2']); ?>" class="read-more read-dark">
+        <a href="<?php echo e(url(@$homepage['header_button_link2'])); ?>" class="read-more read-dark">
           <?php echo e(@$homepage['header_button_label2']); ?>
 
           <i class="flaticon-right-arrow"></i>
@@ -86,7 +86,7 @@ $about = FrontEndController::about();
       <div class="col-lg-6">
         <div class="service-content">
           <h2>Why You Hire Us.</h2>
-          <a href="/about" class="read-more">
+          <a href="<?php echo e(url('about')); ?>" class="read-more">
             Know More About Us
             <i class="flaticon-right-arrow"></i>
           </a>
@@ -112,10 +112,10 @@ $about = FrontEndController::about();
               <!-- <i class="flaticon-house icon"></i> -->
               <img src="<?php echo e(asset(@$service['icon'])); ?>">
               <h3 class="mt-3">
-                <a href="<?php echo e(url('service-areas', @$service['slug'])); ?>"><?php echo e(@$service['header_title']); ?></a>
+                <a href="<?php echo e(url('services', @$service['slug'])); ?>"><?php echo e(@$service['header_title']); ?></a>
               </h3>
               <p style="height:120px; overflow:hidden"> <?php echo e(@$service['header_description']); ?> </p>
-              <a href="<?php echo e(url('service-areas', @$service['slug'])); ?>" class="read-more">
+              <a href="<?php echo e(url('services', @$service['slug'])); ?>" class="read-more">
                 Learn More
                 <i class="flaticon-right-arrow"></i>
               </a>
@@ -125,7 +125,7 @@ $about = FrontEndController::about();
           <div class="col-xl-12 col-sm-12 text-center">
             <div class="service-single-item transition-y style-two">
               <h3>
-                <a href="/services" class="read-more fs-3">
+                <a href="<?php echo e(url('services')); ?>" class="read-more fs-3">
                   View All Services
                   <i class="flaticon-right-arrow"></i>
                 </a>
@@ -194,13 +194,13 @@ $about = FrontEndController::about();
           <?php $__currentLoopData = @$lawyers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lawyer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <div class="col-xl-6 col-sm-6">
             <div class="team-member-single-item border transition-y">
-              <a href="/lawyers" class="d-block mb-4">
+              <a href="<?php echo e(url('lawyers')); ?>" class="d-block mb-4">
                 <img src="<?php echo e(asset(@$lawyer['lawyer_img'])); ?>" class="mw-100" alt="team">
               </a>
-              <div>
+              <div class="text-center">
                 <span class="title"> <?php echo e(@$lawyer['lawyer_designation']); ?> </span>
                 <h3>
-                  <a href="/lawyers"> <?php echo e(@$lawyer['lawyer_name']); ?> </a>
+                  <a href="<?php echo e(url('lawyers')); ?>"> <?php echo e(@$lawyer['lawyer_name']); ?> </a>
                 </h3>
                 <!-- <ul class="ps-0 mb-0 list-unstyled">
                                     <li>
@@ -218,11 +218,11 @@ $about = FrontEndController::about();
         <div class="team-member-content">
           <h2> <?php echo e(@$homepage['section3_title']); ?> </h2>
           <p> <?php echo @$homepage['section3_description']; ?> </p>
-          <a href="<?php echo e(@$homepage['section3_button_link']); ?>" class="read-more text-primarydiv">
+          <!-- <a href="<?php echo e(@$homepage['section3_button_link']); ?>" class="read-more text-primarydiv">
             <?php echo e(@$homepage['section3_button_label']); ?>
 
             <i class="flaticon-right-arrow"></i>
-          </a>
+          </a> -->
           <div class="team-img mt-1 mb-1">
             <img src="<?php echo e(asset('assets/images/team-img.png')); ?>" alt="team-img">
           </div>

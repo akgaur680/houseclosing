@@ -114,4 +114,4 @@
         </div>
     </nav>
 <?php endif; ?>
-<?php /**PATH C:\wamp64\www\houseclosing\resources\views/vendor/pagination/tailwind.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\wamp64\www\houseclosing\resources\views\vendor\pagination\tailwind.blade.php ENDPATH**/ ?>

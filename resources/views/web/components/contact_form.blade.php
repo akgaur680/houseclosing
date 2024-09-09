@@ -1,6 +1,21 @@
 <div class="col-lg-6">
     <div class="contact-us-content">
         <h2>Contact with us for any help needed from our company</h2>
+        @if ($errors->any())
+                            <div class="alert alert-danger" id="contact_form">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if (session('success'))
+                            <div class="alert alert-success" id="contact_form">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        
         <form class="contact-us-form" action="{{route('contact.store')}}" method="POST">
             @csrf
             <div class="mb-3 row align-items-center">
@@ -47,7 +62,12 @@
                     @error('message')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
-                  
+                    <div class="g-recaptcha" data-sitekey="6Lc4NBoqAAAAACD1FiX596PGkcmpPpcbhobQsDte" style="padding: 10px;
+                                margin: 10px;"></div>
+                    @if ($errors->has('g-recaptcha-response'))
+                    <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                    @endif
+
                 </div>
             </div>
             <div class="pt-lg-3 mb-3 row">
@@ -61,3 +81,12 @@
         </form>
     </div>
 </div>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script type="text/javascript">
+    jQuery("html").animate({
+        scrollTop:jQuery("#contact_form").offset().top - 150
+    });
+
+    
+</script>
